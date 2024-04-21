@@ -5,7 +5,9 @@
 _Valid Login credentials:_
 
 username: user1
+
 email: user1@example.com
+
 password: pass1
 
 _Personal stuff:)))_
