@@ -1,4 +1,4 @@
-# Refactoring UBB-SE-MysticDragons app.
+# Refactoring UBB-SE-MysticDragons app
 
 **Remarks from the other team**
 
