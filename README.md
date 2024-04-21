@@ -1,7 +1,7 @@
 # Refactoring UBB-SE-MysticDragons app.
 
-**Remarks from the other team
-**
+**Remarks from the other team**
+
 _Valid Login credentials:_
 
 username: user1
