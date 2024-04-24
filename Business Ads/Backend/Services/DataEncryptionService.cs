@@ -1,6 +1,6 @@
 ﻿namespace Backend.Services
 {
-    class DataEncryptionService
+    class DataEncryptionService:IDataEncryptionService
     {
         readonly static string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -8,13 +8,13 @@
         {
             string shuffled = "";
             int lengthOfAlphabet = alphabet.Length;
-            Random rand = new();
+            Random random = new();
             char randomCharacter;
             string copyOfAlphabet = alphabet;
             while (shuffled.Length < lengthOfAlphabet)
             {
                 if (copyOfAlphabet.Length > 1)
-                    randomCharacter = copyOfAlphabet[rand.Next(copyOfAlphabet.Length)];
+                    randomCharacter = copyOfAlphabet[random.Next(copyOfAlphabet.Length)];
                 else
                     randomCharacter = copyOfAlphabet[0];
                 shuffled += randomCharacter;
@@ -23,7 +23,7 @@
             return shuffled;
         }
 
-        public static Dictionary<string, string> Encrypt(string data)
+        public Dictionary<string, string> Encrypt(string data)
         {
             string key = ShuffleAlphabet();
             string encryptedData = "";
@@ -50,7 +50,7 @@
             return result;
         }
 
-        public static string Decrypt(string data, string key)
+        public string Decrypt(string data, string key)
         {
             string decryptedData = "";
             for (int i = 0; i < data.Length; i++)

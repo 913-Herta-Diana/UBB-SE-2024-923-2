@@ -24,7 +24,7 @@ namespace Frontend
             fAQs = new List<Backend.Models.FAQ>();
             reviews = new List<ReviewClass>();
 
-            fAQs = service.getAll();
+            fAQs = service.GetAllFAQs();
             reviews = reviewService.getAllReviews();
 
             InitializeComponent();

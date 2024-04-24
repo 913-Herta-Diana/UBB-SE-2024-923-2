@@ -20,7 +20,7 @@ namespace Frontend.FAQ
 
             topics = new List<string>();
 
-            List<Backend.Models.FAQ> faqs = service.getAll();
+            List<Backend.Models.FAQ> faqs = service.GetAllFAQs();
             foreach (Backend.Models.FAQ faq in faqs)
             {
                 if (!topics.Contains(faq.Topic))
@@ -55,7 +55,7 @@ namespace Frontend.FAQ
             string question = questionBox.Text;
             string selectedTopic = dropTopic.SelectedItem as string;
             Backend.Models.FAQ newQ = new Backend.Models.FAQ(question, "to be added", selectedTopic);
-            service.addSubmittedQuestion(newQ);
+            service.AddSubmittedQuestion(newQ);
             MessageBox.Show("The question has been submitted. Check the FAQ page later to see if it has been approved.");
         }
     }

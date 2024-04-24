@@ -3,15 +3,15 @@ using Backend.Repositories;
 
 namespace Backend.Services
 {
-    public class FAQService
+    public class FAQService:IFAQService
     {
         private static readonly FAQService instance = new();
-        private FAQRepository repo;
+        private FAQRepository repository;
         private List<FAQ> submittedQuestions;
 
         private FAQService()
         {
-            repo = new FAQRepository();
+            repository = new FAQRepository();
             submittedQuestions = new List<FAQ>();
         }
 
@@ -20,17 +20,17 @@ namespace Backend.Services
             get { return instance; }
         }
 
-        public List<FAQ> getAll()
+        public List<FAQ> GetAllFAQs()
         {
-            return repo.GetFAQList();
+            return repository.GetFAQList();
         }
 
-        public void addSubmittedQuestion(FAQ newQ)
+        public void AddSubmittedQuestion(FAQ newQ)
         {
             submittedQuestions.Add(newQ);
         }
 
-        public List<FAQ> getSubmittedQuestions()
+        public List<FAQ> GetSubmittedQuestions()
         {
             return submittedQuestions;
         }
