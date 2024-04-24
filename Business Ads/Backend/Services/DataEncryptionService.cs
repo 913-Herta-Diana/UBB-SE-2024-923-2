@@ -1,6 +1,6 @@
 ﻿namespace Backend.Services
 {
-    class DataEncryptionService:IDataEncryptionService
+    public class DataEncryptionService:IDataEncryptionService
     {
         readonly static string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

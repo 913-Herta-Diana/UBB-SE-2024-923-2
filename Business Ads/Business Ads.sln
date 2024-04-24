@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{85B72637-C44C-4D15-9DFC-D8A7E5A6AB1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{2C3B567C-6D80-4891-8796-4D474F1EFFD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "Backend\Backend.csproj", "{2C3B567C-6D80-4891-8796-4D474F1EFFD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UBB-Business-Ads.Tests", "UBB-Business-Ads.Tests\UBB-Business-Ads.Tests.csproj", "{D35D86A6-6299-49E2-B4D4-A498D44D4F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2C3B567C-6D80-4891-8796-4D474F1EFFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3B567C-6D80-4891-8796-4D474F1EFFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C3B567C-6D80-4891-8796-4D474F1EFFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35D86A6-6299-49E2-B4D4-A498D44D4F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35D86A6-6299-49E2-B4D4-A498D44D4F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35D86A6-6299-49E2-B4D4-A498D44D4F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35D86A6-6299-49E2-B4D4-A498D44D4F84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
