@@ -9,7 +9,7 @@ namespace Backend.Services
         private FAQRepository repository;
         private List<FAQ> submittedQuestions;
 
-        private FAQService()
+        public FAQService()
         {
             repository = new FAQRepository();
             submittedQuestions = new List<FAQ>();

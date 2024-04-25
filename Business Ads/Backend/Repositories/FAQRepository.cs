@@ -4,7 +4,7 @@ using Backend.Models;
 
 namespace Backend.Repositories
 {
-    public class FAQRepository : IFAQ
+    public class FAQRepository : IFAQRepository
     {
 
         private string xmlFilePath;
