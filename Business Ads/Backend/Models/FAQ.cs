@@ -13,11 +13,11 @@
 
         }
 
-        public FAQ(string q, string a, string topic)
+        public FAQ(string question, string answer, string topic)
         {
             _id = ++_lastID;
-            _question = q;
-            _answer = a;
+            _question = question;
+            _answer = answer;
             _topic = topic;
         }
 

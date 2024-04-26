@@ -39,9 +39,9 @@ namespace Backend.Models
             // validate phone number
             if (bankAccount.PhoneNumber == null || bankAccount.PhoneNumber.Length < 9)
             {
-                foreach (char c in bankAccount.PhoneNumber)
+                foreach (char currentCharacter in bankAccount.PhoneNumber)
                 {
-                    if (!char.IsDigit(c))
+                    if (!char.IsDigit(currentCharacter))
                     {
                         return false;
                     }
@@ -69,9 +69,9 @@ namespace Backend.Models
             // validate number
             if (bankAccount.Number == null || bankAccount.Number.Length < 16)
             {
-                foreach (char c in bankAccount.Number)
+                foreach (char currentCharacter in bankAccount.Number)
                 {
-                    if (!char.IsDigit(c))
+                    if (!char.IsDigit(currentCharacter))
                     {
                         return false;
                     }
