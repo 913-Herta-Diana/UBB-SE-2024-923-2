@@ -5,10 +5,10 @@ using System.Net.Mail;
 
 namespace Backend.Controllers
 {
-    public class PaymentFormController(AccountRepository repoAccount, ProductRepository repoProduct)
+    public class PaymentFormController(AccountRepository repositoryAccount, ProductRepository repositoryProduct)
     {
-        private readonly AccountRepository _accountRepository = repoAccount;
-        private readonly ProductRepository _productRepository = repoProduct;
+        private readonly AccountRepository _accountRepository = repositoryAccount;
+        private readonly ProductRepository _productRepository = repositoryProduct;
 
         public Task SendPaymentConfirmationMailAsync()
         {
@@ -17,7 +17,8 @@ namespace Backend.Controllers
             var password = "daes ndml ukpj qvuj";
 
             var product = _productRepository.Product;
-            var subject = "Payment Confirmation For " + product.Name;
+            var subject = "Running tests im sorry";
+           // var subject = "Payment Confirmation For " + product.Name;
             var message = "Description: " + product.Description + "\nPrice: " + product.Price;
 
             var client = new SmtpClient("smtp.gmail.com")
