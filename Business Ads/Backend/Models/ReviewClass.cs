@@ -11,7 +11,11 @@
             this._review = review;
         }
 
-        public ReviewClass() { }    
+        public ReviewClass() 
+        {
+            _user = "";
+            _review = "";
+        }    
 
         public string User
         {

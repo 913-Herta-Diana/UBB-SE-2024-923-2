@@ -12,7 +12,10 @@
             _task = task;
         }
         
-        public TODOClass() { }
+        public TODOClass() 
+        {
+            _task = "";
+        }
 
         public string Task { get { return _task; } set { _task = value; } }
 
