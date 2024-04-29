@@ -1,37 +1,41 @@
-﻿namespace Backend.Models
+﻿// <copyright file="ReviewClass.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Backend.Models
 {
     public class ReviewClass
     {
-        private string _user;
-        private string _review;
+        private string user;
+        private string review;
 
         public ReviewClass(string user, string review)
         {
-            this._user = user;
-            this._review = review;
+            this.user = user;
+            this.review = review;
         }
 
-        public ReviewClass() 
+        public ReviewClass()
         {
-            _user = "";
-            _review = "";
-        }    
+            this.user = string.Empty;
+            this.review = string.Empty;
+        }
 
         public string User
         {
-            get { return _user; }
-            set { _user = value; }
+            get { return this.user; }
+            set { this.user = value; }
         }
 
         public string Review
         {
-            get { return _review; }
-            set { _review = value; }
+            get { return this.review; }
+            set { this.review = value; }
         }
 
         public override string ToString()
         {
-            return $"--> {this._review} (left from {this._user})\n";
+            return $"--> {this.review} (left from {this.user})\n";
         }
     }
 }

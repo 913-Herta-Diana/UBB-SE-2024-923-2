@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ReviewModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-using NUnit.Framework.Legacy;
-using NUnit.Framework;
-using NUnit;
-using Backend.Models;
-
-
-namespace UBB_Business_Ads.Tests.test_models
+namespace UBB_Business_Ads.Tests.Test_models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Backend.Models;
+    using NUnit;
+    using NUnit.Framework;
+    using NUnit.Framework.Legacy;
+
     [TestFixture]
     public class ReviewModelTest
     {
@@ -22,11 +24,9 @@ namespace UBB_Business_Ads.Tests.test_models
             ReviewClass reviewTest = new ReviewClass();
             ReviewClass parameterizedReviewTest = new ReviewClass("testUser", "testReview");
 
-
             // Act
             reviewTest.User = "testUser";
             reviewTest.Review = "testReview";
-
 
             // Assert
             Assert.That(reviewTest.User, Is.EqualTo("testUser"));
@@ -41,11 +41,9 @@ namespace UBB_Business_Ads.Tests.test_models
             // Arrange
             ReviewClass reviewTest = new ReviewClass();
 
-
             // Act
             reviewTest.User = "testUser";
             reviewTest.Review = "testReview";
-
 
             // Assert
             Assert.That(reviewTest.ToString(), Is.EqualTo("--> testReview (left from testUser)\n"));
