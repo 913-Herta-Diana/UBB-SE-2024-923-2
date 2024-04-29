@@ -1,19 +1,25 @@
-﻿using ScottPlot;
-using System;
-using System.Windows;
+﻿// <copyright file="StatsWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend
 {
+    using System;
+    using System.Windows;
+    using ScottPlot;
+
     /// <summary>
-    /// Interaction logic for StatsWindow.xaml
+    /// Interaction logic for StatsWindow.xaml.
     /// </summary>
+    [Obsolete]
     public partial class StatsWindow : Window
     {
-        public Window mainWindow;
+        private Window mainWindow;
 
         public StatsWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.mainWindow = this.mainWindow ?? throw new ArgumentNullException(nameof(this.mainWindow));
 
             double[] engagement_data_x = new double[24];
             double[] engagement_data_y = new double[24];
@@ -29,204 +35,237 @@ namespace Frontend
 
             double[] zeros = new double[24];
 
-            void showEngagementPlot()
+            void ShowEngagementPlot()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Ad Engagement throughout the day");
-                CurrentPlot.Plot.XLabel("Hour of the day");
-                CurrentPlot.Plot.YLabel("Engagement on a scale from 1 to 10");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Ad Engagement throughout the day");
+                this.CurrentPlot.Plot.XLabel("Hour of the day");
+                this.CurrentPlot.Plot.YLabel("Engagement on a scale from 1 to 10");
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10);
-                CurrentPlot.Plot.Add.Bars(engagement_data_x, engagement_data_y);
-                CurrentPlot.Plot.ShowGrid();
-                CurrentPlot.Plot.HideLegend();
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10);
+                this.CurrentPlot.Plot.Add.Bars(engagement_data_x, engagement_data_y);
+                this.CurrentPlot.Plot.ShowGrid();
+                this.CurrentPlot.Plot.HideLegend();
+                this.CurrentPlot.Refresh();
             }
 
-            void showClicksPlot()
+            void ShowClicksPlot()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Ad Clicks in the last 24 days");
-                CurrentPlot.Plot.XLabel("Days ago");
-                CurrentPlot.Plot.YLabel("Number of clicks");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Ad Clicks in the last 24 days");
+                this.CurrentPlot.Plot.XLabel("Days ago");
+                this.CurrentPlot.Plot.YLabel("Number of clicks");
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1000);
-                CurrentPlot.Plot.Add.FillY(clicks_data_x, clicks_data_y, zeros);
-                CurrentPlot.Plot.Add.Scatter(clicks_data_x, clicks_data_y);
-                CurrentPlot.Plot.ShowGrid();
-                CurrentPlot.Plot.HideLegend();
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1000);
+                this.CurrentPlot.Plot.Add.FillY(clicks_data_x, clicks_data_y, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(clicks_data_x, clicks_data_y);
+                this.CurrentPlot.Plot.ShowGrid();
+                this.CurrentPlot.Plot.HideLegend();
+                this.CurrentPlot.Refresh();
             }
 
-            void showImpressionsPlot()
+            void ShowImpressionsPlot()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Ad Impressions in the last 24 days");
-                CurrentPlot.Plot.XLabel("Days ago");
-                CurrentPlot.Plot.YLabel("Number of impressions");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Ad Impressions in the last 24 days");
+                this.CurrentPlot.Plot.XLabel("Days ago");
+                this.CurrentPlot.Plot.YLabel("Number of impressions");
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10000);
-                CurrentPlot.Plot.Add.FillY(impressions_data_x, impressions_data_y, zeros);
-                CurrentPlot.Plot.Add.Scatter(impressions_data_x, impressions_data_y);
-                CurrentPlot.Plot.ShowGrid();
-                CurrentPlot.Plot.HideLegend();
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10000);
+                this.CurrentPlot.Plot.Add.FillY(impressions_data_x, impressions_data_y, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(impressions_data_x, impressions_data_y);
+                this.CurrentPlot.Plot.ShowGrid();
+                this.CurrentPlot.Plot.HideLegend();
+                this.CurrentPlot.Refresh();
             }
 
-            void showCTRPlot()
+            void ShowCTRPlot()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Click-through rate in the last 24 days");
-                CurrentPlot.Plot.XLabel("Days ago");
-                CurrentPlot.Plot.YLabel("CTR");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Click-through rate in the last 24 days");
+                this.CurrentPlot.Plot.XLabel("Days ago");
+                this.CurrentPlot.Plot.YLabel("CTR");
 
                 double[] ctr_data_x = new double[24];
                 double[] ctr_data_y = new double[24];
 
-                for(int index = 0; index < 24; index++)
+                for (int index = 0; index < 24; index++)
+                {
                     ctr_data_x[index] = index;
+                }
 
-                for(int index = 0; index < 24; index++)
+                for (int index = 0; index < 24; index++)
+                {
                     ctr_data_y[index] = clicks_data_y[index] / impressions_data_y[index];
+                }
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1);
-                CurrentPlot.Plot.Add.FillY(ctr_data_x, ctr_data_y, zeros);
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1);
+                this.CurrentPlot.Plot.Add.FillY(ctr_data_x, ctr_data_y, zeros);
                 this.CurrentPlot.Plot.Add.Scatter(ctr_data_x, ctr_data_y);
-                CurrentPlot.Plot.ShowGrid();
-                CurrentPlot.Plot.HideLegend();
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Plot.ShowGrid();
+                this.CurrentPlot.Plot.HideLegend();
+                this.CurrentPlot.Refresh();
             }
 
-            void showPurchasesPlot()
+            void ShowPurchasesPlot()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Purchases in the last 24 days");
-                CurrentPlot.Plot.XLabel("Days ago");
-                CurrentPlot.Plot.YLabel("Number of purchases");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Purchases in the last 24 days");
+                this.CurrentPlot.Plot.XLabel("Days ago");
+                this.CurrentPlot.Plot.YLabel("Number of purchases");
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 500);
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 500);
 
-                CurrentPlot.Plot.Add.FillY(purchases_data_x, purchases_data_y, zeros);
-                CurrentPlot.Plot.Add.Scatter(purchases_data_x, purchases_data_y);
-                CurrentPlot.Plot.ShowGrid();
-                CurrentPlot.Plot.HideLegend();
+                this.CurrentPlot.Plot.Add.FillY(purchases_data_x, purchases_data_y, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(purchases_data_x, purchases_data_y);
+                this.CurrentPlot.Plot.ShowGrid();
+                this.CurrentPlot.Plot.HideLegend();
 
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Refresh();
             }
 
-            void showEngagementTypes()
+            void ShowEngagementTypes()
             {
-                CurrentPlot.Plot.Clear();
-                CurrentPlot.Plot.Title("Engagement types in the last 24 days");
+                this.CurrentPlot.Plot.Clear();
+                this.CurrentPlot.Plot.Title("Engagement types in the last 24 days");
 
                 double[] sums = new double[2];
-                for(int index = 0; index < 24; index++)
+                for (int index = 0; index < 24; index++)
                 {
                     sums[0] += clicks_data_y[index];
                     sums[1] += purchases_data_y[index];
                 }
 
-                CurrentPlot.Plot.Axes.SetLimitsX(left: -1, right: 1);
-                CurrentPlot.Plot.Axes.SetLimitsY(bottom: -1, top: 1);
-                CurrentPlot.Plot.HideGrid();
-                CurrentPlot.Plot.ShowLegend([
-                    new()
+                this.CurrentPlot.Plot.Axes.SetLimitsX(left: -1, right: 1);
+                this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: -1, top: 1);
+                this.CurrentPlot.Plot.HideGrid();
+                this.CurrentPlot.Plot.ShowLegend([
+                    new ()
                     {
                         Label = "Users that clicked the add and bought",
                         LineColor = Colors.Orange,
-                        MarkerColor = Colors.Orange
+                        MarkerColor = Colors.Orange,
                     },
-                    new()
+                    new ()
                     {
                         Label = "Users that only clicked the add",
                         LineColor = Colors.Blue,
-                        MarkerColor = Colors.Blue
+                        MarkerColor = Colors.Blue,
                     }
+
                 ]);
 
-                CurrentPlot.Plot.Add.Pie(sums);
-                CurrentPlot.Plot.XLabel("");
-                CurrentPlot.Plot.YLabel("");
-                CurrentPlot.Refresh();
+                this.CurrentPlot.Plot.Add.Pie(sums);
+                this.CurrentPlot.Plot.XLabel(string.Empty);
+                this.CurrentPlot.Plot.YLabel(string.Empty);
+                this.CurrentPlot.Refresh();
             }
 
-            Loaded += (sender, eventData) =>
+            this.Loaded += (sender, eventData) =>
             {
                 Random random = new Random();
-                for(int index = 0; index < 24; index++)
-                    engagement_data_x[index] = index;
-                for(int index = 0; index < 24; index++)
-                    engagement_data_y[index] = random.Next(10);
-
-                for(int index = 0; index < 24; index++)
-                    clicks_data_x[index] = index;
-                for(int index = 0; index < 24; index++)
-                    clicks_data_y[index] = random.Next(1000);
-
-                for(int index = 0; index < 24; index++)
-                    impressions_data_x[index] = index;
-                for(int index = 0; index < 24; index++)
-                    impressions_data_y[index] = random.Next((int)clicks_data_y[index], 10000);
-
-                for(int index = 0; index < 24; index++)
-                    purchases_data_x[index] = index;
                 for (int index = 0; index < 24; index++)
+                {
+                    engagement_data_x[index] = index;
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    engagement_data_y[index] = random.Next(10);
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    clicks_data_x[index] = index;
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    clicks_data_y[index] = random.Next(1000);
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    impressions_data_x[index] = index;
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    impressions_data_y[index] = random.Next((int)clicks_data_y[index], 10000);
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
+                    purchases_data_x[index] = index;
+                }
+
+                for (int index = 0; index < 24; index++)
+                {
                     purchases_data_y[index] = random.Next((int)clicks_data_y[index] / 10, (int)clicks_data_y[index] / 2);
+                }
 
-                for(int index = 0; index < 24; index++)
+                for (int index = 0; index < 24; index++)
+                {
                     zeros[index] = 0;
+                }
 
-                CurrentPlot.Width = 800;
-                CurrentPlot.Height = 460;
+                this.CurrentPlot.Width = 800;
+                this.CurrentPlot.Height = 460;
 
-                showEngagementPlot();
+                ShowEngagementPlot();
             };
 
-            Closed += (sender, EventData) =>
+            this.Closed += (sender, eventData1) =>
             {
-                mainWindow.Show();
+                this.MainWindow.Show();
             };
 
-            EngagementButton.Click += (sender, eventData) =>
+            this.EngagementButton.Click += (sender, eventData) =>
             {
-                showEngagementPlot();
+                ShowEngagementPlot();
             };
 
-            ClicksButton.Click += (sender, eventData) =>
+            this.ClicksButton.Click += (sender, eventData) =>
             {
-                showClicksPlot();
+                ShowClicksPlot();
             };
 
-            ImpresionsButton.Click += (sender, eventData) =>
+            this.ImpresionsButton.Click += (sender, eventData) =>
             {
-                showImpressionsPlot();
+                ShowImpressionsPlot();
             };
 
-            CTRButton.Click += (sender, eventData) =>
+            this.CTRButton.Click += (sender, eventData) =>
             {
-                showCTRPlot();
+                ShowCTRPlot();
             };
 
-            PurchasesButton.Click += (sender, eventData) =>
+            this.PurchasesButton.Click += (sender, eventData) =>
             {
-                showPurchasesPlot();
+                ShowPurchasesPlot();
             };
 
-            EngagementTypesButton.Click += (sender, eventData) =>
+            this.EngagementTypesButton.Click += (sender, eventData) =>
             {
-                showEngagementTypes();
+                ShowEngagementTypes();
             };
 
-            BackButton.Click += (sender, eventData) =>
+            this.BackButton.Click += (sender, eventData) =>
             {
-                mainWindow.Show();
-                Close();
+                this.MainWindow.Show();
+                this.Close();
             };
+        }
+
+        public Window MainWindow
+        {
+            get { return this.mainWindow; }
+            set { this.mainWindow = value; }
         }
     }
 }

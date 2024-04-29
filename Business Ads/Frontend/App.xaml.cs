@@ -1,13 +1,17 @@
-﻿using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using Backend.Models;
-using Backend.Controllers;
-using Backend.Repositories;
+﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend
 {
+    using System.Windows;
+    using Backend.Controllers;
+    using Backend.Models;
+    using Backend.Repositories;
+    using Microsoft.Extensions.DependencyInjection;
+
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for App.xaml.
     /// </summary>
     public partial class App : Application
     {
@@ -30,7 +34,7 @@ namespace Frontend
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             services.AddSingleton(bankAccount);
 
@@ -39,7 +43,7 @@ namespace Frontend
                 Name = "Product",
                 Description = "Description",
                 Price = "100",
-                Image = "doggo.png"
+                Image = "doggo.png",
             };
             services.AddSingleton(mockProduct);
 

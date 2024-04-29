@@ -1,10 +1,10 @@
-using System.Windows;
-using Frontend.PaymentsAndBillings;
-
 namespace Frontend
 {
+    using System.Windows;
+    using Frontend.PaymentsAndBillings;
+
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -18,7 +18,7 @@ namespace Frontend
                 {
                     StatsWindow statsWindow = new()
                     {
-                        mainWindow = this
+                        MainWindow = this
                     };
                     statsWindow.Show();
                     Hide();
