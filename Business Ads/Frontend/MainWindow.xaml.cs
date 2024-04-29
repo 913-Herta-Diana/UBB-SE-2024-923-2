@@ -45,7 +45,7 @@ namespace Frontend
                 {
                     FAQWindow faqWindow = new()
                     {
-                        mainWindow = this
+                        MainWindow = this
                     };
                     faqWindow.Show();
                     Hide();

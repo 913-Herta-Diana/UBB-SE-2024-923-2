@@ -1,19 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Backend.Models
+﻿namespace Backend.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class BankAccount
     {
-        public string Email { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string PhoneNumber { get; set; }
-        public string County { get; set; }
-        public string City { get; set; }
-        public string Address { get; set; }
-        public string Number { get; set; }
-        public string HolderName { get; set; }
-        public string ExpiryDate { get; set; }
+        public string? Email { get; set; }
+
+        public string? Name { get; set; }
+
+        public string? Surname { get; set; }
+
+        public string? PhoneNumber { get; set; }
+
+        public string? County { get; set; }
+
+        public string? City { get; set; }
+
+        public string? Address { get; set; }
+
+        public string? Number { get; set; }
+
+        public string? HolderName { get; set; }
+
+        public string? ExpiryDate { get; set; }
+
 
         public static bool Validate(BankAccount bankAccount)
         {
@@ -35,7 +45,7 @@ namespace Backend.Models
             {
                 return false;
             }
-            
+
             // validate phone number
             if (bankAccount.PhoneNumber == null || bankAccount.PhoneNumber.Length < 9)
             {

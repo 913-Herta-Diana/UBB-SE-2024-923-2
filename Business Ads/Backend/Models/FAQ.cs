@@ -2,52 +2,59 @@
 {
     public class FAQ
     {
-        private int _id;
-        private static int _lastID = 0;
-        private string _question;
-        private string _answer;
-        private string _topic;
+        private static int lastID = 0;
+        private int id;
+        private string question;
+        private string answer;
+        private string topic;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FAQ"/> class.
+        /// </summary>
         public FAQ()
         {
-
+            this.id = ++lastID;
+            this.question = string.Empty;
+            this.answer = string.Empty;
+            this.topic = string.Empty;
         }
 
         public FAQ(string question, string answer, string topic)
         {
-            _id = ++_lastID;
-            _question = question;
-            _answer = answer;
-            _topic = topic;
+            this.id = ++lastID;
+            this.question = question;
+            this.answer = answer;
+            this.topic = topic;
         }
 
         public int Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Question
         {
-            get { return _question; }
-            set { _question = value; }
+            get { return this.question; }
+            set { this.question = value; }
         }
 
         public string Answer
         {
-            get { return _answer; }
-            set { _answer = value; }
+            get { return this.answer; }
+            set { this.answer = value; }
         }
 
         public string Topic
         {
-            get { return _topic; }
-            set { _topic = value; }
+            get { return this.topic; }
+            set { this.topic = value; }
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{_question}";
+            return $"{this.question}";
         }
     }
 

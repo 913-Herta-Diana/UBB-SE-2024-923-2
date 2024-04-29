@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework.Legacy;
-using NUnit.Framework;
-using NUnit;
-using Backend.Models;
-
-namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Backend.Models;
+    using NUnit;
+    using NUnit.Framework;
+    using NUnit.Framework.Legacy;
+
     [TestFixture]
     internal class FAQModelTest
     {

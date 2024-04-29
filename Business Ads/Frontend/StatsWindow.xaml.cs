@@ -95,7 +95,7 @@ namespace Frontend
                 CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1);
                 CurrentPlot.Plot.Add.FillY(ctr_data_x, ctr_data_y, zeros);
-                CurrentPlot.Plot.Add.Scatter(ctr_data_x, ctr_data_y);
+                this.CurrentPlot.Plot.Add.Scatter(ctr_data_x, ctr_data_y);
                 CurrentPlot.Plot.ShowGrid();
                 CurrentPlot.Plot.HideLegend();
                 CurrentPlot.Refresh();

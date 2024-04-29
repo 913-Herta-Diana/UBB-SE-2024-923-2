@@ -1,39 +1,43 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using Backend.Services;
-using Backend.Models;
-using Frontend.FAQ;
-
-namespace Frontend
+﻿namespace Frontend
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using Backend.Models;
+    using Backend.Services;
+    using Frontend.FAQ;
+
     /// <summary>
-    /// Interaction logic for FAQWindow.xaml
+    /// Interaction logic for FAQWindow.xaml.
     /// </summary>
     public partial class FAQWindow : Window
     {
-        public Window mainWindow;
+        public Window MainWindow;
         private FAQService service;
         private ReviewService reviewService;
         private List<Backend.Models.FAQ> fAQs;
         private List<ReviewClass> reviews;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FAQWindow"/> class.
+        /// </summary>
         public FAQWindow()
         {
-            service = FAQService.Instance;
-            reviewService = ReviewService.Instance;
+            this.service = FAQService.Instance;
+            this.reviewService = ReviewService.Instance;
 
-            fAQs = new List<Backend.Models.FAQ>();
-            reviews = new List<ReviewClass>();
+            this.fAQs = new List<Backend.Models.FAQ>();
+            this.reviews = new List<ReviewClass>();
 
-            fAQs = service.GetAllFAQs();
-            reviews = reviewService.getAllReviews();
+            this.fAQs = this.service.GetAllFAQs();
+            this.reviews = this.reviewService.getAllReviews();
 
-            InitializeComponent();
+            this.InitializeComponent();
 
-            listFAQ.ItemsSource = fAQs;
+            this.listFAQ.ItemsSource = this.fAQs;
 
-            Closed += (sender, e) =>
+            this.Closed += (sender, e) =>
             {
-                mainWindow.Show();
+                MainWindow.Show();
             };
         }
 
@@ -42,7 +46,7 @@ namespace Frontend
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "Search questions/topic...")
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
 
@@ -56,16 +60,16 @@ namespace Frontend
         }
 
 
-        private void inputBox_GotFocus(object sender, RoutedEventArgs e)
+        private void InputBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "Write feedback...")
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
 
-        private void inputBox_LostFocus(object sender, RoutedEventArgs e)
+        private void InputBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -74,7 +78,7 @@ namespace Frontend
             }
         }
 
-        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox search = (TextBox)sender;
             string searchText = search.Text.ToLower();
@@ -83,59 +87,59 @@ namespace Frontend
 
             if (!string.IsNullOrWhiteSpace(searchText))
             {
-                filteredFAQ = fAQs
+                filteredFAQ = this.fAQs
                     .Where(faq =>
                         faq.Question.ToLower().Contains(searchText) ||
-                        faq.Topic.ToLower() == searchText
-                    )
+                        faq.Topic.ToLower() == searchText)
                     .ToList();
             }
             else
             {
-                filteredFAQ = fAQs;
+                filteredFAQ = this.fAQs;
             }
 
             if (filteredFAQ == null || filteredFAQ.Count == 0)
             {
-                filteredFAQ = fAQs;
+                filteredFAQ = this.fAQs;
             }
 
-            listFAQ.ItemsSource = filteredFAQ;
+            this.listFAQ.ItemsSource = filteredFAQ;
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string inputFeedback = inputBox.Text;
-            reviewService.addReview(inputFeedback);
-            inputBox.Text = "";
+            string inputFeedback = this.inputBox.Text;
+            this.reviewService.addReview(inputFeedback);
+            this.inputBox.Text = string.Empty;
         }
 
-        private void listFAQ_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListFAQ_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (listFAQ.SelectedItem != null)
+            if (this.listFAQ.SelectedItem != null)
             {
-                Backend.Models.FAQ selectedFAQ = (Backend.Models.FAQ)listFAQ.SelectedItem;
-                answerTextBlock.Text = selectedFAQ.Answer;
-                answerPopup.IsOpen = true;
+                Backend.Models.FAQ selectedFAQ = (Backend.Models.FAQ)this.listFAQ.SelectedItem;
+                this.answerTextBlock.Text = selectedFAQ.Answer;
+                this.answerPopup.IsOpen = true;
             }
             else
             {
-                answerPopup.IsOpen = false;
+                this.answerPopup.IsOpen = false;
             }
         }
+
         private void ClosePopup_Click(object sender, RoutedEventArgs e)
         {
-            answerPopup.IsOpen = false;
+            this.answerPopup.IsOpen = false;
         }
 
-        private void submitQuestionButton_Click(object sender, RoutedEventArgs e)
+        private void SubmitQuestionButton_Click(object sender, RoutedEventArgs e)
         {
             SubmitQuestion windowSubmit = new SubmitQuestion();
             windowSubmit.Show();
         }
 
-        private void adminButton_Copy_Click(object sender, RoutedEventArgs e)
+        private void AdminButton_Copy_Click(object sender, RoutedEventArgs e)
         {
             AdminMode admindWindow = new AdminMode();
             admindWindow.Show();
