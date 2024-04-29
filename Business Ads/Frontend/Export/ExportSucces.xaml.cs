@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Frontend.Export
 {
-    /// <summary>
-    /// Interaction logic for ExportSucces.xaml
-    /// </summary>
     public partial class ExportSucces : Window
     {
         public Window mainWindow;
@@ -25,7 +22,7 @@ namespace Frontend.Export
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Click_Return_To_Main_Page_Button(object sender, RoutedEventArgs e)
         {
             mainWindow.Show();
             Close();

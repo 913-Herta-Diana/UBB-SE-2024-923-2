@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace Frontend
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         private readonly LoginViewModel loginViewModel;
@@ -17,7 +14,7 @@ namespace Frontend
             loginViewModel = new LoginViewModel();  // Initialize the ViewModel
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void Click_Login_Button(object sender, RoutedEventArgs eventArgs)
         {
             loginViewModel.Username = UsernameTextBox.Text;
             loginViewModel.Password = PasswordTextBox.Password;
@@ -36,7 +33,7 @@ namespace Frontend
             }
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void TextBox_LostFocus(object sender, RoutedEventArgs eventArgs)
         {
             TextBox textBox = sender as TextBox;
             if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
@@ -44,7 +41,7 @@ namespace Frontend
                 textBox.Text = "";
             }
         }
-        private void TextBox_LostFocus_Email(object sender, RoutedEventArgs e)
+        private void TextBox_LostFocus_Email(object sender, RoutedEventArgs eventArgs)
         {
             TextBox textBox = sender as TextBox;
             if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
