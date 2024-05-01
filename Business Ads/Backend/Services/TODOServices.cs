@@ -39,7 +39,7 @@ namespace Backend.Services
         }
     }
 
-    interface IServicesTODO
+    public interface IServicesTODO
     {
         List<TODOClass> getTODOS();
         void addTODO(TODOClass obj);

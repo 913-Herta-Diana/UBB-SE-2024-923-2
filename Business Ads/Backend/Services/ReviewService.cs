@@ -31,7 +31,7 @@ namespace Backend.Services
         }
     }
 
-    interface IServiceReview
+    public interface IServiceReview
     {
         List<ReviewClass> getAllReviews();
         void addReview(string review);
