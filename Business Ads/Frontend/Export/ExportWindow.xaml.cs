@@ -205,7 +205,7 @@ namespace Frontend
         {
             ExportSucces exportSucces = new()
             {
-                mainWindow = this.mainWindow
+                MainWindow = this.mainWindow
             };
             exportSucces.Show();
             Hide();

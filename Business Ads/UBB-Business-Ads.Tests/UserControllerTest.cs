@@ -1,4 +1,8 @@
-﻿namespace UBB_Business_Ads.Tests
+﻿// <copyright file="UserControllerTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace UBB_Business_Ads.Tests
 {
     using Backend.Controllers;
 
@@ -21,9 +25,9 @@
         public void Validate_User_InvalidCredentials_ReturnsFalse()
         {
             var userController = new UserController();
-            string username = "user3"; 
-            string password = "pass3"; 
-            string email = "user3@example.com"; 
+            string username = "user3";
+            string password = "pass3";
+            string email = "user3@example.com";
 
             bool areCredentialsInvalid = userController.ValidateUser(username, password, email);
 

@@ -1,9 +1,13 @@
-﻿using Backend.Login;
-using System.Windows;
-using System.Windows.Controls;
+﻿// <copyright file="LoginWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using Backend.Login;
+
     public partial class LoginWindow : Window
     {
         private readonly LoginViewModel loginViewModel;
