@@ -44,4 +44,8 @@
     <User>user1</User>
     <Review>review1</Review>
   </ReviewClass>
+  <ReviewClass>
+    <User>user1</User>
+    <Review>review1</Review>
+  </ReviewClass>
 </Reviews>

@@ -11,11 +11,11 @@ namespace Frontend.FAQ
     /// </summary>
     public partial class AdminMode : Window
     {
-        private TODOServices services;
+        private TODOServices TODOServices;
         private ReviewService reviewService;
         public AdminMode()
         {
-            services = TODOServices.Instance;
+            TODOServices = TODOServices.Instance;
             reviewService = ReviewService.Instance;
             InitializeComponent();
             PopulateTodoList();
@@ -26,12 +26,12 @@ namespace Frontend.FAQ
             List<ReviewClass> reviews = reviewService.getAllReviews();
             if (reviews != null)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder stringBuilderInstance = new StringBuilder();
                 foreach (ReviewClass review in reviews)
                 {
-                    sb.AppendLine(review.ToString());
+                    stringBuilderInstance.AppendLine(review.ToString());
                 }
-                reviewBlock.Text = sb.ToString();
+                reviewBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
@@ -40,15 +40,15 @@ namespace Frontend.FAQ
         }
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = services.getTODOS();
+            List<TODOClass> todos = TODOServices.getTODOS();
             if (todos != null)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder stringBuilderInstance = new StringBuilder();
                 foreach (TODOClass todo in todos)
                 {
-                    sb.AppendLine(todo.ToString());
+                    stringBuilderInstance.AppendLine(todo.ToString());
                 }
-                todoTextBlock.Text = sb.ToString();
+                todoTextBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
@@ -95,7 +95,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                services.removeTODO(idToRemove);
+                TODOServices.removeTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -112,7 +112,7 @@ namespace Frontend.FAQ
             if (!string.IsNullOrWhiteSpace(newTask))
             {
                 TODOClass task = new TODOClass(newTask);
-                services.addTODO(task);
+                TODOServices.addTODO(task);
             }
             PopulateTodoList();
         }
