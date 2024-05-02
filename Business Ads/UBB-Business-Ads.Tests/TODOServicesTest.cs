@@ -65,7 +65,7 @@ namespace UBB_Business_Ads.Tests
 
             // Assert
             // Verify that no actions are performed
-            // The list of TODOs remains empty
+            // The list of TODOs remains same
             Xunit.Assert.Equal(size, todoServices.getTODOS().Count);
         }
     }
