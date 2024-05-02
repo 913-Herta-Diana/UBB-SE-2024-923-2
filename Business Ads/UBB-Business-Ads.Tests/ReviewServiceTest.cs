@@ -29,7 +29,7 @@ namespace UBB_Business_Ads.Tests
             var reviewService = ReviewService.Instance;
 
             // Act
-            var result = reviewService.getAllReviews();
+            var result = reviewService.GetAllReviews();
 
             // Assert
             Xunit.Assert.NotNull(result);
@@ -43,11 +43,11 @@ namespace UBB_Business_Ads.Tests
             var mockService = new Mock<IServiceReview>();
 
             // Act
-            mockService.Object.addReview("review");
+            mockService.Object.AddReview("review");
 
             // Assert
             // Verify that the AddReview method is called on the mock services exactly once
-            mockService.Verify(s => s.addReview("review"), Times.Once);
+            mockService.Verify(s => s.AddReview("review"), Times.Once);
         }
     }
 }

@@ -18,19 +18,19 @@ namespace Backend.Services
             get { return instance; }
         }
 
-        public List<TODOClass> getTODOS()
+        public List<TODOClass> GetTODOS()
         {
             return repository.GetTODOS();
         }
 
-        public void addTODO(TODOClass obj)
+        public void AddTODO(TODOClass obj)
         {
             repository.AddingTODO(obj);
         }
 
-        public void removeTODO(int id)
+        public void RemoveTODO(int id)
         {
-            TODOClass todoToRemove = getTODOS().FirstOrDefault(todo => todo.ID == id);
+            TODOClass todoToRemove = GetTODOS().FirstOrDefault(todo => todo.ID == id);
 
             if (todoToRemove != null)
             {
@@ -41,8 +41,8 @@ namespace Backend.Services
 
     public interface IServicesTODO
     {
-        List<TODOClass> getTODOS();
-        void addTODO(TODOClass obj);
-        void removeTODO(int id);
+        List<TODOClass> GetTODOS();
+        void AddTODO(TODOClass obj);
+        void RemoveTODO(int id);
     }
 }

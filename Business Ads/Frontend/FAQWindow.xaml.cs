@@ -29,7 +29,7 @@
             this.reviews = new List<ReviewClass>();
 
             this.fAQs = this.service.GetAllFAQs();
-            this.reviews = this.reviewService.getAllReviews();
+            this.reviews = this.reviewService.GetAllReviews();
 
             this.InitializeComponent();
 
@@ -110,7 +110,7 @@
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string inputFeedback = this.inputBox.Text;
-            this.reviewService.addReview(inputFeedback);
+            this.reviewService.AddReview(inputFeedback);
             this.inputBox.Text = string.Empty;
         }
 

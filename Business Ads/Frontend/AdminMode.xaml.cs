@@ -23,7 +23,7 @@ namespace Frontend.FAQ
         }
         private void PopulateReviewList() 
         {
-            List<ReviewClass> reviews = reviewService.getAllReviews();
+            List<ReviewClass> reviews = reviewService.GetAllReviews();
             if (reviews != null)
             {
                 StringBuilder sb = new StringBuilder();
@@ -40,7 +40,7 @@ namespace Frontend.FAQ
         }
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = services.getTODOS();
+            List<TODOClass> todos = services.GetTODOS();
             if (todos != null)
             {
                 StringBuilder sb = new StringBuilder();
@@ -95,7 +95,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                services.removeTODO(idToRemove);
+                services.RemoveTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -112,7 +112,7 @@ namespace Frontend.FAQ
             if (!string.IsNullOrWhiteSpace(newTask))
             {
                 TODOClass task = new TODOClass(newTask);
-                services.addTODO(task);
+                services.AddTODO(task);
             }
             PopulateTodoList();
         }

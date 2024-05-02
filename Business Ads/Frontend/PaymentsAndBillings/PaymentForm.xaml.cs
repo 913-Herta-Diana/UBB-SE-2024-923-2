@@ -28,10 +28,10 @@ namespace Frontend.PaymentsAndBillings
 
         private void UpdateFields()
         {
-            itemName.Text = _paymentController.getProduct().Name;
-            itemDescription.Text = _paymentController.getProduct().Description;
-            itemPrice.Text = _paymentController.getProduct().Price;
-            var itemImageSource = _paymentController.getProduct().Image;
+            itemName.Text = _paymentController.GetProduct().Name;
+            itemDescription.Text = _paymentController.GetProduct().Description;
+            itemPrice.Text = _paymentController.GetProduct().Price;
+            var itemImageSource = _paymentController.GetProduct().Image;
             itemImage.Source = new BitmapImage(new Uri(itemImageSource, UriKind.Relative));
         }
 
