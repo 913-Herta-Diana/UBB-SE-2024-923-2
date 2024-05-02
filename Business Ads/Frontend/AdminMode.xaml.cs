@@ -25,7 +25,7 @@ namespace Frontend.FAQ
 
         private void PopulateReviewList()
         {
-            List<ReviewClass> reviews = reviewService.getAllReviews();
+            List<ReviewClass> reviews = reviewService.GetAllReviews();
             if (reviews != null)
             {
                 StringBuilder stringBuilderInstance = new StringBuilder();
