@@ -11,17 +11,19 @@ namespace Frontend.FAQ
     /// </summary>
     public partial class AdminMode : Window
     {
-        private TODOServices TODOServices;
+        private TODOServices todoServices;
         private ReviewService reviewService;
+
         public AdminMode()
         {
-            TODOServices = TODOServices.Instance;
+            todoServices = TODOServices.Instance;
             reviewService = ReviewService.Instance;
             InitializeComponent();
             PopulateTodoList();
             PopulateReviewList();
         }
-        private void PopulateReviewList() 
+
+        private void PopulateReviewList()
         {
             List<ReviewClass> reviews = reviewService.getAllReviews();
             if (reviews != null)
@@ -31,6 +33,7 @@ namespace Frontend.FAQ
                 {
                     stringBuilderInstance.AppendLine(review.ToString());
                 }
+
                 reviewBlock.Text = stringBuilderInstance.ToString();
             }
             else
@@ -38,9 +41,10 @@ namespace Frontend.FAQ
                 reviewBlock.Text = "";
             }
         }
+
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = TODOServices.getTODOS();
+            List<TODOClass> todos = todoServices.getTODOS();
             if (todos != null)
             {
                 StringBuilder stringBuilderInstance = new StringBuilder();
@@ -48,19 +52,21 @@ namespace Frontend.FAQ
                 {
                     stringBuilderInstance.AppendLine(todo.ToString());
                 }
+
                 todoTextBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
-                todoTextBlock.Text = ""; 
+                todoTextBlock.Text = "";
             }
         }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             if (textBox != null && textBox.Text == "Input number of finished task")
             {
-                textBox.Text = ""; 
+                textBox.Text = "";
             }
         }
 
@@ -95,7 +101,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                TODOServices.removeTODO(idToRemove);
+                todoServices.removeTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -112,13 +118,10 @@ namespace Frontend.FAQ
             if (!string.IsNullOrWhiteSpace(newTask))
             {
                 TODOClass task = new TODOClass(newTask);
-                TODOServices.addTODO(task);
+                todoServices.addTODO(task);
             }
+
             PopulateTodoList();
         }
-
-
-
-   
 }
 }
