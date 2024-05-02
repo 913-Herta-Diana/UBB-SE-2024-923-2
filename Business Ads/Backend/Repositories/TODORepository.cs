@@ -4,7 +4,7 @@ using Backend.Models;
 
 namespace Backend.Repositories
 {
-    public class TODORepository : InterfaceRepository
+    public class TODORepository : InterfaceToDoRepository
     {
         private List<TODOClass> todosList;
         private readonly string xmlFilePath;
@@ -85,7 +85,7 @@ namespace Backend.Repositories
 
     }
 
-    interface InterfaceRepository
+    interface InterfaceToDoRepository
     {
         public void addingTODO(TODOClass newTODO);
         public void removingTODO(TODOClass newTODO);
