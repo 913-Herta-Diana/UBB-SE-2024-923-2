@@ -1,4 +1,8 @@
-﻿namespace Frontend
+﻿// <copyright file="FAQWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Frontend
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -59,7 +63,6 @@
             }
         }
 
-
         private void InputBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -105,7 +108,6 @@
 
             this.listFAQ.ItemsSource = filteredFAQ;
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

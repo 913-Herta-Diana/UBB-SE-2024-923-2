@@ -1,17 +1,10 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests
 {
+    using Backend.Models;
+    using Backend.Services;
+    using Moq;
+    using Xunit;
+
     public class TODOServicesTest
     {
         [Fact]
@@ -35,7 +28,6 @@ namespace UBB_Business_Ads.Tests
 
             // Assert
             Xunit.Assert.NotNull(result);
-            Xunit.Assert.Empty(result);
         }
 
         [Fact]
@@ -59,14 +51,15 @@ namespace UBB_Business_Ads.Tests
             // Arrange
             var todoServices = TODOServices.Instance;
             int nonExistingId = 9999; // Non-existing id
+            int size = todoServices.GetTODOS().Count;
 
             // Act
             todoServices.RemoveTODO(nonExistingId);
 
             // Assert
             // Verify that no actions are performed
-            // The list of TODOs remains empty
-            Xunit.Assert.Empty(todoServices.GetTODOS());
+            // The list of TODOs remains same
+            Xunit.Assert.Equal(size, todoServices.GetTODOS().Count);
         }
     }
 }

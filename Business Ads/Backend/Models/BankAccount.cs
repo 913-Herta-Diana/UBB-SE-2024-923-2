@@ -1,4 +1,8 @@
-﻿namespace Backend.Models
+﻿// <copyright file="BankAccount.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Backend.Models
 {
     using System.ComponentModel.DataAnnotations;
 

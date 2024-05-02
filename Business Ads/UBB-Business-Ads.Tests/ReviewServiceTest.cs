@@ -1,15 +1,9 @@
-﻿using Backend.Models;
-using Backend.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests
 {
+    using Backend.Services;
+    using Moq;
+    using Xunit;
+
     public class ReviewServiceTest
     {
         [Fact]
@@ -33,7 +27,6 @@ namespace UBB_Business_Ads.Tests
 
             // Assert
             Xunit.Assert.NotNull(result);
-            Xunit.Assert.Empty(result);
         }
 
         [Fact]

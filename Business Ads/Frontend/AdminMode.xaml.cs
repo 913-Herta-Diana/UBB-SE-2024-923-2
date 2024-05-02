@@ -11,56 +11,62 @@ namespace Frontend.FAQ
     /// </summary>
     public partial class AdminMode : Window
     {
-        private TODOServices services;
-        private ReviewService reviewService;
+        private readonly TODOServices todoServices;
+        private readonly ReviewService reviewService;
+
         public AdminMode()
         {
-            services = TODOServices.Instance;
+            todoServices = TODOServices.Instance;
             reviewService = ReviewService.Instance;
             InitializeComponent();
             PopulateTodoList();
             PopulateReviewList();
         }
-        private void PopulateReviewList() 
+
+        private void PopulateReviewList()
         {
             List<ReviewClass> reviews = reviewService.GetAllReviews();
             if (reviews != null)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder stringBuilderInstance = new();
                 foreach (ReviewClass review in reviews)
                 {
-                    sb.AppendLine(review.ToString());
+                    stringBuilderInstance.AppendLine(review.ToString());
                 }
-                reviewBlock.Text = sb.ToString();
+
+                reviewBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
                 reviewBlock.Text = "";
             }
         }
+
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = services.GetTODOS();
+            List<TODOClass> todos = todoServices.GetTODOS();
             if (todos != null)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder stringBuilderInstance = new();
                 foreach (TODOClass todo in todos)
                 {
-                    sb.AppendLine(todo.ToString());
+                    stringBuilderInstance.AppendLine(todo.ToString());
                 }
-                todoTextBlock.Text = sb.ToString();
+
+                todoTextBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
-                todoTextBlock.Text = ""; 
+                todoTextBlock.Text = "";
             }
         }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             if (textBox != null && textBox.Text == "Input number of finished task")
             {
-                textBox.Text = ""; 
+                textBox.Text = "";
             }
         }
 
@@ -95,7 +101,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                services.RemoveTODO(idToRemove);
+                todoServices.RemoveTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -111,14 +117,11 @@ namespace Frontend.FAQ
             string newTask = addTask.Text;
             if (!string.IsNullOrWhiteSpace(newTask))
             {
-                TODOClass task = new TODOClass(newTask);
-                services.AddTODO(task);
+                TODOClass task = new(newTask);
+                todoServices.AddTODO(task);
             }
+
             PopulateTodoList();
         }
-
-
-
-   
 }
 }
