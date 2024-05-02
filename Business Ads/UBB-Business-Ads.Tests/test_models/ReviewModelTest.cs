@@ -1,3 +1,7 @@
+// <copyright file="ReviewModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace UBB_Business_Ads.Tests.Test_models
 {
     using System;
@@ -17,8 +21,8 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void ReviewModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForReview()
         {
             // Arrange
-            ReviewClass reviewTest = new();
-            ReviewClass parameterizedReviewTest = new("testUser", "testReview");
+            ReviewClass reviewTest = new ();
+            ReviewClass parameterizedReviewTest = new ("testUser", "testReview");
 
             // Act
             reviewTest.User = "testUser";
@@ -38,11 +42,11 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void ReviewModel_ReviewToString_ReturnsExpectedString()
         {
             // Arrange
-            ReviewClass reviewTest = new()
+            ReviewClass reviewTest = new ()
             {
                 // Act
                 User = "testUser",
-                Review = "testReview"
+                Review = "testReview",
             };
 
             // Assert
