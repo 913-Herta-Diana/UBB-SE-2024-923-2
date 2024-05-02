@@ -19,7 +19,7 @@ namespace Frontend
         public StatsWindow()
         {
             this.InitializeComponent();
-            this.mainWindow = this.mainWindow ?? throw new ArgumentNullException(nameof(this.mainWindow));
+            this.mainWindow = Application.Current.MainWindow;
 
             double[] engagement_data_x = new double[24];
             double[] engagement_data_y = new double[24];
