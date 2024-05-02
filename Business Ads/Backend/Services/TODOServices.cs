@@ -34,7 +34,7 @@ namespace Backend.Services
 
         public void RemoveTODO(int id)
         {
-            TODOClass todoToRemove = GetTODOS().FirstOrDefault(todo => todo.ID == id);
+            TODOClass todoToRemove = this.GetTODOS().FirstOrDefault(todo => todo.ID == id);
 
             if (todoToRemove != null)
             {
