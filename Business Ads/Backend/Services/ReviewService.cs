@@ -34,11 +34,4 @@ namespace Backend.Services
             this.repo.AddReview(addingRev);
         }
     }
-
-    public interface IServiceReview
-    {
-        List<ReviewClass> GetAllReviews();
-
-        void AddReview(string review);
-    }
 }

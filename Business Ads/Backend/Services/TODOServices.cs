@@ -42,13 +42,4 @@ namespace Backend.Services
             }
         }
     }
-
-    public interface IServicesTODO
-    {
-        List<TODOClass> GetTODOS();
-
-        void AddTODO(TODOClass obj);
-
-        void RemoveTODO(int id);
-    }
 }
