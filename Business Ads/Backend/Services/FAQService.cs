@@ -7,14 +7,14 @@ namespace Backend.Services
     public class FAQService:IFAQService
     {
         private static readonly FAQService instance = new();
-        private List<string> topics= new List<string>();
-        private FAQRepository repository;
-        private List<FAQ> submittedQuestions;
+        private readonly List<string> topics = [];
+        private readonly FAQRepository repository;
+        private readonly List<FAQ> submittedQuestions;
 
         public FAQService()
         {
             repository = new FAQRepository();
-            submittedQuestions = new List<FAQ>();
+            submittedQuestions = [];
         }
 
         public static FAQService Instance
@@ -27,7 +27,7 @@ namespace Backend.Services
             return repository.GetFAQList();
         }
 
-        public List<string> getTopics()
+        public List<string> GetTopics()
         {
 
 

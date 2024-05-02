@@ -9,21 +9,21 @@ namespace Frontend.FAQ
     /// </summary>
     public partial class SubmitQuestion : Window
     {
-        private FAQService service;
-        private List<string> topics;
-        private List<Backend.Models.FAQ> faqs;
+        private readonly FAQService service;
+        private readonly List<string> topics;
+        //private readonly List<Backend.Models.FAQ> faqs;
         public SubmitQuestion()
         {
             InitializeComponent();
 
             service = FAQService.Instance;
 
-            topics = service.getTopics();
+            topics = service.GetTopics();
 
             dropTopic.ItemsSource = topics;
         }
 
-        private void questionBox_GotFocus(object sender, RoutedEventArgs e)
+        private void QuestionBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "Input question here...")
@@ -32,7 +32,8 @@ namespace Frontend.FAQ
             }
         }
 
-        private void questionBox_LostFocus(object sender, RoutedEventArgs e)
+
+        private void QuestionBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -41,11 +42,11 @@ namespace Frontend.FAQ
             }
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string question = questionBox.Text;
             string selectedTopic = dropTopic.SelectedItem as string;
-            Backend.Models.FAQ newQ = new Backend.Models.FAQ(question, "to be added", selectedTopic);
+            Backend.Models.FAQ newQ = new(question, "to be added", selectedTopic);
             service.AddSubmittedQuestion(newQ);
             MessageBox.Show("The question has been submitted. Check the FAQ page later to see if it has been approved.");
         }

@@ -1,15 +1,9 @@
-﻿using Backend.Models;
-using Backend.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests
 {
+    using Backend.Services;
+    using Moq;
+    using Xunit;
+
     public class ReviewServiceTest
     {
         [Fact]
@@ -29,7 +23,7 @@ namespace UBB_Business_Ads.Tests
             var reviewService = ReviewService.Instance;
 
             // Act
-            var result = reviewService.getAllReviews();
+            var result = reviewService.GetAllReviews();
 
             // Assert
             Xunit.Assert.NotNull(result);
@@ -42,11 +36,11 @@ namespace UBB_Business_Ads.Tests
             var mockService = new Mock<IServiceReview>();
 
             // Act
-            mockService.Object.addReview("review");
+            mockService.Object.AddReview("review");
 
             // Assert
             // Verify that the addReview method is called on the mock services exactly once
-            mockService.Verify(s => s.addReview("review"), Times.Once);
+            mockService.Verify(s => s.AddReview("review"), Times.Once);
         }
     }
 }

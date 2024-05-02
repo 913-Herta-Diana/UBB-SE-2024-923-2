@@ -1,12 +1,12 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-
-namespace Backend.Services
+﻿namespace Backend.Services
 {
+    using Backend.Models;
+    using Backend.Repositories;
+
     public class ReviewService : IServiceReview
     {
-        private static readonly ReviewService instance = new ReviewService();
-        private ReviewRepository repo;
+        private static readonly ReviewService instance = new();
+        private readonly ReviewRepository repo;
 
         private ReviewService()
         {
@@ -18,22 +18,22 @@ namespace Backend.Services
             get { return instance; }
         }
 
-        public List<ReviewClass> getAllReviews()
+        public List<ReviewClass> GetAllReviews()
         {
             return repo.GetReviewList();
         }
 
-        public void addReview(string review)
+        public void AddReview(string review)
         {
             string user = "Dan Oliver";
-            ReviewClass addingRev = new ReviewClass(user, review);
-            repo.addReview(addingRev);
+            ReviewClass addingRev = new(user, review);
+            repo.AddReview(addingRev);
         }
     }
 
     public interface IServiceReview
     {
-        List<ReviewClass> getAllReviews();
-        void addReview(string review);
+        List<ReviewClass> GetAllReviews();
+        void AddReview(string review);
     }
 }

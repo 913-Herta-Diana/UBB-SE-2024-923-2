@@ -18,13 +18,13 @@ namespace UBB_Business_Ads.Tests.RepoTests
     [TestFixture]
     public class ProductRepoTest
     {
-        private ProductRepository _productRepo;
+        //private readonly ProductRepository _productRepository;
 
         [SetUp]
         public void Setup()
         {
-            var _productMock = new ProductMock();
-            var _productRepo = new ProductRepository(_productMock);
+            //var _productMock = new ProductMock();
+            //var _productRepo = new ProductRepository(_productMock);
         }
 /*
         [Test]

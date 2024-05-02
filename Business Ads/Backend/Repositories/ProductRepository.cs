@@ -3,9 +3,9 @@ using Backend.Services;
 
 namespace Backend.Repositories
 {
-    public class ProductRepository: InterfaceProductRepository
+    public class ProductRepository: INterfaceProductRepository
     {
-        private DataEncryptionService encryptionService = new DataEncryptionService();
+        private readonly DataEncryptionService encryptionService = new();
         private ProductMock _product;
         private string _nameKey;
         private string _descriptionKey;
@@ -58,7 +58,7 @@ namespace Backend.Repositories
         }
     }
 
-     interface InterfaceProductRepository
+    interface INterfaceProductRepository
     {
         ProductMock Product { get; set; }
     }

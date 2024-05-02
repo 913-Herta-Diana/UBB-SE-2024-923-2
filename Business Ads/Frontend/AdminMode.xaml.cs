@@ -11,26 +11,29 @@ namespace Frontend.FAQ
     /// </summary>
     public partial class AdminMode : Window
     {
-        private TODOServices TODOServices;
-        private ReviewService reviewService;
+        private readonly TODOServices todoServices;
+        private readonly ReviewService reviewService;
+
         public AdminMode()
         {
-            TODOServices = TODOServices.Instance;
+            todoServices = TODOServices.Instance;
             reviewService = ReviewService.Instance;
             InitializeComponent();
             PopulateTodoList();
             PopulateReviewList();
         }
-        private void PopulateReviewList() 
+
+        private void PopulateReviewList()
         {
-            List<ReviewClass> reviews = reviewService.getAllReviews();
+            List<ReviewClass> reviews = reviewService.GetAllReviews();
             if (reviews != null)
             {
-                StringBuilder stringBuilderInstance = new StringBuilder();
+                StringBuilder stringBuilderInstance = new();
                 foreach (ReviewClass review in reviews)
                 {
                     stringBuilderInstance.AppendLine(review.ToString());
                 }
+
                 reviewBlock.Text = stringBuilderInstance.ToString();
             }
             else
@@ -38,36 +41,37 @@ namespace Frontend.FAQ
                 reviewBlock.Text = "";
             }
         }
+
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = TODOServices.getTODOS();
+            List<TODOClass> todos = todoServices.GetTODOS();
             if (todos != null)
             {
-                StringBuilder stringBuilderInstance = new StringBuilder();
+                StringBuilder stringBuilderInstance = new();
                 foreach (TODOClass todo in todos)
                 {
                     stringBuilderInstance.AppendLine(todo.ToString());
                 }
+
                 todoTextBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
-                todoTextBlock.Text = ""; 
+                todoTextBlock.Text = "";
             }
         }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text == "Input number of finished task")
+            if (sender is TextBox textBox && textBox.Text == "Input number of finished task")
             {
-                textBox.Text = ""; 
+                textBox.Text = "";
             }
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = "Input number of finished task";
             }
@@ -75,10 +79,9 @@ namespace Frontend.FAQ
 
         private void addTask_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text == "Input new task here")
+            if (sender is TextBox textBox && textBox.Text == "Input new task here")
             {
-                textBox.Text = ""; 
+                textBox.Text = "";
             }
         }
 
@@ -95,7 +98,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                TODOServices.removeTODO(idToRemove);
+                todoServices.RemoveTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -111,14 +114,11 @@ namespace Frontend.FAQ
             string newTask = addTask.Text;
             if (!string.IsNullOrWhiteSpace(newTask))
             {
-                TODOClass task = new TODOClass(newTask);
-                TODOServices.addTODO(task);
+                TODOClass task = new(newTask);
+                todoServices.AddTODO(task);
             }
+
             PopulateTodoList();
         }
-
-
-
-   
 }
 }

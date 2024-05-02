@@ -5,19 +5,19 @@ using Backend.Controllers;
 
 namespace Backend.Repositories
 {
-    public class ReviewRepository : InterfaceReview
+    public class ReviewRepository : INterfaceReview
     {
-        private string xmlFilePath;
+        private readonly string  xmlFilePath;
         List<ReviewClass> reviewList;
         public ReviewRepository()
         {
-            reviewList = new List<ReviewClass>();
+            this.reviewList = [];
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
 
             int index = basePath.IndexOf(binDirectory);
-            pathUntilBin = basePath.Substring(0, index);
+            pathUntilBin = basePath[..index];
             string pathToReviewsXML = $"\\XMLFiles\\REVIEWitems.xml";
             xmlFilePath = pathUntilBin + pathToReviewsXML;
             LoadFromXml();
@@ -28,22 +28,20 @@ namespace Backend.Repositories
             {
                 if (File.Exists(xmlFilePath))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(ReviewClass), new XmlRootAttribute("ReviewClass"));
+                    XmlSerializer serializer = new(typeof(ReviewClass), new XmlRootAttribute("ReviewClass"));
 
-                    reviewList = new List<ReviewClass>();
-                    using (FileStream fileStream = new FileStream(xmlFilePath, FileMode.Open))
-                    using (XmlReader reader = XmlReader.Create(fileStream))
+                    reviewList = [];
+                    using FileStream fileStream = new(xmlFilePath, FileMode.Open);
+                    using XmlReader reader = XmlReader.Create(fileStream);
+                    while (reader.ReadToFollowing("ReviewClass"))
                     {
-                        while (reader.ReadToFollowing("ReviewClass"))
-                        {
-                            ReviewClass review = (ReviewClass)serializer.Deserialize(reader);
-                            reviewList.Add(review);
-                        }
+                        ReviewClass review = (ReviewClass)serializer.Deserialize(reader);
+                        reviewList.Add(review);
                     }
                 }
                 else
                 {
-                    reviewList = new List<ReviewClass>();
+                    reviewList = [];
                 }
             }
             catch { }
@@ -51,12 +49,10 @@ namespace Backend.Repositories
 
         private void SaveToXml()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<ReviewClass>), new XmlRootAttribute("Reviews"));
+            XmlSerializer serializer = new(typeof(List<ReviewClass>), new XmlRootAttribute("Reviews"));
 
-            using (FileStream fileStream = new FileStream(xmlFilePath, FileMode.Create))
-            {
-                serializer.Serialize(fileStream, reviewList);
-            }
+            using FileStream fileStream = new(xmlFilePath, FileMode.Create);
+            serializer.Serialize(fileStream, reviewList);
         }
 
         public List<ReviewClass> GetReviewList()
@@ -64,16 +60,16 @@ namespace Backend.Repositories
             return reviewList;
         }
 
-        public void addReview(ReviewClass newR)
+        public void AddReview(ReviewClass newR)
         {
             reviewList.Add(newR);
             SaveToXml();
         }
     }
-    interface InterfaceReview
+    interface INterfaceReview
     {
         public List<ReviewClass> GetReviewList();
-        public void addReview(ReviewClass newR);
+        public void AddReview(ReviewClass newR);
     }
 }
 

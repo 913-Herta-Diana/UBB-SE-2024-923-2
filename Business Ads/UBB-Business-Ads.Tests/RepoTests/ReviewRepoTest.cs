@@ -17,33 +17,36 @@ namespace UBB_Business_Ads.Tests.RepoTests
     [TestFixture]
     public class ReviewRepoTests
     {
-        private ReviewRepository _reviewRepo;
+        private ReviewRepository _reviewRepository;
 
         [SetUp]
         public void Setup()
         {
-            _reviewRepo = new ReviewRepository();
+            _reviewRepository = new ReviewRepository();
         }
         [Test]
         public void Test_GetReviewS()
         {
-            var result = _reviewRepo.GetReviewList();
-            var expectedCount = _reviewRepo.GetReviewList().Count();
+            var result = _reviewRepository.GetReviewList();
+            var expectedReviewListCount = _reviewRepository.GetReviewList().Count;
 
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.Count, Is.EqualTo(expectedCount));
+            Assert.That(result, Has.Count.EqualTo(expectedReviewListCount));
         }
         [Test]
         public void Test_AddReviewS()
         {
-            int initialReviewsCount = _reviewRepo.GetReviewList().Count();
-            var newReview = new ReviewClass("user1", "review1");
-            _reviewRepo.addReview(newReview);
-            var todosList = _reviewRepo.GetReviewList();
+            int initialReviewsCount = _reviewRepository.GetReviewList().Count;
+            var newReviewToAdd = new ReviewClass("user1", "review1");
+            _reviewRepository.AddReview(newReviewToAdd);
+            var todosList = _reviewRepository.GetReviewList();
             var updatedTodosCount = todosList.Count;
 
-            Assert.That(updatedTodosCount, Is.EqualTo(initialReviewsCount + 1));
-            Assert.That(todosList.Contains(newReview), Is.True);
+            Assert.Multiple(() =>
+            {
+                Assert.That(updatedTodosCount, Is.EqualTo(initialReviewsCount + 1));
+                Assert.That(todosList, Does.Contain(newReviewToAdd));
+            });
 
         }
 

@@ -1,11 +1,11 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-
-namespace Backend.Services
+﻿namespace Backend.Services
 {
+    using Backend.Models;
+    using Backend.Repositories;
+
     public class TODOServices : IServicesTODO
     {
-        private static readonly TODOServices instance = new();
+        private static readonly TODOServices TheInstance = new ();
         private readonly TODORepository repository;
 
         private TODOServices()
@@ -15,34 +15,34 @@ namespace Backend.Services
 
         public static TODOServices Instance
         {
-            get { return instance; }
+            get { return TheInstance; }
         }
 
-        public List<TODOClass> getTODOS()
+        public List<TODOClass> GetTODOS()
         {
-            return repository.getTODOS();
+            return repository.GetTODOS();
         }
 
-        public void addTODO(TODOClass obj)
+        public void AddTODO(TODOClass obj)
         {
-            repository.addingTODO(obj);
+            repository.AddingTODO(obj);
         }
 
-        public void removeTODO(int id)
+        public void RemoveTODO(int id)
         {
-            TODOClass todoToRemove = getTODOS().FirstOrDefault(todo => todo.ID == id);
+            TODOClass todoToRemove = GetTODOS().FirstOrDefault(todo => todo.ID == id);
 
             if (todoToRemove != null)
             {
-                repository.removingTODO(todoToRemove);
+                repository.RemovingTODO(todoToRemove);
             }
         }
     }
 
     public interface IServicesTODO
     {
-        List<TODOClass> getTODOS();
-        void addTODO(TODOClass obj);
-        void removeTODO(int id);
+        List<TODOClass> GetTODOS();
+        void AddTODO(TODOClass obj);
+        void RemoveTODO(int id);
     }
 }

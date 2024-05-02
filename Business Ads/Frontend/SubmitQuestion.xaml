@@ -12,8 +12,8 @@
         <Label Content="What's the question?" FontSize="16" HorizontalAlignment="Left" Margin="130,182,0,0" VerticalAlignment="Top" Width="248" Height="35"/>
         <Label Content="What's the topic of your question?" FontSize="16" HorizontalAlignment="Left" Margin="130,127,0,0" VerticalAlignment="Top" Width="269" Height="35"/>
         <ComboBox x:Name="dropTopic" HorizontalAlignment="Left" Margin="404,134,0,0" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="questionBox" GotFocus="questionBox_GotFocus" LostFocus="questionBox_LostFocus" Background="White" HorizontalAlignment="Left" Margin="404,192,0,0" TextWrapping="Wrap" Text="Input question here..." VerticalAlignment="Top" Width="185" Height="18"/>
-        <Button x:Name="addButton" Content="Submit the question" HorizontalAlignment="Left" Margin="404,246,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,0.042" Width="185" Click="addButton_Click"/>
+        <TextBox x:Name="questionBox" GotFocus="QuestionBox_GotFocus" LostFocus="QuestionBox_LostFocus" Background="White" HorizontalAlignment="Left" Margin="404,192,0,0" TextWrapping="Wrap" Text="Input question here..." VerticalAlignment="Top" Width="185" Height="18"/>
+        <Button x:Name="addButton" Content="Submit the question" HorizontalAlignment="Left" Margin="404,246,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.374,0.042" Width="185" Click="AddButton_Click"/>
 
     </Grid>
 </Window>
