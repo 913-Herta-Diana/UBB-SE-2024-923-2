@@ -1,11 +1,13 @@
 ﻿using Backend.Models;
 using Backend.Repositories;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Backend.Services
 {
     public class FAQService:IFAQService
     {
         private static readonly FAQService instance = new();
+        private List<string> topics= new List<string>();
         private FAQRepository repository;
         private List<FAQ> submittedQuestions;
 
@@ -23,6 +25,21 @@ namespace Backend.Services
         public List<FAQ> GetAllFAQs()
         {
             return repository.GetFAQList();
+        }
+
+        public List<string> getTopics()
+        {
+
+
+            List<Backend.Models.FAQ> faqs = GetAllFAQs();
+            foreach (Backend.Models.FAQ faq in faqs)
+            {
+                if (!topics.Contains(faq.Topic))
+                {
+                    topics.Add(faq.Topic);
+                }
+            }
+            return topics;
         }
 
         public void AddSubmittedQuestion(FAQ newQ)

@@ -5,7 +5,7 @@ using Backend.Controllers;
 
 namespace Backend.Repositories
 {
-    public class ReviewRepository : IReview
+    public class ReviewRepository : InterfaceReview
     {
         private string xmlFilePath;
         List<ReviewClass> reviewList;
@@ -18,8 +18,8 @@ namespace Backend.Repositories
 
             int index = basePath.IndexOf(binDirectory);
             pathUntilBin = basePath.Substring(0, index);
-            string s = $"\\XMLFiles\\REVIEWitems.xml";
-            xmlFilePath = pathUntilBin + s;
+            string pathToReviewsXML = $"\\XMLFiles\\REVIEWitems.xml";
+            xmlFilePath = pathUntilBin + pathToReviewsXML;
             LoadFromXml();
         }
         private void LoadFromXml()
@@ -70,7 +70,7 @@ namespace Backend.Repositories
             SaveToXml();
         }
     }
-    interface IReview
+    interface InterfaceReview
     {
         public List<ReviewClass> GetReviewList();
         public void addReview(ReviewClass newR);

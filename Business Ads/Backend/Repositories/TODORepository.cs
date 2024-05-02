@@ -4,15 +4,15 @@ using Backend.Models;
 
 namespace Backend.Repositories
 {
-    public class TODORepository : IRepository
+    public class TODORepository : InterfaceRepository
     {
-        private List<TODOClass> todos;
+        private List<TODOClass> todosList;
         private readonly string xmlFilePath;
         private static int _lastId = 0;
 
         public TODORepository() 
         { 
-            todos = new List<TODOClass>();
+            todosList = new List<TODOClass>();
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
@@ -20,8 +20,8 @@ namespace Backend.Repositories
 
             int index = basePath.IndexOf(binDirectory);
             pathUntilBin = basePath.Substring(0, index);
-            string s = $"\\XMLFiles\\TODOitems.xml";
-            xmlFilePath = pathUntilBin + s;
+            string pathToToDoXML = $"\\XMLFiles\\TODOitems.xml";
+            xmlFilePath = pathUntilBin + pathToToDoXML;
             LoadFromXml();
         }
 
@@ -33,7 +33,7 @@ namespace Backend.Repositories
                 {
                     XmlSerializer serializer = new(typeof(TODOClass), new XmlRootAttribute("TODOClass"));
 
-                    todos = new List<TODOClass>();
+                    todosList = new List<TODOClass>();
 
                     using (FileStream fileStream = new(xmlFilePath, FileMode.Open))
                     using (XmlReader reader = XmlReader.Create(fileStream))
@@ -42,13 +42,13 @@ namespace Backend.Repositories
                         {
                             TODOClass todo = (TODOClass)serializer.Deserialize(reader);
                             todo.ID = _lastId++;
-                            todos.Add(todo);
+                            todosList.Add(todo);
                         }
                     }
                 }
                 else
                 {
-                    todos = new List<TODOClass>();
+                    todosList = new List<TODOClass>();
                 }
             }
             catch { }
@@ -60,32 +60,32 @@ namespace Backend.Repositories
 
             using (FileStream fileStream = new(xmlFilePath, FileMode.Create))
             {
-                serializer.Serialize(fileStream, todos);
+                serializer.Serialize(fileStream, todosList);
             }
         }
         public void addingTODO(TODOClass newTODO)
         {
             newTODO.ID = _lastId++;
-            todos.Add(newTODO);
+            todosList.Add(newTODO);
             SaveToXml();
         }
         public void removingTODO(TODOClass newTODO)
         {
-            todos.Remove(newTODO);
+            todosList.Remove(newTODO);
             SaveToXml();
 
         }
 
         public List<TODOClass> getTODOS()
         {
-            return todos;
+            return todosList;
         }
 
 
 
     }
 
-    interface IRepository
+    interface InterfaceRepository
     {
         public void addingTODO(TODOClass newTODO);
         public void removingTODO(TODOClass newTODO);
