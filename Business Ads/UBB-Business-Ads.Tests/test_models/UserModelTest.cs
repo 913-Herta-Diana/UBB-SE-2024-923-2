@@ -1,4 +1,8 @@
-﻿namespace UBB_Business_Ads.Tests.Test_models
+﻿// <copyright file="UserModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace UBB_Business_Ads.Tests.Test_models
 {
     using Backend.Models;
 
