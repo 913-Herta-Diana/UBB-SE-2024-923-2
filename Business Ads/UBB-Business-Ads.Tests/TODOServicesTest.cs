@@ -1,17 +1,10 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests
 {
+    using Backend.Models;
+    using Backend.Services;
+    using Moq;
+    using Xunit;
+
     public class TODOServicesTest
     {
         [Fact]
