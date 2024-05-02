@@ -11,7 +11,7 @@ using Backend.Models;
 
 
 
-namespace UBB_Business_Ads.Tests.test_models
+namespace UBB_Business_Ads.Tests.Test_models
 {
     [TestFixture]
     public class UserModelTest
