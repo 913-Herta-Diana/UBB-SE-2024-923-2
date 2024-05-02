@@ -1,4 +1,8 @@
-﻿namespace Backend.Services
+﻿// <copyright file="TODOServices.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Backend.Services
 {
     using Backend.Models;
     using Backend.Repositories;
@@ -10,7 +14,7 @@
 
         private TODOServices()
         {
-            repository = new TODORepository();
+            this.repository = new TODORepository();
         }
 
         public static TODOServices Instance
@@ -20,12 +24,12 @@
 
         public List<TODOClass> GetTODOS()
         {
-            return repository.GetTODOS();
+            return this.repository.GetTODOS();
         }
 
         public void AddTODO(TODOClass obj)
         {
-            repository.AddingTODO(obj);
+            this.repository.AddingTODO(obj);
         }
 
         public void RemoveTODO(int id)
@@ -34,7 +38,7 @@
 
             if (todoToRemove != null)
             {
-                repository.RemovingTODO(todoToRemove);
+                this.repository.RemovingTODO(todoToRemove);
             }
         }
     }
@@ -42,7 +46,9 @@
     public interface IServicesTODO
     {
         List<TODOClass> GetTODOS();
+
         void AddTODO(TODOClass obj);
+
         void RemoveTODO(int id);
     }
 }
