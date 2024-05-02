@@ -1,4 +1,8 @@
-﻿namespace Backend.Models
+﻿// <copyright file="FAQ.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Backend.Models
 {
     public class FAQ
     {
@@ -57,5 +61,4 @@
             return $"{this.question}";
         }
     }
-
 }
