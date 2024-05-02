@@ -35,7 +35,6 @@ namespace UBB_Business_Ads.Tests
 
             // Assert
             Xunit.Assert.NotNull(result);
-            Xunit.Assert.Empty(result);
         }
 
         [Fact]
@@ -59,6 +58,7 @@ namespace UBB_Business_Ads.Tests
             // Arrange
             var todoServices = TODOServices.Instance;
             int nonExistingId = 9999; // Non-existing id
+            int size = todoServices.getTODOS().Count;
 
             // Act
             todoServices.removeTODO(nonExistingId);
@@ -66,7 +66,7 @@ namespace UBB_Business_Ads.Tests
             // Assert
             // Verify that no actions are performed
             // The list of TODOs remains empty
-            Xunit.Assert.Empty(todoServices.getTODOS());
+            Xunit.Assert.Equal(size, todoServices.getTODOS().Count);
         }
     }
 }

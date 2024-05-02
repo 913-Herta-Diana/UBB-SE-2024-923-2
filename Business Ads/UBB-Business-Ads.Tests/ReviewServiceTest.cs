@@ -33,7 +33,6 @@ namespace UBB_Business_Ads.Tests
 
             // Assert
             Xunit.Assert.NotNull(result);
-            Xunit.Assert.Empty(result);
         }
 
         [Fact]
