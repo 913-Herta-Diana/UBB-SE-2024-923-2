@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="UserModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
+<<<<<<< HEAD
 using NUnit.Framework.Legacy;
 using NUnit.Framework;
 using NUnit;
@@ -11,26 +10,31 @@ using Backend.Models;
 
 
 
+=======
+>>>>>>> 73c7dcf1d614218690855e9718433ee33c30eab2
 namespace UBB_Business_Ads.Tests.Test_models
 {
+    using Backend.Models;
+
     [TestFixture]
-    public class UserModelTest
+    internal class UserModelTest
     {
         [Test]
-        public void UserModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForUser()
+        public void User_PropertiesAreSetCorrectly()
         {
-            // Arrange
-            User mockUserToTest = new User();
+            string username = "testuser";
+            string password = "testpass";
+            string email = "testuser@example.com";
 
-            // Act
-            mockUserToTest.Username = "testUser";
-            mockUserToTest.Email = "testUser@email.test";
-            mockUserToTest.Password = "testUserPassword";
-
-            // Assert
-            Assert.That(mockUserToTest.Username, Is.EqualTo("testUser"));
-            Assert.That(mockUserToTest.Email, Is.EqualTo("testUser@email.test"));
-            Assert.That(mockUserToTest.Password, Is.EqualTo("testUserPassword"));
+            User user = new User
+            {
+                Username = username,
+                Password = password,
+                Email = email,
+            };
+            Assert.That(user.Username, Is.EqualTo(username));
+            Assert.That(user.Email, Is.EqualTo(email));
+            Assert.That(user.Password, Is.EqualTo(password));
         }
     }
 }

@@ -8,7 +8,7 @@
         Title="ExportSucces" Height="450" Width="800">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="66,0,0,0" TextWrapping="Wrap" Text="Document Exported Succesfully" VerticalAlignment="Center" Height="204" Width="694" FontSize="48"/>
-        <Button Content="Return to Main Page" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Height="48" Width="166" Click="Button_Click"/>
+        <Button Content="Return to Main Page" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Height="48" Width="166" Click="Click_Return_To_Main_Page_Button"/>
 
     </Grid>
 </Window>

@@ -13,9 +13,9 @@ namespace Frontend.PaymentsAndBillings
         public Window mainWindow;
         private readonly BankAccountController _bankAccountController;
         
-        public BankAccountsRepositoryWindow(BankAccountController b)
+        public BankAccountsRepositoryWindow(BankAccountController bankAccountControllerInstance)
         {
-            _bankAccountController = b;
+            _bankAccountController = bankAccountControllerInstance;
             InitializeComponent();
             UpdateFields();
 

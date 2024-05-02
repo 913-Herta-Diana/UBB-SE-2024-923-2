@@ -20,8 +20,8 @@ namespace Backend.Repositories
 
             int index = basePath.IndexOf(binDirectory);
             pathUntilBin = basePath.Substring(0, index);
-            string s = $"\\XMLFiles\\FAQitems.xml";
-            xmlFilePath = pathUntilBin + s;
+            string pathToFaqXML = $"\\XMLFiles\\FAQitems.xml";
+            xmlFilePath = pathUntilBin + pathToFaqXML;
             LoadFAQsFromXml();
         }
 

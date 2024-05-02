@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿namespace UBB_Business_Ads.Tests.Test_models
+=======
+﻿// <copyright file="ReviewModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace UBB_Business_Ads.Tests.Test_models
+>>>>>>> 73c7dcf1d614218690855e9718433ee33c30eab2
 {
     using System;
     using System.Collections.Generic;
@@ -20,11 +28,9 @@
             ReviewClass reviewTest = new ReviewClass();
             ReviewClass parameterizedReviewTest = new ReviewClass("testUser", "testReview");
 
-
             // Act
             reviewTest.User = "testUser";
             reviewTest.Review = "testReview";
-
 
             // Assert
             Assert.That(reviewTest.User, Is.EqualTo("testUser"));
@@ -39,11 +45,9 @@
             // Arrange
             ReviewClass reviewTest = new ReviewClass();
 
-
             // Act
             reviewTest.User = "testUser";
             reviewTest.Review = "testReview";
-
 
             // Assert
             Assert.That(reviewTest.ToString(), Is.EqualTo("--> testReview (left from testUser)\n"));

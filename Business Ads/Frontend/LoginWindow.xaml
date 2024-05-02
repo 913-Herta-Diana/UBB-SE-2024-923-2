@@ -15,6 +15,6 @@
             Password:
         </TextBlock>
         <PasswordBox x:Name="PasswordTextBox" Width="200" Margin="10" PasswordChar="*"/>
-		<Button x:Name="LoginButton" Content="Log In" Width="200" Margin="10" Click="LoginButton_Click"/>
+        <Button x:Name="LoginButton" Content="Log In" Width="200" Margin="10" Click="Click_Login_Button"/>
 	</StackPanel>
 </Window>
