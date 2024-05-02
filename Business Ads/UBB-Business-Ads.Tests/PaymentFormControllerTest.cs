@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Backend.Controllers;
-using Backend.Repositories;
-using Backend.Models;
-using NUnit.Framework.Legacy;
-using NUnit.Framework;
-using NUnit;
+﻿// <copyright file="PaymentFormControllerTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UBB_Business_Ads.Tests
 {
+    using Backend.Controllers;
+    using Backend.Models;
+    using Backend.Repositories;
+    using NUnit.Framework;
+
     [TestFixture]
     internal class PaymentFormControllerTest
     {
@@ -29,7 +26,7 @@ namespace UBB_Business_Ads.Tests
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
             var mockProduct = new ProductMock
@@ -37,13 +34,12 @@ namespace UBB_Business_Ads.Tests
                 Name = "Product",
                 Description = "Description",
                 Price = "100",
-                Image = "doggo.png"
+                Image = "doggo.png",
             };
             var productRepository = new ProductRepository(mockProduct);
             PaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
-            //var result=paymentFormController.SendPaymentConfirmationMailAsync();
-
+            // var result=paymentFormController.SendPaymentConfirmationMailAsync();
             Assert.DoesNotThrow(() => paymentFormController.SendPaymentConfirmationMailAsync());
         }
 
@@ -61,7 +57,7 @@ namespace UBB_Business_Ads.Tests
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
             var mockProduct = new ProductMock
@@ -69,19 +65,17 @@ namespace UBB_Business_Ads.Tests
                 Name = "Product",
                 Description = "Description",
                 Price = "100",
-                Image = "doggo.png"
+                Image = "doggo.png",
             };
             var productRepository = new ProductRepository(mockProduct);
             PaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
-
-            var result= paymentFormController.GetProduct();
+            var result = paymentFormController.GetProduct();
 
             Assert.That(result.Name, Is.EqualTo(mockProduct.Name));
             Assert.That(result.Description, Is.EqualTo(mockProduct.Description));
             Assert.That(result.Price, Is.EqualTo(mockProduct.Price));
             Assert.That(result.Image, Is.EqualTo(mockProduct.Image));
-
         }
     }
 }

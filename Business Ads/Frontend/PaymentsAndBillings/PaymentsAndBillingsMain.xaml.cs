@@ -1,11 +1,15 @@
-﻿using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using Backend.Controllers;
+﻿// <copyright file="PaymentsAndBillingsMain.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend.PaymentsAndBillings
 {
+    using System.Windows;
+    using Backend.Controllers;
+    using Microsoft.Extensions.DependencyInjection;
+
     /// <summary>
-    /// Interaction logic for PaymentsAndBillingsMain.xaml
+    /// Interaction logic for PaymentsAndBillingsMain.xaml.
     /// </summary>
     public partial class PaymentsAndBillingsMain : Window
     {
@@ -13,30 +17,28 @@ namespace Frontend.PaymentsAndBillings
 
         public PaymentsAndBillingsMain()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Closed += (sender, EventData) =>
+            this.Closed += (sender, eventData) =>
             {
-                mainWindow.Show();
+                this.mainWindow.Show();
             };
         }
 
         private void BankAccountDetails_Click(object sender, RoutedEventArgs e)
         {
-            var _bankAccountsRepositoryWindow = new BankAccountsRepositoryWindow(
-                App.ServiceProvider.GetService<BankAccountController>()
-            );
-            _bankAccountsRepositoryWindow.MainWindow = this;
-            _bankAccountsRepositoryWindow.Show();
+            var bankAccountsRepositoryWindow = new BankAccountsRepositoryWindow(
+                App.ServiceProvider.GetService<BankAccountController>());
+            bankAccountsRepositoryWindow.MainWindow = this;
+            bankAccountsRepositoryWindow.Show();
         }
 
         private void PaymentForm_Click(object sender, RoutedEventArgs e)
         {
-            var _paymentForm = new PaymentForm(
-                App.ServiceProvider.GetService<PaymentFormController>()
-            );
-            _paymentForm.mainWindow = this;
-            _paymentForm.Show();
+            var paymentForm = new PaymentForm(
+                App.ServiceProvider.GetService<PaymentFormController>());
+            paymentForm.MainWindow = this;
+            paymentForm.Show();
         }
     }
 }
