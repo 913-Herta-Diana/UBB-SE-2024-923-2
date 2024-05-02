@@ -14,7 +14,9 @@ namespace Frontend.PaymentsAndBillings
     /// </summary>
     public partial class BankAccountsRepositoryWindow : Window
     {
-        public Window MainWindow;
+#pragma warning disable SA1401 // Fields should be private
+        public Window? MainWindow;
+#pragma warning restore SA1401 // Fields should be private
         private readonly BankAccountController bankAccountController;
 
         public BankAccountsRepositoryWindow(BankAccountController bankAccountControllerInstance)
@@ -25,7 +27,7 @@ namespace Frontend.PaymentsAndBillings
 
             this.Closed += (sender, eventData) =>
             {
-                this.MainWindow.Show();
+                this.MainWindow!.Show();
             };
         }
 
