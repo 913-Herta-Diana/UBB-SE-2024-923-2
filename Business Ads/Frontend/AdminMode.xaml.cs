@@ -1,11 +1,15 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using Backend.Services;
-using Backend.Models;
+﻿// <copyright file="AdminMode.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend.FAQ
 {
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Controls;
+    using Backend.Models;
+    using Backend.Services;
+
     /// <summary>
     /// Interaction logic for AdminMode.xaml
     /// </summary>
@@ -16,48 +20,48 @@ namespace Frontend.FAQ
 
         public AdminMode()
         {
-            todoServices = TODOServices.Instance;
-            reviewService = ReviewService.Instance;
-            InitializeComponent();
-            PopulateTodoList();
-            PopulateReviewList();
+            this.todoServices = TODOServices.Instance;
+            this.reviewService = ReviewService.Instance;
+            this.InitializeComponent();
+            this.PopulateTodoList();
+            this.PopulateReviewList();
         }
 
         private void PopulateReviewList()
         {
-            List<ReviewClass> reviews = reviewService.GetAllReviews();
+            List<ReviewClass> reviews = this.reviewService.GetAllReviews();
             if (reviews != null)
             {
-                StringBuilder stringBuilderInstance = new();
+                StringBuilder stringBuilderInstance = new ();
                 foreach (ReviewClass review in reviews)
                 {
                     stringBuilderInstance.AppendLine(review.ToString());
                 }
 
-                reviewBlock.Text = stringBuilderInstance.ToString();
+                this.reviewBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
-                reviewBlock.Text = "";
+                this.reviewBlock.Text = "";
             }
         }
 
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = todoServices.GetTODOS();
+            List<TODOClass> todos = this.todoServices.GetTODOS();
             if (todos != null)
             {
-                StringBuilder stringBuilderInstance = new();
+                StringBuilder stringBuilderInstance = new ();
                 foreach (TODOClass todo in todos)
                 {
                     stringBuilderInstance.AppendLine(todo.ToString());
                 }
 
-                todoTextBlock.Text = stringBuilderInstance.ToString();
+                this.todoTextBlock.Text = stringBuilderInstance.ToString();
             }
             else
             {
-                todoTextBlock.Text = "";
+                this.todoTextBlock.Text = "";
             }
         }
 
@@ -96,11 +100,11 @@ namespace Frontend.FAQ
 
         private void removeTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(removeText.Text, out int idToRemove))
+            if (int.TryParse(this.removeText.Text, out int idToRemove))
             {
-                todoServices.RemoveTODO(idToRemove);
-                PopulateTodoList();
-                removeText.Text = "Input number of finished task"; 
+                this.todoServices.RemoveTODO(idToRemove);
+                this.PopulateTodoList();
+                this.removeText.Text = "Input number of finished task"; 
             }
             else
             {
@@ -111,14 +115,14 @@ namespace Frontend.FAQ
 
         private void addTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            string newTask = addTask.Text;
+            string newTask = this.addTask.Text;
             if (!string.IsNullOrWhiteSpace(newTask))
             {
                 TODOClass task = new(newTask);
-                todoServices.AddTODO(task);
+                this.todoServices.AddTODO(task);
             }
 
-            PopulateTodoList();
+            this.PopulateTodoList();
         }
 }
 }
