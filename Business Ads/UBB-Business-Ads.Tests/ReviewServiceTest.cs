@@ -46,7 +46,7 @@ namespace UBB_Business_Ads.Tests
             mockService.Object.addReview("review");
 
             // Assert
-            // Verify that the addReview method is called on the mock services exactly once
+            // Verify that the AddReview method is called on the mock services exactly once
             mockService.Verify(s => s.addReview("review"), Times.Once);
         }
     }

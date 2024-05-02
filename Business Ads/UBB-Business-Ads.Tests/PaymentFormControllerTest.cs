@@ -75,7 +75,7 @@ namespace UBB_Business_Ads.Tests
             PaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
 
-            var result= paymentFormController.getProduct();
+            var result= paymentFormController.GetProduct();
 
             Assert.That(result.Name, Is.EqualTo(mockProduct.Name));
             Assert.That(result.Description, Is.EqualTo(mockProduct.Description));

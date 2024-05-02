@@ -20,12 +20,12 @@ namespace Backend.Services
 
         public List<TODOClass> getTODOS()
         {
-            return repository.getTODOS();
+            return repository.GetTODOS();
         }
 
         public void addTODO(TODOClass obj)
         {
-            repository.addingTODO(obj);
+            repository.AddingTODO(obj);
         }
 
         public void removeTODO(int id)
@@ -34,7 +34,7 @@ namespace Backend.Services
 
             if (todoToRemove != null)
             {
-                repository.removingTODO(todoToRemove);
+                repository.RemovingTODO(todoToRemove);
             }
         }
     }

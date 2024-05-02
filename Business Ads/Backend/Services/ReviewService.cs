@@ -27,7 +27,7 @@ namespace Backend.Services
         {
             string user = "Dan Oliver";
             ReviewClass addingRev = new ReviewClass(user, review);
-            repo.addReview(addingRev);
+            repo.AddReview(addingRev);
         }
     }
 

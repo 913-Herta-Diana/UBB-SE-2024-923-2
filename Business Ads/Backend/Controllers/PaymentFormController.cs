@@ -37,7 +37,7 @@ namespace Backend.Controllers
             return client.SendMailAsync(mail);
         }
 
-        public ProductMock getProduct()
+        public ProductMock GetProduct()
         {
             return _productRepository.Product;
         }
