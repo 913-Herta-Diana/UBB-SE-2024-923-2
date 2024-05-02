@@ -11,7 +11,7 @@ namespace Frontend.FAQ
     using Backend.Services;
 
     /// <summary>
-    /// Interaction logic for AdminMode.xaml
+    /// Interaction logic for AdminMode.xaml.
     /// </summary>
     public partial class AdminMode : Window
     {
@@ -42,7 +42,7 @@ namespace Frontend.FAQ
             }
             else
             {
-                this.reviewBlock.Text = "";
+                this.reviewBlock.Text = string.Empty;
             }
         }
 
@@ -61,7 +61,7 @@ namespace Frontend.FAQ
             }
             else
             {
-                this.todoTextBlock.Text = "";
+                this.todoTextBlock.Text = string.Empty;
             }
         }
 
@@ -69,7 +69,7 @@ namespace Frontend.FAQ
         {
             if (sender is TextBox textBox && textBox.Text == "Input number of finished task")
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
 
@@ -81,44 +81,43 @@ namespace Frontend.FAQ
             }
         }
 
-        private void addTask_GotFocus(object sender, RoutedEventArgs e)
+        private void AddTask_GotFocus(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox textBox && textBox.Text == "Input new task here")
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
 
-        private void addTask_LostFocus(object sender, RoutedEventArgs e)
+        private void AddTask_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
+            TextBox? textBox = sender as TextBox;
             if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = "Input new task here";
             }
         }
 
-        private void removeTaskButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(this.removeText.Text, out int idToRemove))
             {
                 this.todoServices.RemoveTODO(idToRemove);
                 this.PopulateTodoList();
-                this.removeText.Text = "Input number of finished task"; 
+                this.removeText.Text = "Input number of finished task";
             }
             else
             {
                 MessageBox.Show("Please enter a valid ID.");
             }
-
         }
 
-        private void addTaskButton_Click(object sender, RoutedEventArgs e)
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             string newTask = this.addTask.Text;
             if (!string.IsNullOrWhiteSpace(newTask))
             {
-                TODOClass task = new(newTask);
+                TODOClass task = new (newTask);
                 this.todoServices.AddTODO(task);
             }
 
