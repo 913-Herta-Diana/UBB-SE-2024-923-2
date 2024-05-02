@@ -1,4 +1,8 @@
-﻿namespace UBB_Business_Ads.Tests.Test_models
+﻿// <copyright file="BankAccountModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace UBB_Business_Ads.Tests.Test_models
 {
     using System;
     using System.Collections.Generic;
@@ -43,11 +47,11 @@
                 Name = "J",
                 Surname = "D",
                 PhoneNumber = "12345",
-                County = "",
-                City = "",
-                Address = "",
+                County = string.Empty,
+                City = string.Empty,
+                Address = string.Empty,
                 Number = "123",
-                HolderName = "",
+                HolderName = string.Empty,
                 ExpiryDate = "12",
             };
 

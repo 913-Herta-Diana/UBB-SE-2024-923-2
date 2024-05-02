@@ -28,7 +28,6 @@ namespace Backend.Models
 
         public string? ExpiryDate { get; set; }
 
-
         public static bool Validate(BankAccount bankAccount)
         {
             // validate email
