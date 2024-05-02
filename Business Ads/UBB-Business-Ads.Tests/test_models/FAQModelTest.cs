@@ -1,4 +1,4 @@
-﻿namespace UBB_Business_Ads.Tests
+﻿namespace UBB_Business_Ads.Tests.Test_models
 {
     using System;
     using System.Collections.Generic;
@@ -25,6 +25,19 @@
             Assert.That(faq.Question, Is.EqualTo(question));
             Assert.That(faq.Answer, Is.EqualTo(answer));
             Assert.That(faq.Topic, Is.EqualTo(topic));
+        }
+
+        [Test]
+        public void EmptyConstructor_InitializesProperties()
+        {
+            FAQ faq;
+
+            faq = new FAQ();
+
+            Assert.That(faq.Id, Is.EqualTo(1));
+            Assert.That(faq.Question, Is.EqualTo(string.Empty));
+            Assert.That(faq.Answer, Is.EqualTo(string.Empty));
+            Assert.That(faq.Topic, Is.EqualTo(string.Empty));
         }
 
         [Test]

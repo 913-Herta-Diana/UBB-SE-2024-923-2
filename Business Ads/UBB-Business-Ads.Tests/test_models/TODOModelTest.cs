@@ -2,6 +2,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+<<<<<<< HEAD
+using NUnit.Framework.Legacy;
+using NUnit.Framework;
+using NUnit;
+using Backend.Models;
+
+
+=======
+>>>>>>> 73c7dcf1d614218690855e9718433ee33c30eab2
 namespace UBB_Business_Ads.Tests.Test_models
 {
     using System;

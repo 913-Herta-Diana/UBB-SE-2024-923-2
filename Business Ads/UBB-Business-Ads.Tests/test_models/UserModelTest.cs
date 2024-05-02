@@ -5,6 +5,9 @@
 namespace UBB_Business_Ads.Tests.Test_models
 {
     using Backend.Models;
+    using NUnit;
+    using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     internal class UserModelTest
