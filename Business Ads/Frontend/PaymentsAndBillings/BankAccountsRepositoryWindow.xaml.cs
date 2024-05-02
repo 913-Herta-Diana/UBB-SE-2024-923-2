@@ -1,42 +1,42 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using Backend.Controllers;
-
-namespace Frontend.PaymentsAndBillings
+﻿namespace Frontend.PaymentsAndBillings
 {
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using Backend.Controllers;
+
     /// <summary>
-    /// Interaction logic for BankAccountsRepositoryWindow.xaml
+    /// Interaction logic for BankAccountsRepositoryWindow.xaml.
     /// </summary>
     public partial class BankAccountsRepositoryWindow : Window
     {
-        public Window mainWindow;
-        private readonly BankAccountController _bankAccountController;
-        
+        public Window MainWindow;
+        private readonly BankAccountController bankAccountController;
+
         public BankAccountsRepositoryWindow(BankAccountController bankAccountControllerInstance)
         {
-            _bankAccountController = bankAccountControllerInstance;
+            bankAccountController = bankAccountControllerInstance;
             InitializeComponent();
             UpdateFields();
 
             Closed += (sender, EventData) =>
             {
-                mainWindow.Show();
+                MainWindow.Show();
             };
         }
 
         private void UpdateFields()
         {
-            txtEmail.Text = _bankAccountController.GetBankAccount().Email;
-            txtName.Text = _bankAccountController.GetBankAccount().Name;
-            txtSurname.Text = _bankAccountController.GetBankAccount().Surname;
-            txtPhoneNumber.Text = _bankAccountController.GetBankAccount().PhoneNumber;
-            txtCounty.Text = _bankAccountController.GetBankAccount().County;
-            txtCity.Text = _bankAccountController.GetBankAccount().City;
-            txtAddress.Text = _bankAccountController.GetBankAccount().Address;
-            txtNumber.Text = _bankAccountController.GetBankAccount().Number;
-            txtHolderName.Text = _bankAccountController.GetBankAccount().HolderName;
-            txtExpiryDate.Text = _bankAccountController.GetBankAccount().ExpiryDate;
+            txtEmail.Text = bankAccountController.GetBankAccount().Email;
+            txtName.Text = bankAccountController.GetBankAccount().Name;
+            txtSurname.Text = bankAccountController.GetBankAccount().Surname;
+            txtPhoneNumber.Text = bankAccountController.GetBankAccount().PhoneNumber;
+            txtCounty.Text = bankAccountController.GetBankAccount().County;
+            txtCity.Text = bankAccountController.GetBankAccount().City;
+            txtAddress.Text = bankAccountController.GetBankAccount().Address;
+            txtNumber.Text = bankAccountController.GetBankAccount().Number;
+            txtHolderName.Text = bankAccountController.GetBankAccount().HolderName;
+            txtExpiryDate.Text = bankAccountController.GetBankAccount().ExpiryDate;
         }
 
         private void HomePage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -53,7 +53,7 @@ namespace Frontend.PaymentsAndBillings
         {
             try
             {
-                _bankAccountController.UpdateBankAccount(txtName.Text, txtSurname.Text, 
+                bankAccountController.UpdateBankAccount(txtName.Text, txtSurname.Text, 
                     txtEmail.Text, txtPhoneNumber.Text, txtCounty.Text, txtCity.Text, 
                     txtAddress.Text, txtNumber.Text, txtHolderName.Text, txtExpiryDate.Text);
                 MessageBox.Show("Bank account updated successfully!");

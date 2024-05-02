@@ -2,34 +2,18 @@
 <TODOs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TODOClass>
     <Task>Review ad targeting strategies</Task>
-    <ID>26</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Optimize ad campaign for higher conversion rates</Task>
-    <ID>27</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Answer users</Task>
-    <ID>28</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Check users' answers</Task>
-    <ID>29</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
     <ID>30</ID>
   </TODOClass>
   <TODOClass>
-    <Task>Keep this task</Task>
+    <Task>Optimize ad campaign for higher conversion rates</Task>
     <ID>31</ID>
   </TODOClass>
   <TODOClass>
-    <Task>New task</Task>
+    <Task>Answer users</Task>
     <ID>32</ID>
   </TODOClass>
   <TODOClass>
-    <Task>Keep this task</Task>
+    <Task>Check users' answers</Task>
     <ID>33</ID>
   </TODOClass>
   <TODOClass>
@@ -54,6 +38,30 @@
   </TODOClass>
   <TODOClass>
     <Task>Keep this task</Task>
+    <ID>39</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
     <ID>40</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>41</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>42</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>43</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>44</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>46</ID>
   </TODOClass>
 </TODOs>
