@@ -26,7 +26,7 @@ namespace Frontend.PaymentsAndBillings
             var _bankAccountsRepositoryWindow = new BankAccountsRepositoryWindow(
                 App.ServiceProvider.GetService<BankAccountController>()
             );
-            _bankAccountsRepositoryWindow.mainWindow = this;
+            _bankAccountsRepositoryWindow.MainWindow = this;
             _bankAccountsRepositoryWindow.Show();
         }
 

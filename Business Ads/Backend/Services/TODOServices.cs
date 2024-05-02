@@ -1,11 +1,11 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-
-namespace Backend.Services
+﻿namespace Backend.Services
 {
+    using Backend.Models;
+    using Backend.Repositories;
+
     public class TODOServices : IServicesTODO
     {
-        private static readonly TODOServices instance = new();
+        private static readonly TODOServices TheInstance = new ();
         private readonly TODORepository repository;
 
         private TODOServices()
@@ -15,7 +15,7 @@ namespace Backend.Services
 
         public static TODOServices Instance
         {
-            get { return instance; }
+            get { return TheInstance; }
         }
 
         public List<TODOClass> GetTODOS()

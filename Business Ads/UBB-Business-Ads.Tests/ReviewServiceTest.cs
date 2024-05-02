@@ -39,7 +39,7 @@
             mockService.Object.AddReview("review");
 
             // Assert
-            // Verify that the AddReview method is called on the mock services exactly once
+            // Verify that the addReview method is called on the mock services exactly once
             mockService.Verify(s => s.AddReview("review"), Times.Once);
         }
     }

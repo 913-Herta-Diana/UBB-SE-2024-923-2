@@ -1,8 +1,8 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-
-namespace Backend.Services
+﻿namespace Backend.Services
 {
+    using Backend.Models;
+    using Backend.Repositories;
+
     public class ReviewService : IServiceReview
     {
         private static readonly ReviewService instance = new();

@@ -63,8 +63,7 @@ namespace Frontend.FAQ
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text == "Input number of finished task")
+            if (sender is TextBox textBox && textBox.Text == "Input number of finished task")
             {
                 textBox.Text = "";
             }
@@ -72,8 +71,7 @@ namespace Frontend.FAQ
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = "Input number of finished task";
             }
@@ -81,10 +79,9 @@ namespace Frontend.FAQ
 
         private void addTask_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text == "Input new task here")
+            if (sender is TextBox textBox && textBox.Text == "Input new task here")
             {
-                textBox.Text = ""; 
+                textBox.Text = "";
             }
         }
 
