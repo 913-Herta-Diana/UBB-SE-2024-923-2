@@ -18,16 +18,7 @@ namespace Frontend.FAQ
 
             service = FAQService.Instance;
 
-            topics = new List<string>();
-
-            List<Backend.Models.FAQ> faqs = service.GetAllFAQs();
-            foreach (Backend.Models.FAQ faq in faqs)
-            {
-                if (!topics.Contains(faq.Topic))
-                {
-                    topics.Add(faq.Topic);
-                }
-            }
+            topics = service.getTopics();
 
             dropTopic.ItemsSource = topics;
         }

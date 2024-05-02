@@ -30,18 +30,18 @@ namespace Backend.Repositories
             }
             set
             {
-                Dictionary<string, string> encryptedNameKVPair = encryptionService.Encrypt(value.Name);
-                string encryptedName = encryptedNameKVPair["data"];
-                _nameKey = encryptedNameKVPair["key"];
-                Dictionary<string, string> encryptedDescriptionKVPair = encryptionService.Encrypt(value.Description);
-                string encryptedDescription = encryptedDescriptionKVPair["data"];
-                _descriptionKey = encryptedDescriptionKVPair["key"];
-                Dictionary<string, string> encryptedPriceKVPair = encryptionService.Encrypt(value.Price);
-                string encryptedPrice = encryptedPriceKVPair["data"];
-                _priceKey = encryptedPriceKVPair["key"];
-                Dictionary<string, string> encryptedImageKVPair = encryptionService.Encrypt(value.Image);
-                string encryptedImage = encryptedImageKVPair["data"];
-                _imageKey = encryptedImageKVPair["key"];
+                Dictionary<string, string> encryptedNameKeyValuePair = encryptionService.Encrypt(value.Name);
+                string encryptedName = encryptedNameKeyValuePair["data"];
+                _nameKey = encryptedNameKeyValuePair["key"];
+                Dictionary<string, string> encryptedDescriptionKeyValuePair = encryptionService.Encrypt(value.Description);
+                string encryptedDescription = encryptedDescriptionKeyValuePair["data"];
+                _descriptionKey = encryptedDescriptionKeyValuePair["key"];
+                Dictionary<string, string> encryptedPriceKeyValuePair = encryptionService.Encrypt(value.Price);
+                string encryptedPrice = encryptedPriceKeyValuePair["data"];
+                _priceKey = encryptedPriceKeyValuePair["key"];
+                Dictionary<string, string> encryptedImageKeyValuePair = encryptionService.Encrypt(value.Image);
+                string encryptedImage = encryptedImageKeyValuePair["data"];
+                _imageKey = encryptedImageKeyValuePair["key"];
                 _product = new ProductMock
                 {
                     Name = encryptedName,
