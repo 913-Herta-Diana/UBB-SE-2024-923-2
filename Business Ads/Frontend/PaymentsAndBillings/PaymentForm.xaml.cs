@@ -1,45 +1,49 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Backend.Controllers;
+﻿// <copyright file="PaymentForm.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend.PaymentsAndBillings
 {
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using Backend.Controllers;
+
     /// <summary>
-    /// Interaction logic for PaymentForm.xaml
+    /// Interaction logic for PaymentForm.xaml.
     /// </summary>
     public partial class PaymentForm : Window
     {
-        public Window mainWindow;
-        private readonly PaymentFormController _paymentController;
+        public Window MainWindow;
+        private readonly PaymentFormController paymentController;
 
         public PaymentForm(PaymentFormController c)
         {
-            _paymentController = c;
-            InitializeComponent();
-            UpdateFields();
+            this.paymentController = c;
+            this.InitializeComponent();
+            this.UpdateFields();
 
-            Closed += (sender, EventData) =>
+            this.Closed += (sender, EventData) =>
             {
-                mainWindow.Show();
+                this.MainWindow.Show();
             };
         }
 
         private void UpdateFields()
         {
-            itemName.Text = _paymentController.getProduct().Name;
-            itemDescription.Text = _paymentController.getProduct().Description;
-            itemPrice.Text = _paymentController.getProduct().Price;
-            var itemImageSource = _paymentController.getProduct().Image;
-            itemImage.Source = new BitmapImage(new Uri(itemImageSource, UriKind.Relative));
+            this.itemName.Text = this.paymentController.GetProduct().Name;
+            this.itemDescription.Text = this.paymentController.GetProduct().Description;
+            this.itemPrice.Text = this.paymentController.GetProduct().Price;
+            var itemImageSource = this.paymentController.GetProduct().Image;
+            this.itemImage.Source = new BitmapImage(new Uri(itemImageSource, UriKind.Relative));
         }
 
         private async void PayButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await _paymentController.SendPaymentConfirmationMailAsync();
+                await this.paymentController.SendPaymentConfirmationMailAsync();
                 MessageBox.Show("Payment sent successfully!");
             }
             catch
@@ -50,7 +54,7 @@ namespace Frontend.PaymentsAndBillings
 
         private void HomePage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Profile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,22 +69,22 @@ namespace Frontend.PaymentsAndBillings
 
         private void HomePage_MouseEnter(object sender, MouseEventArgs e)
         {
-            homePageBlock.Background = Brushes.LightGray;
+            this.homePageBlock.Background = Brushes.LightGray;
         }
 
         private void HomePage_MouseLeave(object sender, MouseEventArgs e)
         {
-            homePageBlock.Background = Brushes.DimGray;
+            this.homePageBlock.Background = Brushes.DimGray;
         }
 
         private void Profile_MouseEnter(object sender, MouseEventArgs e)
         {
-            profileBlock.Background = Brushes.LightGray;
+            this.profileBlock.Background = Brushes.LightGray;
         }
 
         private void Profile_MouseLeave(object sender, MouseEventArgs e)
         {
-            profileBlock.Background = Brushes.DimGray;
+            this.profileBlock.Background = Brushes.DimGray;
         }
 
         private void Profile_Click(object sender, RoutedEventArgs e)

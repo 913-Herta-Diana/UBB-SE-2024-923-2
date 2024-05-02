@@ -1,15 +1,19 @@
-﻿using Backend.Models;
-using Backend.Repositories;
+﻿// <copyright file="BankAccountController.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Controllers
 {
+    using Backend.Models;
+    using Backend.Repositories;
+
     public class BankAccountController(AccountRepository repository)
     {
-        private readonly AccountRepository _accountRepository = repository;
+        private readonly AccountRepository accountRepository = repository;
 
         public void UpdateBankAccount(string name, string surname, string email, string phoneNumber, string county, string city, string address, string number, string holderName, string expiryDate)
         {
-            BankAccount updatedAccount = new()
+            BankAccount updatedAccount = new ()
             {
                 Email = email,
                 Name = name,
@@ -20,7 +24,7 @@ namespace Backend.Controllers
                 Address = address,
                 Number = number,
                 HolderName = holderName,
-                ExpiryDate = expiryDate
+                ExpiryDate = expiryDate,
             };
             if (!BankAccount.Validate(updatedAccount))
             {
@@ -28,13 +32,13 @@ namespace Backend.Controllers
             }
             else
             {
-                _accountRepository.BankAccount = updatedAccount;
+                this.accountRepository.BankAccount = updatedAccount;
             }
         }
 
         public BankAccount GetBankAccount()
         {
-            return _accountRepository.BankAccount;
+            return this.accountRepository.BankAccount;
         }
     }
 }

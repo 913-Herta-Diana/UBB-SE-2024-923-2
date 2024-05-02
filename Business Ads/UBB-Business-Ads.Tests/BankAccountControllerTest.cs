@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Backend.Controllers;
-using Backend.Repositories;
-using Backend.Models;
-using NUnit.Framework.Legacy;
-using NUnit.Framework;
-using NUnit;
-
+﻿// <copyright file="BankAccountControllerTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UBB_Business_Ads.Tests
 {
+    using System;
+    using Backend.Controllers;
+    using Backend.Models;
+    using Backend.Repositories;
+    using NUnit.Framework;
+
     [TestFixture]
     internal class BankAccountControllerTest
     {
-        [TestCase ("", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "aaa", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "", "123456789", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "aaa", "Name Surname", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "", "12/23")]
-        [TestCase ("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "")]
+        [TestCase("", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "aaa", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "", "123456789", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "aaa", "Name Surname", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "", "12/23")]
+        [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "")]
         public void UpdateBankAccount_InvalidData_ThrowsException(string name, string surname, string email, string phoneNumber, string county, string city, string address, string number, string holderName, string expiryDate)
         {
             var bankAccount = new BankAccount
@@ -39,16 +36,16 @@ namespace UBB_Business_Ads.Tests
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController=new BankAccountController(accountRepository);
+            BankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            StringAssert.Contains("Invalid bank account data!", ex.Message);
-
+            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
         }
+
         [TestCase("NewName", "NewSurname", "NewTestAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
         public void UpdateBankAccount_ValidData_NoException(string name, string surname, string email, string phoneNumber, string county, string city, string address, string number, string holderName, string expiryDate)
         {
@@ -63,13 +60,12 @@ namespace UBB_Business_Ads.Tests
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
             BankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            Assert.DoesNotThrow(()=> bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
-
+            Assert.DoesNotThrow(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
         }
 
         [Test]
@@ -86,15 +82,15 @@ namespace UBB_Business_Ads.Tests
                 Address = "Str. SomeStreet, Nr. 1",
                 Number = "123456789",
                 HolderName = "Name Surname",
-                ExpiryDate = "12/23"
+                ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
             BankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var result= bankAccountController.GetBankAccount();
+            var result = bankAccountController.GetBankAccount();
 
             // Assert.That(areEqual, Is.True);
-            //Assert.AreEqual(result, bankAccount);
+            // Assert.AreEqual(result, bankAccount);
             Assert.That(result.Email, Is.EqualTo(bankAccount.Email));
             Assert.That(result.Name, Is.EqualTo(bankAccount.Name));
             Assert.That(result.Surname, Is.EqualTo(bankAccount.Surname));
@@ -105,9 +101,6 @@ namespace UBB_Business_Ads.Tests
             Assert.That(result.Number, Is.EqualTo(bankAccount.Number));
             Assert.That(result.HolderName, Is.EqualTo(bankAccount.HolderName));
             Assert.That(result.ExpiryDate, Is.EqualTo(bankAccount.ExpiryDate));
-
         }
-
-
     }
 }

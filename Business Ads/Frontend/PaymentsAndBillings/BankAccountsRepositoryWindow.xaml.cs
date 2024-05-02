@@ -1,47 +1,51 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using Backend.Controllers;
+﻿// <copyright file="BankAccountsRepositoryWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend.PaymentsAndBillings
 {
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using Backend.Controllers;
+
     /// <summary>
-    /// Interaction logic for BankAccountsRepositoryWindow.xaml
+    /// Interaction logic for BankAccountsRepositoryWindow.xaml.
     /// </summary>
     public partial class BankAccountsRepositoryWindow : Window
     {
-        public Window mainWindow;
-        private readonly BankAccountController _bankAccountController;
-        
+        public Window MainWindow;
+        private readonly BankAccountController bankAccountController;
+
         public BankAccountsRepositoryWindow(BankAccountController bankAccountControllerInstance)
         {
-            _bankAccountController = bankAccountControllerInstance;
-            InitializeComponent();
-            UpdateFields();
+            this.bankAccountController = bankAccountControllerInstance;
+            this.InitializeComponent();
+            this.UpdateFields();
 
-            Closed += (sender, EventData) =>
+            this.Closed += (sender, eventData) =>
             {
-                mainWindow.Show();
+                this.MainWindow.Show();
             };
         }
 
         private void UpdateFields()
         {
-            txtEmail.Text = _bankAccountController.GetBankAccount().Email;
-            txtName.Text = _bankAccountController.GetBankAccount().Name;
-            txtSurname.Text = _bankAccountController.GetBankAccount().Surname;
-            txtPhoneNumber.Text = _bankAccountController.GetBankAccount().PhoneNumber;
-            txtCounty.Text = _bankAccountController.GetBankAccount().County;
-            txtCity.Text = _bankAccountController.GetBankAccount().City;
-            txtAddress.Text = _bankAccountController.GetBankAccount().Address;
-            txtNumber.Text = _bankAccountController.GetBankAccount().Number;
-            txtHolderName.Text = _bankAccountController.GetBankAccount().HolderName;
-            txtExpiryDate.Text = _bankAccountController.GetBankAccount().ExpiryDate;
+            this.txtEmail.Text = this.bankAccountController.GetBankAccount().Email;
+            this.txtName.Text = this.bankAccountController.GetBankAccount().Name;
+            this.txtSurname.Text = this.bankAccountController.GetBankAccount().Surname;
+            this.txtPhoneNumber.Text = this.bankAccountController.GetBankAccount().PhoneNumber;
+            this.txtCounty.Text = this.bankAccountController.GetBankAccount().County;
+            this.txtCity.Text = this.bankAccountController.GetBankAccount().City;
+            this.txtAddress.Text = this.bankAccountController.GetBankAccount().Address;
+            this.txtNumber.Text = this.bankAccountController.GetBankAccount().Number;
+            this.txtHolderName.Text = this.bankAccountController.GetBankAccount().HolderName;
+            this.txtExpiryDate.Text = this.bankAccountController.GetBankAccount().ExpiryDate;
         }
 
         private void HomePage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Profile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -53,9 +57,7 @@ namespace Frontend.PaymentsAndBillings
         {
             try
             {
-                _bankAccountController.UpdateBankAccount(txtName.Text, txtSurname.Text, 
-                    txtEmail.Text, txtPhoneNumber.Text, txtCounty.Text, txtCity.Text, 
-                    txtAddress.Text, txtNumber.Text, txtHolderName.Text, txtExpiryDate.Text);
+                this.bankAccountController.UpdateBankAccount(this.txtName.Text, this.txtSurname.Text, this.txtEmail.Text, this.txtPhoneNumber.Text, this.txtCounty.Text, this.txtCity.Text, this.txtAddress.Text, this.txtNumber.Text, this.txtHolderName.Text, this.txtExpiryDate.Text);
                 MessageBox.Show("Bank account updated successfully!");
             }
             catch (Exception ex)
@@ -64,28 +66,28 @@ namespace Frontend.PaymentsAndBillings
             }
             finally
             {
-                UpdateFields();
+                this.UpdateFields();
             }
         }
 
         private void HomePage_MouseEnter(object sender, MouseEventArgs e)
         {
-            homePageBlock.Background = Brushes.LightGray;
+            this.homePageBlock.Background = Brushes.LightGray;
         }
 
         private void HomePage_MouseLeave(object sender, MouseEventArgs e)
         {
-            homePageBlock.Background = Brushes.DimGray;
+            this.homePageBlock.Background = Brushes.DimGray;
         }
 
         private void Profile_MouseEnter(object sender, MouseEventArgs e)
         {
-            profileBlock.Background = Brushes.LightGray;
+            this.profileBlock.Background = Brushes.LightGray;
         }
 
         private void Profile_MouseLeave(object sender, MouseEventArgs e)
         {
-            profileBlock.Background = Brushes.DimGray;
+            this.profileBlock.Background = Brushes.DimGray;
         }
 
         private void Profile_Click(object sender, RoutedEventArgs e)
