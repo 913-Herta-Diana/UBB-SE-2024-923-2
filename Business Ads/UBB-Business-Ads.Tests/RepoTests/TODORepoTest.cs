@@ -39,25 +39,31 @@ namespace UBB_Business_Ads.Tests.RepoTests
             int initialTODOsCount=_TODOrepo.getTODOS().Count();
             var newTODO=new TODOClass("New task");
             _TODOrepo.addingTODO(newTODO);
-            var todosList = _TODOrepo.getTODOS(); // Get updated todos list
+            var todosList = _TODOrepo.getTODOS(); 
             var updatedTodosCount = todosList.Count;
 
-            Assert.That(updatedTodosCount, Is.EqualTo(initialTODOsCount+ 1));
+            Assert.That(updatedTodosCount, Is.EqualTo(initialTODOsCount + 1));
             Assert.That(todosList.Contains(newTODO), Is.True);
 
         }
 
+        [Test]
         public void Test_RemoveTODOS()
         {
+           
+            var newTODO1 = new TODOClass("Remove this task");
+            var newTODO2 = new TODOClass("Keep this task");
+            _TODOrepo.addingTODO(newTODO1);
+            _TODOrepo.addingTODO(newTODO2);
             int initialTODOsCount = _TODOrepo.getTODOS().Count();
-            var newTODO = new TODOClass("Remove this task");
-            _TODOrepo.addingTODO(newTODO);
-            _TODOrepo.removingTODO(newTODO);
+            _TODOrepo.removingTODO(newTODO1);
+
             var todosList = _TODOrepo.getTODOS(); 
             var updatedTodosCount = todosList.Count;
 
-            Assert.That(updatedTodosCount, Is.EqualTo(initialTODOsCount -1));
-            Assert.That(todosList.Contains(newTODO), Is.False);
+           Assert.That(updatedTodosCount, Is.EqualTo(initialTODOsCount -1));
+            Assert.That(todosList.Contains(newTODO1), Is.False);
+            Assert.That(todosList.Contains(newTODO2), Is.True);
 
         }
 

@@ -69,6 +69,7 @@ namespace Backend.Repositories
             todosList.Add(newTODO);
             SaveToXml();
         }
+
         public void removingTODO(TODOClass newTODO)
         {
             todosList.Remove(newTODO);
