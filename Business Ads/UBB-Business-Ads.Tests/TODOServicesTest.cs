@@ -24,7 +24,7 @@
             var todoServices = TODOServices.Instance;
 
             // Act
-            var result = todoServices.getTODOS();
+            var result = todoServices.GetTODOS();
 
             // Assert
             Xunit.Assert.NotNull(result);
@@ -38,11 +38,11 @@
             var todoObj = new TODOClass();
 
             // Act
-            mockServices.Object.addTODO(todoObj);
+            mockServices.Object.AddTODO(todoObj);
 
             // Assert
             // Verify that the addTODO method is called on the mock services exactly once
-            mockServices.Verify(s => s.addTODO(todoObj), Times.Once);
+            mockServices.Verify(s => s.AddTODO(todoObj), Times.Once);
         }
 
         [Fact]
@@ -51,15 +51,15 @@
             // Arrange
             var todoServices = TODOServices.Instance;
             int nonExistingId = 9999; // Non-existing id
-            int size = todoServices.getTODOS().Count;
+            int size = todoServices.GetTODOS().Count;
 
             // Act
-            todoServices.removeTODO(nonExistingId);
+            todoServices.RemoveTODO(nonExistingId);
 
             // Assert
             // Verify that no actions are performed
             // The list of TODOs remains same
-            Xunit.Assert.Equal(size, todoServices.getTODOS().Count);
+            Xunit.Assert.Equal(size, todoServices.GetTODOS().Count);
         }
     }
 }

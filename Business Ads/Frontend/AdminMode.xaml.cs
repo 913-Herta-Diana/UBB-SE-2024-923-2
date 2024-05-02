@@ -44,7 +44,7 @@ namespace Frontend.FAQ
 
         private void PopulateTodoList()
         {
-            List<TODOClass> todos = todoServices.getTODOS();
+            List<TODOClass> todos = todoServices.GetTODOS();
             if (todos != null)
             {
                 StringBuilder stringBuilderInstance = new StringBuilder();
@@ -101,7 +101,7 @@ namespace Frontend.FAQ
         {
             if (int.TryParse(removeText.Text, out int idToRemove))
             {
-                todoServices.removeTODO(idToRemove);
+                todoServices.RemoveTODO(idToRemove);
                 PopulateTodoList();
                 removeText.Text = "Input number of finished task"; 
             }
@@ -118,7 +118,7 @@ namespace Frontend.FAQ
             if (!string.IsNullOrWhiteSpace(newTask))
             {
                 TODOClass task = new TODOClass(newTask);
-                todoServices.addTODO(task);
+                todoServices.AddTODO(task);
             }
 
             PopulateTodoList();
