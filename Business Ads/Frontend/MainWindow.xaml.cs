@@ -31,7 +31,7 @@ namespace Frontend
                 {
                     ExportWindow exportWindow = new ()
                     {
-                        mainWindow = this,
+                        MainWindow = this,
                     };
                     exportWindow.Show();
                     this.Hide();

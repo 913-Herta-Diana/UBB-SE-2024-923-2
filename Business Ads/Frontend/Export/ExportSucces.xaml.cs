@@ -19,7 +19,7 @@ namespace Frontend.Export
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for ExportSucces.xaml.
+    /// Interaction logic for name.xaml.
     /// </summary>
     // [Obsolete]
     public partial class ExportSucces : Window
