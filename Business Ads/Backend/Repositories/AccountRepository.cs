@@ -1,37 +1,46 @@
-﻿using Backend.Models;
-using Backend.Services;
+﻿// <copyright file="AccountRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Repositories
 {
+    using Backend.Models;
+    using Backend.Services;
+
     public class AccountRepository
     {
-        private DataEncryptionService encryptionService = new DataEncryptionService();
-        private BankAccount _bankAccount;
-        private string _emailKey;
-        private string _nameKey;
-        private string _surnameKey;
-        private string _phoneNumberKey;
-        private string _countyKey;
-        private string _cityKey;
-        private string _addressKey;
-        private string _numberKey;
-        private string _holderNameKey;
-        private string _expiryDateKey;
-        
+        private readonly DataEncryptionService encryptionService = new();
+        private BankAccount bankAccount;
+        private string emailKey;
+        private string nameKey;
+        private string surnameKey;
+        private string phoneNumberKey;
+        private string countyKey;
+        private string cityKey;
+        private string addressKey;
+        private string numberKey;
+        private string holderNameKey;
+        private string expirationDateKey;
+
+        public AccountRepository(BankAccount account)
+        {
+            this.BankAccount = account;
+        }
+
         public BankAccount BankAccount
         {
             get
             {
-                string decryptedEmail = encryptionService.Decrypt(_bankAccount.Email, _emailKey);
-                string decryptedName = encryptionService.Decrypt(_bankAccount.Name, _nameKey);
-                string decryptedSurname = encryptionService.Decrypt(_bankAccount.Surname, _surnameKey);
-                string decryptedPhoneNumber = encryptionService.Decrypt(_bankAccount.PhoneNumber, _phoneNumberKey);
-                string decryptedCounty = encryptionService.Decrypt(_bankAccount.County, _countyKey);
-                string decryptedCity = encryptionService.Decrypt(_bankAccount.City, _cityKey);
-                string decryptedAddress = encryptionService.Decrypt(_bankAccount.Address, _addressKey);
-                string decryptedNumber = encryptionService.Decrypt(_bankAccount.Number, _numberKey);
-                string decryptedHolderName = encryptionService.Decrypt(_bankAccount.HolderName, _holderNameKey);
-                string decryptedExpiryDate = encryptionService.Decrypt(_bankAccount.ExpiryDate, _expiryDateKey);
+                string decryptedEmail = this.encryptionService.Decrypt(this.bankAccount.Email, this.emailKey);
+                string decryptedName = this.encryptionService.Decrypt(this.bankAccount.Name, this.nameKey);
+                string decryptedSurname = this.encryptionService.Decrypt(this.bankAccount.Surname, this.surnameKey);
+                string decryptedPhoneNumber = this.encryptionService.Decrypt(this.bankAccount.PhoneNumber, this.phoneNumberKey);
+                string decryptedCounty = this.encryptionService.Decrypt(this.bankAccount.County, this.countyKey);
+                string decryptedCity = this.encryptionService.Decrypt(this.bankAccount.City, this.cityKey);
+                string decryptedAddress = this.encryptionService.Decrypt(this.bankAccount.Address, this.addressKey);
+                string decryptedNumber = this.encryptionService.Decrypt(this.bankAccount.Number, this.numberKey);
+                string decryptedHolderName = this.encryptionService.Decrypt(this.bankAccount.HolderName, this.holderNameKey);
+                string decryptedExpiryDate = this.encryptionService.Decrypt(this.bankAccount.ExpiryDate, this.expirationDateKey);
                 return new BankAccount
                 {
                     Email = decryptedEmail,
@@ -43,42 +52,43 @@ namespace Backend.Repositories
                     Address = decryptedAddress,
                     Number = decryptedNumber,
                     HolderName = decryptedHolderName,
-                    ExpiryDate = decryptedExpiryDate
+                    ExpiryDate = decryptedExpiryDate,
                 };
             }
+
             set
             {
-                Dictionary<string, string> encryptedEmailKVPair = encryptionService.Encrypt(value.Email);
+                Dictionary<string, string> encryptedEmailKVPair = this.encryptionService.Encrypt(value.Email);
                 string encryptedEmail = encryptedEmailKVPair["data"];
-                _emailKey = encryptedEmailKVPair["key"];
-                Dictionary<string, string> encryptedNameKVPair = encryptionService.Encrypt(value.Name);
+                this.emailKey = encryptedEmailKVPair["key"];
+                Dictionary<string, string> encryptedNameKVPair = this.encryptionService.Encrypt(value.Name);
                 string encryptedName = encryptedNameKVPair["data"];
-                _nameKey = encryptedNameKVPair["key"];
-                Dictionary<string, string> encryptedSurnameKVPair = encryptionService.Encrypt(value.Surname);
+                this.nameKey = encryptedNameKVPair["key"];
+                Dictionary<string, string> encryptedSurnameKVPair = this.encryptionService.Encrypt(value.Surname);
                 string encryptedSurname = encryptedSurnameKVPair["data"];
-                _surnameKey = encryptedSurnameKVPair["key"];
-                Dictionary<string, string> encryptedPhoneNumberKVPair = encryptionService.Encrypt(value.PhoneNumber);
+                this.surnameKey = encryptedSurnameKVPair["key"];
+                Dictionary<string, string> encryptedPhoneNumberKVPair = this.encryptionService.Encrypt(value.PhoneNumber);
                 string encryptedPhoneNumber = encryptedPhoneNumberKVPair["data"];
-                _phoneNumberKey = encryptedPhoneNumberKVPair["key"];
-                Dictionary<string, string> encryptedCountyKVPair = encryptionService.Encrypt(value.County);
+                this.phoneNumberKey = encryptedPhoneNumberKVPair["key"];
+                Dictionary<string, string> encryptedCountyKVPair = this.encryptionService.Encrypt(value.County);
                 string encryptedCounty = encryptedCountyKVPair["data"];
-                _countyKey = encryptedCountyKVPair["key"];
-                Dictionary<string, string> encryptedCityKVPair = encryptionService.Encrypt(value.City);
+                this.countyKey = encryptedCountyKVPair["key"];
+                Dictionary<string, string> encryptedCityKVPair = this.encryptionService.Encrypt(value.City);
                 string encryptedCity = encryptedCityKVPair["data"];
-                _cityKey = encryptedCityKVPair["key"];
-                Dictionary<string, string> encryptedAddressKVPair = encryptionService.Encrypt(value.Address);
+                this.cityKey = encryptedCityKVPair["key"];
+                Dictionary<string, string> encryptedAddressKVPair = this.encryptionService.Encrypt(value.Address);
                 string encryptedAddress = encryptedAddressKVPair["data"];
-                _addressKey = encryptedAddressKVPair["key"];
-                Dictionary<string, string> encryptedNumberKVPair = encryptionService.Encrypt(value.Number);
+                this.addressKey = encryptedAddressKVPair["key"];
+                Dictionary<string, string> encryptedNumberKVPair = this.encryptionService.Encrypt(value.Number);
                 string encryptedNumber = encryptedNumberKVPair["data"];
-                _numberKey = encryptedNumberKVPair["key"];
-                Dictionary<string, string> encryptedHolderNameKVPair = encryptionService.Encrypt(value.HolderName);
+                this.numberKey = encryptedNumberKVPair["key"];
+                Dictionary<string, string> encryptedHolderNameKVPair = this.encryptionService.Encrypt(value.HolderName);
                 string encryptedHolderName = encryptedHolderNameKVPair["data"];
-                _holderNameKey = encryptedHolderNameKVPair["key"];
-                Dictionary<string, string> encryptedExpiryDateKVPair = encryptionService.Encrypt(value.ExpiryDate);
+                this.holderNameKey = encryptedHolderNameKVPair["key"];
+                Dictionary<string, string> encryptedExpiryDateKVPair = this.encryptionService.Encrypt(value.ExpiryDate);
                 string encryptedExpiryDate = encryptedExpiryDateKVPair["data"];
-                _expiryDateKey = encryptedExpiryDateKVPair["key"];
-                _bankAccount =  new BankAccount
+                this.expirationDateKey = encryptedExpiryDateKVPair["key"];
+                this.bankAccount = new BankAccount
                 {
                     Email = encryptedEmail,
                     Name = encryptedName,
@@ -89,14 +99,9 @@ namespace Backend.Repositories
                     Address = encryptedAddress,
                     Number = encryptedNumber,
                     HolderName = encryptedHolderName,
-                    ExpiryDate = encryptedExpiryDate
+                    ExpiryDate = encryptedExpiryDate,
                 };
             }
-        }
-
-        public AccountRepository(BankAccount account)
-        {
-            BankAccount = account;
         }
     }
 }

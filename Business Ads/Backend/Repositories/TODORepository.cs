@@ -1,91 +1,95 @@
-﻿using System.Xml.Serialization;
-using System.Xml;
-using Backend.Models;
+﻿// <copyright file="TODORepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Repositories
 {
+    using System.Xml;
+    using System.Xml.Serialization;
+    using Backend.Models;
+
     public class TODORepository : INterfaceToDoRepository
     {
-        private List<TODOClass> todosList;
+        private static int lastId = 0;
         private readonly string xmlFilePath;
-        private static int _lastId = 0;
+        private List<TODOClass> todosList;
 
-        public TODORepository() 
-        { 
-            todosList = [];
+        public TODORepository()
+        {
+            this.todosList = [];
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
 
-
             int index = basePath.IndexOf(binDirectory);
             pathUntilBin = basePath[..index];
             string pathToToDoXML = $"\\XMLFiles\\TODOitems.xml";
-            xmlFilePath = pathUntilBin + pathToToDoXML;
-            LoadFromXml();
+            this.xmlFilePath = pathUntilBin + pathToToDoXML;
+            this.LoadFromXml();
         }
 
-        
         public void AddingTODO(TODOClass newTODO)
         {
-            newTODO.ID = _lastId++;
-            todosList.Add(newTODO);
-            SaveToXml();
+            newTODO.ID = lastId++;
+            this.todosList.Add(newTODO);
+            this.SaveToXml();
         }
 
         public void RemovingTODO(TODOClass newTODO)
         {
-            todosList.Remove(newTODO);
-            SaveToXml();
-
+            this.todosList.Remove(newTODO);
+            this.SaveToXml();
         }
 
         public List<TODOClass> GetTODOS()
         {
-            return todosList;
+            return this.todosList;
         }
+
         private void LoadFromXml()
         {
             try
             {
-                if (File.Exists(xmlFilePath))
+                if (File.Exists(this.xmlFilePath))
                 {
-                    XmlSerializer serializer = new(typeof(TODOClass), new XmlRootAttribute("TODOClass"));
+                    XmlSerializer serializer = new (typeof(TODOClass), new XmlRootAttribute("TODOClass"));
 
-                    todosList = [];
+                    this.todosList = [];
 
-                    using FileStream fileStream = new(xmlFilePath, FileMode.Open);
+                    using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
                     while (reader.ReadToFollowing("TODOClass"))
                     {
                         TODOClass todo = (TODOClass)serializer.Deserialize(reader);
-                        todo.ID = _lastId++;
-                        todosList.Add(todo);
+                        todo.ID = lastId++;
+                        this.todosList.Add(todo);
                     }
                 }
                 else
                 {
-                    todosList = [];
+                    this.todosList = [];
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void SaveToXml()
         {
-            XmlSerializer serializer = new(typeof(List<TODOClass>), new XmlRootAttribute("TODOs"));
+            XmlSerializer serializer = new (typeof(List<TODOClass>), new XmlRootAttribute("TODOs"));
 
-            using FileStream fileStream = new(xmlFilePath, FileMode.Create);
-            serializer.Serialize(fileStream, todosList);
+            using FileStream fileStream = new (this.xmlFilePath, FileMode.Create);
+            serializer.Serialize(fileStream, this.todosList);
         }
-
-
     }
 
-    interface INterfaceToDoRepository
+    internal interface INterfaceToDoRepository
     {
         public void AddingTODO(TODOClass newTODO);
+
         public void RemovingTODO(TODOClass newTODO);
+
         public List<TODOClass> GetTODOS();
     }
 }

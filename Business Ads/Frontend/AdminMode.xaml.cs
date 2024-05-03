@@ -91,8 +91,7 @@ namespace Frontend.FAQ
 
         private void AddTask_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox? textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = "Input new task here";
             }

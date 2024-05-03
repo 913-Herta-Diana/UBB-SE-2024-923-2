@@ -1,32 +1,17 @@
-﻿namespace Backend.Services
-{
-    public class DataEncryptionService:IDataEncryptionService
-    {
-        readonly static string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+﻿// <copyright file="DataEncryptionService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-        private static string ShuffleAlphabet()
-        {
-            string shuffled = "";
-            int lengthOfAlphabet = alphabet.Length;
-            Random random = new();
-            char randomCharacter;
-            string copyOfAlphabet = alphabet;
-            while (shuffled.Length < lengthOfAlphabet)
-            {
-                if (copyOfAlphabet.Length > 1)
-                    randomCharacter = copyOfAlphabet[random.Next(copyOfAlphabet.Length)];
-                else
-                    randomCharacter = copyOfAlphabet[0];
-                shuffled += randomCharacter;
-                copyOfAlphabet = copyOfAlphabet.Replace(randomCharacter.ToString(), "");
-            }
-            return shuffled;
-        }
+namespace Backend.Services
+{
+    public class DataEncryptionService : IDataEncryptionService
+    {
+        private static readonly string Alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public Dictionary<string, string> Encrypt(string data)
         {
             string key = ShuffleAlphabet();
-            string encryptedData = "";
+            string encryptedData = string.Empty;
             for (int i = 0; i < data.Length; i++)
             {
                 if (char.IsLower(data[i]))
@@ -42,30 +27,56 @@
                     encryptedData += data[i];
                 }
             }
-            Dictionary<string, string> result = new()
+            Dictionary<string, string> result = new ()
             {
                 { "data", encryptedData },
-                { "key", key }
+                { "key", key },
             };
             return result;
         }
 
         public string Decrypt(string data, string key)
         {
-            string decryptedData = "";
+            string decryptedData = string.Empty;
             for (int i = 0; i < data.Length; i++)
             {
                 if (char.IsLetter(data[i]))
                 {
                     int index = key.IndexOf(data[i]);
-                    decryptedData += alphabet[index];
+                    decryptedData += Alphabet[index];
                 }
                 else
                 {
                     decryptedData += data[i];
                 }
             }
+
             return decryptedData;
+        }
+
+        private static string ShuffleAlphabet()
+        {
+            string shuffled = string.Empty;
+            int lengthOfAlphabet = Alphabet.Length;
+            Random random = new ();
+            char randomCharacter;
+            string copyOfAlphabet = Alphabet;
+            while (shuffled.Length < lengthOfAlphabet)
+            {
+                if (copyOfAlphabet.Length > 1)
+                {
+                    randomCharacter = copyOfAlphabet[random.Next(copyOfAlphabet.Length)];
+                }
+                else
+                {
+                    randomCharacter = copyOfAlphabet[0];
+                }
+
+                shuffled += randomCharacter;
+                copyOfAlphabet = copyOfAlphabet.Replace(randomCharacter.ToString(), string.Empty);
+            }
+
+            return shuffled;
         }
     }
 }

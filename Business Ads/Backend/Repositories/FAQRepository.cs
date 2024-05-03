@@ -1,90 +1,92 @@
-﻿using System.Xml;
-using System.Xml.Serialization;
-using Backend.Models;
+﻿// <copyright file="FAQRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Repositories
 {
+    using System.Xml;
+    using System.Xml.Serialization;
+    using Backend.Models;
+
     public class FAQRepository : IFAQRepository
     {
-
-        private string xmlFilePath;
+        private readonly string xmlFilePath;
         private List<FAQ> faqList;
 
         public FAQRepository()
         {
-            faqList = new List<FAQ>();
+            this.faqList = [];
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
 
-
             int index = basePath.IndexOf(binDirectory);
-            pathUntilBin = basePath.Substring(0, index);
+            pathUntilBin = basePath[..index];
             string pathToFaqXML = $"\\XMLFiles\\FAQitems.xml";
-            xmlFilePath = pathUntilBin + pathToFaqXML;
-            LoadFAQsFromXml();
+            this.xmlFilePath = pathUntilBin + pathToFaqXML;
+            this.LoadFAQsFromXml();
         }
 
         public List<FAQ> GetFAQList()
         {
-            return faqList;
+            return this.faqList;
+        }
+
+        public void AddFAQ(Backend.Models.FAQ newQ)
+        {
+            this.faqList.Add(newQ);
+            this.SaveFAQsToXml();
+        }
+
+        public void DeleteFAQ(Backend.Models.FAQ q)
+        {
+            this.faqList.Remove(q);
+            this.SaveFAQsToXml();
         }
 
         private void LoadFAQsFromXml()
         {
             try
             {
-                if (File.Exists(xmlFilePath))
+                if (File.Exists(this.xmlFilePath))
                 {
-                    XmlSerializer serializer = new(typeof(FAQ), new XmlRootAttribute("FAQ"));
+                    XmlSerializer serializer = new (typeof(FAQ), new XmlRootAttribute("FAQ"));
 
-                    faqList = new List<FAQ>();
+                    this.faqList = [];
 
-                    using (FileStream fileStream = new FileStream(xmlFilePath, FileMode.Open))
-                    using (XmlReader reader = XmlReader.Create(fileStream))
+                    using FileStream fileStream = new(this.xmlFilePath, FileMode.Open);
+                    using XmlReader reader = XmlReader.Create(fileStream);
+                    while (reader.ReadToFollowing("FAQ"))
                     {
-                        while (reader.ReadToFollowing("FAQ"))
-                        {
-                            FAQ faq = (FAQ)serializer.Deserialize(reader);
-                            faqList.Add(faq);
-                        }
+                        FAQ faq = (FAQ)serializer.Deserialize(reader);
+                        this.faqList.Add(item: faq);
                     }
                 }
                 else
                 {
-                    faqList = new List<FAQ>();
+                    this.faqList = [];
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void SaveFAQsToXml()
         {
-            XmlSerializer serializer = new(typeof(List<FAQ>), new XmlRootAttribute("FAQs"));
+            XmlSerializer serializer = new (typeof(List<FAQ>), new XmlRootAttribute("FAQs"));
 
-            using (FileStream fileStream = new(xmlFilePath, FileMode.Create))
-            {
-                serializer.Serialize(fileStream, faqList);
-            }
-        }
-
-        public void addFAQ(Backend.Models.FAQ newQ)
-        {
-            faqList.Add(newQ);
-            SaveFAQsToXml();
-        }
-
-        public void deleteFAQ(Backend.Models.FAQ q)
-        {
-            faqList.Remove(q);
-            SaveFAQsToXml();
+            using FileStream fileStream = new(this.xmlFilePath, FileMode.Create);
+            serializer.Serialize(fileStream, this.faqList);
         }
     }
 
-    interface IFAQ
+    internal interface IFAQ
     {
         List<Backend.Models.FAQ> GetFAQList();
-        void addFAQ(Backend.Models.FAQ newQ);
-        void deleteFAQ(Backend.Models.FAQ q);
+
+        void AddFAQ(Backend.Models.FAQ newQ);
+
+        void DeleteFAQ(Backend.Models.FAQ q);
     }
 }

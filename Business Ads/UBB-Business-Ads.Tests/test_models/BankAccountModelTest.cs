@@ -39,6 +39,7 @@ namespace UBB_Business_Ads.Tests.Test_models
             Assert.That(isValid, Is.True);
         }
 
+        [Test]
         public void TestInvalidBankAccount()
         {
             var invalidBankAccount = new BankAccount

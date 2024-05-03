@@ -39,7 +39,7 @@ namespace UBB_Business_Ads.Tests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new BankAccountController(accountRepository);
+            BankAccountController bankAccountController = new (accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -63,7 +63,7 @@ namespace UBB_Business_Ads.Tests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new BankAccountController(accountRepository);
+            BankAccountController bankAccountController = new (accountRepository);
 
             Assert.DoesNotThrow(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
         }
@@ -85,22 +85,25 @@ namespace UBB_Business_Ads.Tests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new BankAccountController(accountRepository);
+            BankAccountController bankAccountController = new (accountRepository);
 
             var result = bankAccountController.GetBankAccount();
 
-            // Assert.That(areEqual, Is.True);
-            // Assert.AreEqual(result, bankAccount);
-            Assert.That(result.Email, Is.EqualTo(bankAccount.Email));
-            Assert.That(result.Name, Is.EqualTo(bankAccount.Name));
-            Assert.That(result.Surname, Is.EqualTo(bankAccount.Surname));
-            Assert.That(result.PhoneNumber, Is.EqualTo(bankAccount.PhoneNumber));
-            Assert.That(result.County, Is.EqualTo(bankAccount.County));
-            Assert.That(result.City, Is.EqualTo(bankAccount.City));
-            Assert.That(result.Address, Is.EqualTo(bankAccount.Address));
-            Assert.That(result.Number, Is.EqualTo(bankAccount.Number));
-            Assert.That(result.HolderName, Is.EqualTo(bankAccount.HolderName));
-            Assert.That(result.ExpiryDate, Is.EqualTo(bankAccount.ExpiryDate));
+            Assert.Multiple(() =>
+            {
+                // Assert.That(areEqual, Is.True);
+                // Assert.AreEqual(result, bankAccount);
+                Assert.That(result.Email, Is.EqualTo(bankAccount.Email));
+                Assert.That(result.Name, Is.EqualTo(bankAccount.Name));
+                Assert.That(result.Surname, Is.EqualTo(bankAccount.Surname));
+                Assert.That(result.PhoneNumber, Is.EqualTo(bankAccount.PhoneNumber));
+                Assert.That(result.County, Is.EqualTo(bankAccount.County));
+                Assert.That(result.City, Is.EqualTo(bankAccount.City));
+                Assert.That(result.Address, Is.EqualTo(bankAccount.Address));
+                Assert.That(result.Number, Is.EqualTo(bankAccount.Number));
+                Assert.That(result.HolderName, Is.EqualTo(bankAccount.HolderName));
+                Assert.That(result.ExpiryDate, Is.EqualTo(bankAccount.ExpiryDate));
+            });
         }
     }
 }

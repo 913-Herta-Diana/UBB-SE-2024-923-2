@@ -1,14 +1,19 @@
-using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
-using Moq;
-using NUnit;
-using NUnit.Framework.Legacy;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Xunit;
+﻿// <copyright file="UnitTest1.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace UBB_Business_Ads.Tests
 {
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using Backend.Models;
+    using Backend.Repositories;
+    using Backend.Services;
+    using Moq;
+    using NUnit;
+    using NUnit.Framework.Legacy;
+    using Xunit;
+
     public class Tests
     {
         [Test]
@@ -16,6 +21,7 @@ namespace UBB_Business_Ads.Tests
         {
             Xunit.Assert.True(true);
         }
+
         [TestFixture]
         public class DataEncryptionServiceTests
         {

@@ -37,7 +37,7 @@ namespace UBB_Business_Ads.Tests
                 Image = "doggo.png",
             };
             var productRepository = new ProductRepository(mockProduct);
-            PaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
+            PaymentFormController paymentFormController = new (accountRepository, productRepository);
 
             // var result=paymentFormController.SendPaymentConfirmationMailAsync();
             Assert.DoesNotThrow(() => paymentFormController.SendPaymentConfirmationMailAsync());
@@ -68,14 +68,17 @@ namespace UBB_Business_Ads.Tests
                 Image = "doggo.png",
             };
             var productRepository = new ProductRepository(mockProduct);
-            PaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
+            PaymentFormController paymentFormController = new (accountRepository, productRepository);
 
             var result = paymentFormController.GetProduct();
 
-            Assert.That(result.Name, Is.EqualTo(mockProduct.Name));
-            Assert.That(result.Description, Is.EqualTo(mockProduct.Description));
-            Assert.That(result.Price, Is.EqualTo(mockProduct.Price));
-            Assert.That(result.Image, Is.EqualTo(mockProduct.Image));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.Name, Is.EqualTo(mockProduct.Name));
+                Assert.That(result.Description, Is.EqualTo(mockProduct.Description));
+                Assert.That(result.Price, Is.EqualTo(mockProduct.Price));
+                Assert.That(result.Image, Is.EqualTo(mockProduct.Image));
+            });
         }
     }
 }

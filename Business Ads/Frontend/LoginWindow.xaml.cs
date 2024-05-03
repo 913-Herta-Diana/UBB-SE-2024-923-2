@@ -14,22 +14,22 @@ namespace Frontend
 
         public LoginWindow()
         {
-            InitializeComponent();
-            loginViewModel = new LoginViewModel();  // Initialize the ViewModel
+            this.InitializeComponent();
+            this.loginViewModel = new LoginViewModel();  // Initialize the ViewModel
         }
 
         private void Click_Login_Button(object sender, RoutedEventArgs eventArgs)
         {
-            loginViewModel.Username = UsernameTextBox.Text;
-            loginViewModel.Password = PasswordTextBox.Password;
-            loginViewModel.Email = EmailTextBox.Text;
+            this.loginViewModel.Username = this.UsernameTextBox.Text;
+            this.loginViewModel.Password = this.PasswordTextBox.Password;
+            this.loginViewModel.Email = this.EmailTextBox.Text;
 
-            if (loginViewModel.CanLogin())
+            if (this.loginViewModel.CanLogin())
             {
                 MessageBox.Show("You have been logged in successfully.", "Login success!");
-                MainWindow window = new();
+                MainWindow window = new ();
                 window.Show();
-                Hide();
+                this.Hide();
             }
             else
             {
@@ -39,18 +39,17 @@ namespace Frontend
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs eventArgs)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
+
         private void TextBox_LostFocus_Email(object sender, RoutedEventArgs eventArgs)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
             {
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             }
         }
     }

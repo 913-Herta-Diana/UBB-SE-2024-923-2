@@ -1,56 +1,58 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using System.Reflection.Metadata.Ecma335;
+﻿// <copyright file="FAQService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Services
 {
-    public class FAQService:IFAQService
+    using System.Reflection.Metadata.Ecma335;
+    using Backend.Models;
+    using Backend.Repositories;
+
+    public class FAQService : IFAQService
     {
-        private static readonly FAQService instance = new();
+        private static readonly FAQService InstanceValue = new ();
         private readonly List<string> topics = [];
         private readonly FAQRepository repository;
         private readonly List<FAQ> submittedQuestions;
 
         public FAQService()
         {
-            repository = new FAQRepository();
-            submittedQuestions = [];
+            this.repository = new FAQRepository();
+            this.submittedQuestions = [];
         }
 
         public static FAQService Instance
         {
-            get { return instance; }
+            get { return InstanceValue; }
         }
 
         public List<FAQ> GetAllFAQs()
         {
-            return repository.GetFAQList();
+            return this.repository.GetFAQList();
         }
 
         public List<string> GetTopics()
         {
-
-
-            List<Backend.Models.FAQ> faqs = GetAllFAQs();
+            List<Backend.Models.FAQ> faqs = this.GetAllFAQs();
             foreach (Backend.Models.FAQ faq in faqs)
             {
-                if (!topics.Contains(faq.Topic))
+                if (!this.topics.Contains(faq.Topic))
                 {
-                    topics.Add(faq.Topic);
+                    this.topics.Add(faq.Topic);
                 }
             }
-            return topics;
+
+            return this.topics;
         }
 
         public void AddSubmittedQuestion(FAQ newQ)
         {
-            submittedQuestions.Add(newQ);
+            this.submittedQuestions.Add(newQ);
         }
 
         public List<FAQ> GetSubmittedQuestions()
         {
-            return submittedQuestions;
+            return this.submittedQuestions;
         }
     }
-
 }

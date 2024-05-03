@@ -1,31 +1,34 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// <copyright file="ProductRepoTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UBB_Business_Ads.Tests.RepoTests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Serialization;
+    using Backend.Models;
+    using Backend.Repositories;
+    using Backend.Services;
+    using Moq;
     using NUnit;
     using NUnit.Framework;
     using NUnit.Framework.Legacy;
-    using Moq;
-    using Backend.Services;
 
     [TestFixture]
     public class ProductRepoTest
     {
-        //private readonly ProductRepository _productRepository;
-
+        // private readonly ProductRepository _productRepository;
         [SetUp]
         public void Setup()
         {
             //var _productMock = new ProductMock();
             //var _productRepo = new ProductRepository(_productMock);
         }
+
 /*
         [Test]
         public void Test_GetProduct()
@@ -42,7 +45,5 @@ namespace UBB_Business_Ads.Tests.RepoTests
                 Image = "NewImage"
             };*//*
         }*//**/
-
     }
 }
-

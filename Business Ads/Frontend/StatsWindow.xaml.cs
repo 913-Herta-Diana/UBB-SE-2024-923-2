@@ -11,7 +11,7 @@ namespace Frontend
     /// <summary>
     /// Interaction logic for StatsWindow.xaml.
     /// </summary>
-    [Obsolete]
+    // [Obsolete]
     public partial class StatsWindow : Window
     {
         private Window mainWindow;
@@ -168,7 +168,7 @@ namespace Frontend
 
             this.Loaded += (sender, eventData) =>
             {
-                Random random = new Random();
+                Random random = new ();
                 for (int index = 0; index < 24; index++)
                 {
                     engagement_data_x[index] = index;

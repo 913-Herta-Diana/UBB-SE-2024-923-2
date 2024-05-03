@@ -1,34 +1,37 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// <copyright file="ReviewRepoTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UBB_Business_Ads.Tests.RepoTests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Serialization;
+    using Backend.Models;
+    using Backend.Repositories;
+    using Moq;
     using NUnit;
     using NUnit.Framework;
     using NUnit.Framework.Legacy;
-    using Moq;
 
     [TestFixture]
     public class ReviewRepoTests
     {
-        private ReviewRepository _reviewRepository;
+        private ReviewRepository reviewRepository;
 
         [SetUp]
         public void Setup()
         {
-            _reviewRepository = new ReviewRepository();
+            reviewRepository = new ReviewRepository();
         }
         [Test]
         public void Test_GetReviewS()
         {
-            var result = _reviewRepository.GetReviewList();
-            var expectedReviewListCount = _reviewRepository.GetReviewList().Count;
+            var result = this.reviewRepository.GetReviewList();
+            var expectedReviewListCount = this.reviewRepository.GetReviewList().Count;
 
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Has.Count.EqualTo(expectedReviewListCount));
@@ -36,10 +39,10 @@ namespace UBB_Business_Ads.Tests.RepoTests
         [Test]
         public void Test_AddReviewS()
         {
-            int initialReviewsCount = _reviewRepository.GetReviewList().Count;
+            int initialReviewsCount = this.reviewRepository.GetReviewList().Count;
             var newReviewToAdd = new ReviewClass("user1", "review1");
-            _reviewRepository.AddReview(newReviewToAdd);
-            var todosList = _reviewRepository.GetReviewList();
+            this.reviewRepository.AddReview(newReviewToAdd);
+            var todosList = this.reviewRepository.GetReviewList();
             var updatedTodosCount = todosList.Count;
 
             Assert.Multiple(() =>

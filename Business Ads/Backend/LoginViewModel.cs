@@ -10,16 +10,13 @@ namespace Backend.Login
     {
         private readonly UserController userService;
 
+        public LoginViewModel() => this.userService = new UserController();
+
         public string Username { get; set; }
 
         public string Password { get; set; }
 
         public string Email { get; set; }
-
-        public LoginViewModel()
-        {
-            this.userService = new UserController();
-        }
 
         public bool CanLogin()
         {

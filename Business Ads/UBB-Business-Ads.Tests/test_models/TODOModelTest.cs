@@ -1,8 +1,6 @@
-﻿using NUnit.Framework.Legacy;
-using NUnit.Framework;
-using NUnit;
-using Backend.Models;
-
+﻿// <copyright file="TODOModelTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UBB_Business_Ads.Tests.Test_models
 {
@@ -23,8 +21,8 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void TODOModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForTODO()
         {
             // Arrange
-            TODOClass todoElement = new();
-            TODOClass parameterdTODO = new("testParameteredTask");
+            TODOClass todoElement = new ();
+            TODOClass parameterdTODO = new ("testParameteredTask");
 
             // Act
             todoElement.ID = 1;
@@ -45,10 +43,10 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void TODOModel_TODOToString_ReturnsExpectedStringFormat()
         {
             // Arrange
-            TODOClass todoElement = new("testTask")
+            TODOClass todoElement = new ("testTask")
             {
                 // Act
-                ID = 999
+                ID = 999,
             };
 
             // Assert

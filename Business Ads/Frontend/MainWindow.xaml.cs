@@ -1,3 +1,7 @@
+// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace Frontend
 {
     using System.Windows;
@@ -10,48 +14,48 @@ namespace Frontend
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Loaded += (sender, eventData) =>
+            this.Loaded += (sender, eventData) =>
             {
-                StatsButton.Click += (sender, eventData) =>
+                this.StatsButton.Click += (sender, eventData) =>
                 {
-                    StatsWindow statsWindow = new()
+                    StatsWindow statsWindow = new ()
                     {
-                        MainWindow = this
+                        MainWindow = this,
                     };
                     statsWindow.Show();
-                    Hide();
+                    this.Hide();
                 };
-                ExportButton.Click += (sender, eventData) =>
+                this.ExportButton.Click += (sender, eventData) =>
                 {
-                    ExportWindow exportWindow = new()
+                    ExportWindow exportWindow = new ()
                     {
-                        mainWindow = this
+                        mainWindow = this,
                     };
                     exportWindow.Show();
-                    Hide();
+                    this.Hide();
                 };
-                BillingButton.Click += (sender, eventData) =>
+                this.BillingButton.Click += (sender, eventData) =>
                 {
-                    PaymentsAndBillingsMain billingWindow = new()
+                    PaymentsAndBillingsMain billingWindow = new ()
                     {
-                        mainWindow = this
+                        mainWindow = this,
                     };
                     billingWindow.Show();
-                    Hide();
+                    this.Hide();
                 };
-                faqButton.Click += (sender, eventData) =>
+                this.faqButton.Click += (sender, eventData) =>
                 {
-                    FAQWindow faqWindow = new()
+                    FAQWindow faqWindow = new ()
                     {
-                        MainWindow = this
+                        MainWindow = this,
                     };
                     faqWindow.Show();
-                    Hide();
+                    this.Hide();
                 };
 
-                Closed += (sender, eventData) =>
+                this.Closed += (sender, eventData) =>
                 {
                     Application.Current.Shutdown();
                 };

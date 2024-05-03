@@ -1,64 +1,69 @@
-﻿using Backend.Models;
-using Backend.Services;
+﻿// <copyright file="ProductRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Repositories
 {
-    public class ProductRepository: INterfaceProductRepository
+    using Backend.Models;
+    using Backend.Services;
+
+    public class ProductRepository : INterfaceProductRepository
     {
-        private readonly DataEncryptionService encryptionService = new();
-        private ProductMock _product;
-        private string _nameKey;
-        private string _descriptionKey;
-        private string _priceKey;
-        private string _imageKey;
+        private readonly DataEncryptionService encryptionService = new ();
+        private ProductMock product;
+        private string nameKey;
+        private string descriptionKey;
+        private string priceKey;
+        private string imageKey;
+
+        public ProductRepository(ProductMock product)
+        {
+            this.Product = product;
+        }
 
         public ProductMock Product
         {
             get
             {
-                string decryptedName = encryptionService.Decrypt(_product.Name, _nameKey);
-                string decryptedDescription = encryptionService.Decrypt(_product.Description, _descriptionKey);
-                string decryptedPrice = encryptionService.Decrypt(_product.Price, _priceKey);
-                string decryptedImage = encryptionService.Decrypt(_product.Image, _imageKey);
+                string decryptedName = this.encryptionService.Decrypt(this.product.Name, this.nameKey);
+                string decryptedDescription = this.encryptionService.Decrypt(this.product.Description, this.descriptionKey);
+                string decryptedPrice = this.encryptionService.Decrypt(this.product.Price, this.priceKey);
+                string decryptedImage = this.encryptionService.Decrypt(this.product.Image, this.imageKey);
                 return new ProductMock
                 {
                     Name = decryptedName,
                     Description = decryptedDescription,
                     Price = decryptedPrice,
-                    Image = decryptedImage
+                    Image = decryptedImage,
                 };
             }
+
             set
             {
-                Dictionary<string, string> encryptedNameKeyValuePair = encryptionService.Encrypt(value.Name);
+                Dictionary<string, string> encryptedNameKeyValuePair = this.encryptionService.Encrypt(value.Name);
                 string encryptedName = encryptedNameKeyValuePair["data"];
-                _nameKey = encryptedNameKeyValuePair["key"];
-                Dictionary<string, string> encryptedDescriptionKeyValuePair = encryptionService.Encrypt(value.Description);
+                this.nameKey = encryptedNameKeyValuePair["key"];
+                Dictionary<string, string> encryptedDescriptionKeyValuePair = this.encryptionService.Encrypt(value.Description);
                 string encryptedDescription = encryptedDescriptionKeyValuePair["data"];
-                _descriptionKey = encryptedDescriptionKeyValuePair["key"];
-                Dictionary<string, string> encryptedPriceKeyValuePair = encryptionService.Encrypt(value.Price);
+                this.descriptionKey = encryptedDescriptionKeyValuePair["key"];
+                Dictionary<string, string> encryptedPriceKeyValuePair = this.encryptionService.Encrypt(value.Price);
                 string encryptedPrice = encryptedPriceKeyValuePair["data"];
-                _priceKey = encryptedPriceKeyValuePair["key"];
-                Dictionary<string, string> encryptedImageKeyValuePair = encryptionService.Encrypt(value.Image);
+                this.priceKey = encryptedPriceKeyValuePair["key"];
+                Dictionary<string, string> encryptedImageKeyValuePair = this.encryptionService.Encrypt(value.Image);
                 string encryptedImage = encryptedImageKeyValuePair["data"];
-                _imageKey = encryptedImageKeyValuePair["key"];
-                _product = new ProductMock
+                this.imageKey = encryptedImageKeyValuePair["key"];
+                this.product = new ProductMock
                 {
                     Name = encryptedName,
                     Description = encryptedDescription,
                     Price = encryptedPrice,
-                    Image = encryptedImage
+                    Image = encryptedImage,
                 };
             }
         }
-
-        public ProductRepository(ProductMock product)
-        {
-            Product = product;
-        }
     }
 
-    interface INterfaceProductRepository
+    public interface INterfaceProductRepository
     {
         ProductMock Product { get; set; }
     }
