@@ -15,6 +15,7 @@ namespace Backend.Repositories
 
         public void AddReview(ReviewClass newR);
     }
+
     public class ReviewRepository : INterfaceReview
     {
         private readonly string xmlFilePath;
@@ -53,7 +54,7 @@ namespace Backend.Repositories
                 {
                     XmlSerializer serializer = new (typeof(ReviewClass), new XmlRootAttribute("ReviewClass"));
 
-                    this.reviewList =[];
+                    this.reviewList = new List<ReviewClass>();
                     using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
                     while (reader.ReadToFollowing("ReviewClass"))
@@ -64,7 +65,7 @@ namespace Backend.Repositories
                 }
                 else
                 {
-                    this.reviewList =[];
+                    this.reviewList = new List<ReviewClass>();
                 }
             }
             catch
@@ -80,5 +81,4 @@ namespace Backend.Repositories
             serializer.Serialize(fileStream, this.reviewList);
         }
     }
-
 }

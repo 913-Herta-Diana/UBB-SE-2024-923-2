@@ -1,4 +1,4 @@
-﻿// <copyright file="ProductRepository.cs" company="PlaceholderCompany">
+﻿// <copyright file="INterfaceProductRepository.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -11,6 +11,7 @@ namespace Backend.Repositories
     {
         ProductMock Product { get; set; }
     }
+
     public class ProductRepository : INterfaceProductRepository
     {
         private readonly DataEncryptionService encryptionService = new ();
@@ -66,6 +67,4 @@ namespace Backend.Repositories
             }
         }
     }
-
-    
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="FAQRepository.cs" company="PlaceholderCompany">
+﻿// <copyright file="IFAQ.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -16,6 +16,7 @@ namespace Backend.Repositories
 
         void DeleteFAQ(Backend.Models.FAQ q);
     }
+
     public class FAQRepository : IFAQRepository
     {
         private readonly string xmlFilePath;
@@ -72,7 +73,7 @@ namespace Backend.Repositories
                 }
                 else
                 {
-                    this.faqList = [];
+                    this.faqList = new List<FAQ>();
                 }
             }
             catch
@@ -88,5 +89,4 @@ namespace Backend.Repositories
             serializer.Serialize(fileStream, this.faqList);
         }
     }
-
 }
