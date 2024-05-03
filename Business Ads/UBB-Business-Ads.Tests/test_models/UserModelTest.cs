@@ -1,10 +1,10 @@
 ﻿// <copyright file="UserModelTest.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using Backend.Models;
-
 namespace UBB_Business_Ads.Tests.Test_models
 {
+    using Backend.Models;
+
     [TestFixture]
     internal class UserModelTest
     {
