@@ -17,43 +17,51 @@ namespace Frontend
     public partial class ExportWindow : Window
     {
         public Window mainWindow;
+
         public class Stats
         {
             public Stats(int views,int clicks,int buys,int time)
             {
-                this.views = views;
-                this.time = time;
-                this.clicks = clicks;
-                this.buys = buys;
+                this.Views = views;
+                this.Time = time;
+                this.Clicks = clicks;
+                this.Buys = buys;
             }
-            public int views { get; set; }
-            public int clicks { get; set; }
-            public int buys { get; set; }
-            public int time { get; set; }
+
+            public int Views { get; set; }
+
+            public int Clicks { get; set; }
+
+            public int Buys { get; set; }
+
+            public int Time { get; set; }
         }
-        Stats stats = new Stats(1000,100,5,30);
-        
+
+        private readonly Stats stats = new(1000, 100, 5, 30);
 
         public class User
         {
-            public User(String name)
+            public User(string name)
             {
-                Name = name;
+                this.Name = name;
             }
-            public String Name { get; set; }
+
+            public string Name { get; set; }
 
         }
-        User user = new User("Andrew Stone");
+
+        private readonly User user = new ("Andrew Stone");
 
         public ExportWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Closed += (sender, eventData) =>
+            this.Closed += (sender, eventData) =>
             {
-                mainWindow.Show();
+                this.mainWindow.Show();
             };
         }
+
         public void ExportPDF()
         {
             PdfDocument document = new PdfDocument();
@@ -62,156 +70,198 @@ namespace Frontend
             PdfBrush color = new PdfSolidBrush(System.Drawing.Color.Black);
             int height = 20;
             PdfStandardFont font = new PdfStandardFont(PdfFontFamily.TimesRoman, 12);
-            if (FontBox.SelectedIndex == 1)
+            if (this.FontBox.SelectedIndex == 1)
+            {
                 font = font = new PdfStandardFont(PdfFontFamily.Helvetica, 12);
-            if (FontBox.SelectedIndex == 2)
-                font = font = new PdfStandardFont(PdfFontFamily.Courier, 12);
+            }
+
+            if (this.FontBox.SelectedIndex == 2)
+            {
+                font = _ = new PdfStandardFont(PdfFontFamily.Courier, 12);
+            }
 
             try
             {
-                float fontSize = float.Parse(SizeInput.Text);
+                float fontSize = float.Parse(this.SizeInput.Text);
             }
             catch
             {
-                throw (new Exception("Wrong Size Input"));
+                throw new Exception("Wrong Size Input");
             }
 
-            if (ColorBox.SelectedIndex == 1)
+            if (this.ColorBox.SelectedIndex == 1)
+            {
                 color = new PdfSolidBrush(System.Drawing.Color.Gray);
-            if (ColorBox.SelectedIndex == 2)
+            }
+
+            if (this.ColorBox.SelectedIndex == 2)
+            {
                 color = new PdfSolidBrush(System.Drawing.Color.Red);
+            }
+
             graphics.DrawString("Advertisement Statistics Report", font, color, new PointF((page.Size.Width / 2f) - 100, 10));
 
-            if (ImpressionsCheck.IsChecked == true)
+            if (this.ImpressionsCheck.IsChecked == true)
             {
-                graphics.DrawString("\nAmount of Impressions: " + stats.views.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Impressions: " + this.stats.Views.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
-            if (ClicksCheck.IsChecked == true)
+            if (this.ClicksCheck.IsChecked == true)
             {
-                graphics.DrawString("\nAmount of Clicks: " + stats.clicks.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Clicks: " + this.stats.Clicks.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
-            if (BuysCheck.IsChecked == true)
+            if (this.BuysCheck.IsChecked == true)
             {
-                graphics.DrawString("\nAmount of Purchases: " + stats.buys.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Purchases: " + this.stats.Buys.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
-            if (TimeCheck.IsChecked == true)
+            if (this.TimeCheck.IsChecked == true)
             {
-                graphics.DrawString("\nTotal Time Viewed: " + stats.time.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nTotal Time Viewed: " + this.stats.Time.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
-            if (CTRCheck.IsChecked == true)
+            if (this.CTRCheck.IsChecked == true)
             {
-                graphics.DrawString("\nClick Through Ratio: " + ((float)(stats.clicks / stats.views)).ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nClick Through Ratio: " + ((float)(this.stats.Clicks / this.stats.Views)).ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
-            if (DateCheck.IsChecked == true)
+            if (this.DateCheck.IsChecked == true)
             {
                 graphics.DrawString("Created on:", font, color, new PointF(20, page.Size.Height - 120));
                 graphics.DrawString(DateTime.Now.ToString(), font, color, new PointF(20, page.Size.Height - 100));
             }
-            if (SignatureCheck.IsChecked == true)
+            if (this.SignatureCheck.IsChecked == true)
             {
                 graphics.DrawString("Signature:", font, color, new PointF(page.Size.Width - 200, page.Size.Height - 120));
                 graphics.DrawString(user.Name, font, color, new PointF(page.Size.Width - 200, page.Size.Height - 100));
             }
-            if (RecipientCheck.IsChecked == true)
+            if (this.RecipientCheck.IsChecked == true)
             {
                 graphics.DrawString("Intended Recipient:", font, color, new PointF((page.Size.Width / 2f) - 50, page.Size.Height - 120));
-                graphics.DrawString(RecipientInput.Text, font, color, new PointF((page.Size.Width / 2f) - 50, page.Size.Height - 100));
+                graphics.DrawString(this.RecipientInput.Text, font, color, new PointF((page.Size.Width / 2f) - 50, page.Size.Height - 100));
             }
-            if (EmailButton1.IsChecked == true)
+            if (this.EmailButton1.IsChecked == true)
             {
                 string outputPath = "C:\\Users\\User\\Downloads\\output.pdf";
                 document.Save(outputPath);
-                SendDocEmailAsync(EmailInput1.Text, "C:\\Users\\User\\Downloads\\output.pdf");
+                this.SendDocEmailAsync(this.EmailInput1.Text, "C:\\Users\\User\\Downloads\\output.pdf");
             }
 
-            if (DownloadButton1.IsChecked == true)
+            if (this.DownloadButton1.IsChecked == true)
             {
                 string outputPath = "C:\\Users\\User\\Downloads\\output.pdf";
                 document.Save(outputPath);
             }
+
             document.Close(true);
         }
+
         public void ExportCSV()
         {
-            if (EmailButton1.IsChecked == true)
+            if (this.EmailButton1.IsChecked == true)
             {
                 using (var writer = new StreamWriter("C:\\Users\\User\\Downloads\\output.csv"))
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    List<Stats> records = new List<Stats> { stats };
+                    List<Stats> records = new List<Stats> { this.stats };
 
                     foreach (var record in records)
                     {
-                        if (ImpressionsCheck.IsChecked == true)
-                            csv.WriteField(record.views);
-                        if (ClicksCheck.IsChecked == true)
-                            csv.WriteField(record.clicks);
-                        if (BuysCheck.IsChecked == true)
-                            csv.WriteField(record.buys);
-                        if (CTRCheck.IsChecked == true)
-                            csv.WriteField(((float)record.views / record.clicks));
-                        if (TimeCheck.IsChecked == true)
-                            csv.WriteField(record.time);
+                        if (this.ImpressionsCheck.IsChecked == true)
+                        {
+                            csv.WriteField(record.Views);
+                        }
+
+                        if (this.ClicksCheck.IsChecked == true)
+                        {
+                            csv.WriteField(record.Clicks);
+                        }
+
+                        if (this.BuysCheck.IsChecked == true)
+                        {
+                            csv.WriteField(record.Buys);
+                        }
+
+                        if (this.CTRCheck.IsChecked == true)
+                        {
+                            csv.WriteField((float)record.Views / record.Clicks);
+                        }
+
+                        if (this.TimeCheck.IsChecked == true)
+                        {
+                            csv.WriteField(record.Time);
+                        }
+
                         csv.NextRecord();
                     }
                 }
-                SendDocEmailAsync(EmailInput1.Text, "C:\\Users\\User\\Downloads\\output.csv");
+
+                this.SendDocEmailAsync(this.EmailInput1.Text, "C:\\Users\\User\\Downloads\\output.csv");
             }
-            if (DownloadButton1.IsChecked == true)
+            if (this.DownloadButton1.IsChecked == true)
             {
-                using (var writer = new StreamWriter("C:\\Users\\User\\Downloads\\output.csv"))
-                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                {
-                    List<Stats> records = new List<Stats> { stats };
+                using var writer = new StreamWriter("C:\\Users\\User\\Downloads\\output.csv");
+                using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+                List<Stats> records = new List<Stats> { this.stats };
 
-                    foreach (var record in records)
+                foreach (var record in records)
+                {
+                    if (this.ImpressionsCheck.IsChecked == true)
                     {
-                        if (ImpressionsCheck.IsChecked == true)
-                            csv.WriteField(record.views);
-                        if (ClicksCheck.IsChecked == true)
-                            csv.WriteField(record.clicks);
-                        if (BuysCheck.IsChecked == true)
-                            csv.WriteField(record.buys);
-                        if (CTRCheck.IsChecked == true)
-                            csv.WriteField(((float)record.views / record.clicks));
-                        if (TimeCheck.IsChecked == true)
-                            csv.WriteField(record.time);
-                        csv.NextRecord();
+                        csv.WriteField(record.Views);
                     }
+
+                    if (this.ClicksCheck.IsChecked == true)
+                    {
+                        csv.WriteField(record.Clicks);
+                    }
+
+                    if (this.BuysCheck.IsChecked == true)
+                    {
+                        csv.WriteField(record.Buys);
+                    }
+
+                    if (this.CTRCheck.IsChecked == true)
+                    {
+                        csv.WriteField(((float)record.Views / record.Clicks));
+                    }
+
+                    if (this.TimeCheck.IsChecked == true)
+                    {
+                        csv.WriteField(record.Time);
+                    }
+
+                    csv.NextRecord();
                 }
             }
-        
-    }
+        }
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (Radio7.IsChecked == true)
+            if (this.Radio7.IsChecked == true)
             {
-                ExportPDF();
+                this.ExportPDF();
             }
-            if (Radio5.IsChecked == true)
+            if (this.Radio5.IsChecked == true)
             {
-                ExportCSV();
+                this.ExportCSV();
             }
-            ConfirmExport();
-        }
-        public void ConfirmExport()
-        {
-            ExportSucces exportSucces = new()
-            {
-                MainWindow = this.mainWindow
-            };
-            exportSucces.Show();
-            Hide();
+
+            this.ConfirmExport();
         }
 
-        public Task SendDocEmailAsync(String recipient,String filename)
+        public void ConfirmExport()
+        {
+            ExportSucces exportSucces = new ()
+            {
+                MainWindow = this.mainWindow,
+            };
+            exportSucces.Show();
+            this.Hide();
+        }
+
+        public Task SendDocEmailAsync(string recipient, string filename)
         {
             var sender = "osvathrobert03@gmail.com";
             var password = "daes ndml ukpj qvuj";
@@ -223,7 +273,7 @@ namespace Frontend
             {
                 Port = 587,
                 Credentials = new NetworkCredential(sender, password),
-                EnableSsl = true
+                EnableSsl = true,
             };
 
             var mail = new MailMessage(
@@ -239,8 +289,8 @@ namespace Frontend
 
         private void ReturnButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.Show();
-            Close();
+            this.mainWindow.Show();
+            this.Close();
         }
     }
 }

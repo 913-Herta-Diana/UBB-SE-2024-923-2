@@ -39,17 +39,19 @@ namespace Frontend
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs eventArgs)
         {
-            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
+            TextBox? textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
             {
-                textBox.Text = string.Empty;
+                textBox.Text = " ";
             }
         }
 
         private void TextBox_LostFocus_Email(object sender, RoutedEventArgs eventArgs)
         {
-            if (sender is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
+            TextBox? textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
             {
-                textBox.Text = string.Empty;
+                textBox.Text = " ";
             }
         }
     }
