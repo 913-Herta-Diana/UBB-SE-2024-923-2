@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TODOs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TODOClass>
+<<<<<<< HEAD
     <Task>Review ad targeting strategies</Task>
     <ID>62</ID>
   </TODOClass>
@@ -83,6 +84,22 @@
   <TODOClass>
     <Task>New task</Task>
     <ID>82</ID>
+=======
+    <Task>New task</Task>
+    <ID>6</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>7</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>8</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>10</ID>
+>>>>>>> fe704afd7ea52cc1f091e0f24cf79d6d9554dc21
   </TODOClass>
   <TODOClass>
     <Task>Keep this task</Task>

@@ -1,4 +1,4 @@
-﻿// <copyright file="FAQRepository.cs" company="PlaceholderCompany">
+﻿// <copyright file="IFAQ.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -8,6 +8,15 @@ namespace Backend.Repositories
     using System.Xml.Serialization;
     using Backend.Models;
 
+    internal interface IFAQ
+    {
+        List<Backend.Models.FAQ> GetFAQList();
+
+        void AddFAQ(Backend.Models.FAQ newQ);
+
+        void DeleteFAQ(Backend.Models.FAQ q);
+    }
+
     public class FAQRepository : IFAQRepository
     {
         private readonly string xmlFilePath;
@@ -15,7 +24,7 @@ namespace Backend.Repositories
 
         public FAQRepository()
         {
-            this.faqList = [];
+            this.faqList = new List<FAQ>();
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
@@ -52,9 +61,9 @@ namespace Backend.Repositories
                 {
                     XmlSerializer serializer = new (typeof(FAQ), new XmlRootAttribute("FAQ"));
 
-                    this.faqList = [];
+                    this.faqList = new List<FAQ>();
 
-                    using FileStream fileStream = new(this.xmlFilePath, FileMode.Open);
+                    using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
                     while (reader.ReadToFollowing("FAQ"))
                     {
@@ -64,7 +73,7 @@ namespace Backend.Repositories
                 }
                 else
                 {
-                    this.faqList = [];
+                    this.faqList = new List<FAQ>();
                 }
             }
             catch
@@ -76,17 +85,8 @@ namespace Backend.Repositories
         {
             XmlSerializer serializer = new (typeof(List<FAQ>), new XmlRootAttribute("FAQs"));
 
-            using FileStream fileStream = new(this.xmlFilePath, FileMode.Create);
+            using FileStream fileStream = new (this.xmlFilePath, FileMode.Create);
             serializer.Serialize(fileStream, this.faqList);
         }
-    }
-
-    internal interface IFAQ
-    {
-        List<Backend.Models.FAQ> GetFAQList();
-
-        void AddFAQ(Backend.Models.FAQ newQ);
-
-        void DeleteFAQ(Backend.Models.FAQ q);
     }
 }

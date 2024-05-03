@@ -16,7 +16,7 @@ namespace Backend.Repositories
 
         public TODORepository()
         {
-            this.todosList = [];
+            this.todosList = new List<TODOClass>();
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
@@ -54,7 +54,7 @@ namespace Backend.Repositories
                 {
                     XmlSerializer serializer = new (typeof(TODOClass), new XmlRootAttribute("TODOClass"));
 
-                    this.todosList = [];
+                    this.todosList = new List<TODOClass>();
 
                     using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
@@ -67,7 +67,7 @@ namespace Backend.Repositories
                 }
                 else
                 {
-                    this.todosList = [];
+                    this.todosList = new List<TODOClass>();
                 }
             }
             catch

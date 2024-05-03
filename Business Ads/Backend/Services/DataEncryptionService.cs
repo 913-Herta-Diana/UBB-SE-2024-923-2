@@ -27,6 +27,7 @@ namespace Backend.Services
                     encryptedData += data[i];
                 }
             }
+
             Dictionary<string, string> result = new ()
             {
                 { "data", encryptedData },

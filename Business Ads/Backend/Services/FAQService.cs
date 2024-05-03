@@ -11,14 +11,14 @@ namespace Backend.Services
     public class FAQService : IFAQService
     {
         private static readonly FAQService InstanceValue = new ();
-        private readonly List<string> topics = [];
+        private readonly List<string> topics = new List<string>();
         private readonly FAQRepository repository;
         private readonly List<FAQ> submittedQuestions;
 
         public FAQService()
         {
             this.repository = new FAQRepository();
-            this.submittedQuestions = [];
+            this.submittedQuestions = new List<FAQ>();
         }
 
         public static FAQService Instance
