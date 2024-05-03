@@ -26,10 +26,11 @@ namespace UBB_Business_Ads.Tests.Test_models
             product.Description = "Test Description";
             product.Price = "$10.00";
             product.Image = "test_image.jpg";
-            Assert.That(product.Name, Is.EqualTo("Test Product"));
-            Assert.That(product.Description, Is.EqualTo("Test Description"));
-            Assert.That(product.Price, Is.EqualTo("$10.00"));
-            Assert.That(product.Image, Is.EqualTo("test_image.jpg"));
+            Assert.Multiple(() =>
+            {
+                Assert.That(product, Has.Property(nameof(ProductMock.Name)).EqualTo("Test Product")
+                                          .And.Property(nameof(ProductMock.Description)).EqualTo("Test Description").And.Property(nameof(ProductMock.Price)).EqualTo("$10.00").And.Property(nameof(ProductMock.Image)).EqualTo("test_image.jpg"));
+            });
         }
     }
 }

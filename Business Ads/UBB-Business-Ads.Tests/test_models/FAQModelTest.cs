@@ -26,9 +26,11 @@ namespace UBB_Business_Ads.Tests.Test_models
 
             FAQ faq = new FAQ(question, answer, topic);
 
-            Assert.That(faq.Question, Is.EqualTo(question));
-            Assert.That(faq.Answer, Is.EqualTo(answer));
-            Assert.That(faq.Topic, Is.EqualTo(topic));
+            Assert.Multiple(() =>
+            {
+                Assert.That(faq, Has.Property(nameof(FAQ.Question)).EqualTo("What is that?")
+                                          .And.Property(nameof(FAQ.Answer)).EqualTo("this").And.Property(nameof(FAQ.Topic)).EqualTo("General"));
+            });
         }
 
         [Test]
@@ -38,10 +40,11 @@ namespace UBB_Business_Ads.Tests.Test_models
 
             faq = new FAQ();
 
-            // Assert.That(faq.Id, Is.EqualTo(1));
-            Assert.That(faq.Question, Is.EqualTo(string.Empty));
-            Assert.That(faq.Answer, Is.EqualTo(string.Empty));
-            Assert.That(faq.Topic, Is.EqualTo(string.Empty));
+            Assert.Multiple(() =>
+            {
+                Assert.That(faq, Has.Property(nameof(FAQ.Question)).EqualTo(string.Empty)
+                                          .And.Property(nameof(FAQ.Answer)).EqualTo(string.Empty).And.Property(nameof(FAQ.Topic)).EqualTo(string.Empty));
+            });
         }
 
         [Test]
