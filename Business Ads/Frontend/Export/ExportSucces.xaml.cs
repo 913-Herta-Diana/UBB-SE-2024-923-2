@@ -1,4 +1,8 @@
-﻿namespace Frontend.Export
+﻿// <copyright file="ExportSucces.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Frontend.Export
 {
     using System;
     using System.Collections.Generic;
@@ -14,6 +18,10 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
 
+    /// <summary>
+    /// Interaction logic for ExportSucces.xaml.
+    /// </summary>
+    // [Obsolete]
     public partial class ExportSucces : Window
     {
         public Window MainWindow;
