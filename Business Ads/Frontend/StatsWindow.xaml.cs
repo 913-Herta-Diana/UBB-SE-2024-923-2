@@ -21,17 +21,17 @@ namespace Frontend
             this.InitializeComponent();
             this.mainWindow = Application.Current.MainWindow;
 
-            double[] engagement_data_x = new double[24];
-            double[] engagement_data_y = new double[24];
+            double[] engagement_data_xAxis = new double[24];
+            double[] engagement_data_yAxis = new double[24];
 
-            double[] clicks_data_x = new double[24];
-            double[] clicks_data_y = new double[24];
+            double[] clicks_data_xAxis = new double[24];
+            double[] clicks_data_yAxis = new double[24];
 
-            double[] impressions_data_x = new double[24];
-            double[] impressions_data_y = new double[24];
+            double[] impressions_data_xAxis = new double[24];
+            double[] impressions_data_yAxis = new double[24];
 
-            double[] purchases_data_x = new double[24];
-            double[] purchases_data_y = new double[24];
+            double[] purchases_data_xAxis = new double[24];
+            double[] purchases_data_yAxis = new double[24];
 
             double[] zeros = new double[24];
 
@@ -44,7 +44,7 @@ namespace Frontend
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10);
-                this.CurrentPlot.Plot.Add.Bars(engagement_data_x, engagement_data_y);
+                this.CurrentPlot.Plot.Add.Bars(engagement_data_xAxis, engagement_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
                 this.CurrentPlot.Refresh();
@@ -59,8 +59,8 @@ namespace Frontend
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1000);
-                this.CurrentPlot.Plot.Add.FillY(clicks_data_x, clicks_data_y, zeros);
-                this.CurrentPlot.Plot.Add.Scatter(clicks_data_x, clicks_data_y);
+                this.CurrentPlot.Plot.Add.FillY(clicks_data_xAxis, clicks_data_yAxis, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(clicks_data_xAxis, clicks_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
                 this.CurrentPlot.Refresh();
@@ -75,8 +75,8 @@ namespace Frontend
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 10000);
-                this.CurrentPlot.Plot.Add.FillY(impressions_data_x, impressions_data_y, zeros);
-                this.CurrentPlot.Plot.Add.Scatter(impressions_data_x, impressions_data_y);
+                this.CurrentPlot.Plot.Add.FillY(impressions_data_xAxis, impressions_data_yAxis, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(impressions_data_xAxis, impressions_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
                 this.CurrentPlot.Refresh();
@@ -89,23 +89,23 @@ namespace Frontend
                 this.CurrentPlot.Plot.XLabel("Days ago");
                 this.CurrentPlot.Plot.YLabel("CTR");
 
-                double[] ctr_data_x = new double[24];
-                double[] ctr_data_y = new double[24];
+                double[] ctr_data_xAxis = new double[24];
+                double[] ctr_data_yAxis = new double[24];
 
                 for (int index = 0; index < 24; index++)
                 {
-                    ctr_data_x[index] = index;
+                    ctr_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    ctr_data_y[index] = clicks_data_y[index] / impressions_data_y[index];
+                    ctr_data_yAxis[index] = clicks_data_yAxis[index] / impressions_data_yAxis[index];
                 }
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1);
-                this.CurrentPlot.Plot.Add.FillY(ctr_data_x, ctr_data_y, zeros);
-                this.CurrentPlot.Plot.Add.Scatter(ctr_data_x, ctr_data_y);
+                this.CurrentPlot.Plot.Add.FillY(ctr_data_xAxis, ctr_data_yAxis, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(ctr_data_xAxis, ctr_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
                 this.CurrentPlot.Refresh();
@@ -121,8 +121,8 @@ namespace Frontend
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 500);
 
-                this.CurrentPlot.Plot.Add.FillY(purchases_data_x, purchases_data_y, zeros);
-                this.CurrentPlot.Plot.Add.Scatter(purchases_data_x, purchases_data_y);
+                this.CurrentPlot.Plot.Add.FillY(purchases_data_xAxis, purchases_data_yAxis, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(purchases_data_xAxis, purchases_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
 
@@ -137,8 +137,8 @@ namespace Frontend
                 double[] sums = new double[2];
                 for (int index = 0; index < 24; index++)
                 {
-                    sums[0] += clicks_data_y[index];
-                    sums[1] += purchases_data_y[index];
+                    sums[0] += clicks_data_yAxis[index];
+                    sums[1] += purchases_data_yAxis[index];
                 }
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -1, right: 1);
@@ -171,42 +171,42 @@ namespace Frontend
                 Random random = new ();
                 for (int index = 0; index < 24; index++)
                 {
-                    engagement_data_x[index] = index;
+                    engagement_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    engagement_data_y[index] = random.Next(10);
+                    engagement_data_yAxis[index] = random.Next(10);
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    clicks_data_x[index] = index;
+                    clicks_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    clicks_data_y[index] = random.Next(1000);
+                    clicks_data_yAxis[index] = random.Next(1000);
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    impressions_data_x[index] = index;
+                    impressions_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    impressions_data_y[index] = random.Next((int)clicks_data_y[index], 10000);
+                    impressions_data_yAxis[index] = random.Next((int)clicks_data_yAxis[index], 10000);
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    purchases_data_x[index] = index;
+                    purchases_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    purchases_data_y[index] = random.Next((int)clicks_data_y[index] / 10, (int)clicks_data_y[index] / 2);
+                    purchases_data_yAxis[index] = random.Next((int)clicks_data_yAxis[index] / 10, (int)clicks_data_yAxis[index] / 2);
                 }
 
                 for (int index = 0; index < 24; index++)
