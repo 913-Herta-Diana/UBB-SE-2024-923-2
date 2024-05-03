@@ -1,23 +1,26 @@
-﻿using System.Windows;
-using Syncfusion.Pdf;
-using Syncfusion.Pdf.Graphics;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
-using CsvHelper;
-using System.Net.Mail;
-using System.Net;
-using Frontend.Export;
-using ScottPlot.Panels;
-using static Frontend.ExportWindow;
+﻿// <copyright file="IPDFExporter.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Frontend
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
-    /// 
+    using System.Drawing;
+    using System.Globalization;
+    using System.IO;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Windows;
+    using CsvHelper;
+    using Frontend.Export;
+    using ScottPlot.Panels;
+    using Syncfusion.Pdf;
+    using Syncfusion.Pdf.Graphics;
+    using static Frontend.ExportWindow;
 
+    /// <summary>
+    /// Interaction logic for Window1.xaml.
+    /// </summary>
+    ///
     public interface IPDFExporter
     {
         void ExportPDF(
@@ -60,7 +63,7 @@ namespace Frontend
     public class ExportManager : IPDFExporter, ICSVExporter, IEmailSender
     {
         public void ExportPDF(
-            AdvertisementStats _stats,
+            AdvertisementStats stats,
             User user,
             int fontSize,
             int fontIndex,
@@ -106,27 +109,27 @@ namespace Frontend
 
             if (impressionsChecked == true)
             {
-                graphics.DrawString("\nAmount of Impressions: " + _stats.Views.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Impressions: " + stats.Views.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
             if (clicksChecked == true)
             {
-                graphics.DrawString("\nAmount of Clicks: " + _stats.Clicks.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Clicks: " + stats.Clicks.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
             if (buysChecked == true)
             {
-                graphics.DrawString("\nAmount of Purchases: " + _stats.Buys.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nAmount of Purchases: " + stats.Buys.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
             if (timeChecked == true)
             {
-                graphics.DrawString("\nTotal Time Viewed: " + _stats.Time.ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nTotal Time Viewed: " + stats.Time.ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
             if (ctrChecked == true)
             {
-                graphics.DrawString("\nClick Through Ratio: " + ((float)(_stats.Clicks / _stats.Views)).ToString(), font, color, new PointF(10, height));
+                graphics.DrawString("\nClick Through Ratio: " + ((float)(stats.Clicks / stats.Views)).ToString(), font, color, new PointF(10, height));
                 height += 20;
             }
             if (dateChecked == true)
@@ -159,7 +162,7 @@ namespace Frontend
             document.Close(true);
         }
         public void ExportCSV(
-            AdvertisementStats _stats,
+            AdvertisementStats stats,
             bool impressionsChecked,
             bool clicksChecked,
             bool buysChecked,
@@ -171,7 +174,7 @@ namespace Frontend
             using (var writer = new StreamWriter(outputPath))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                List<AdvertisementStats> records = new List<AdvertisementStats> { _stats };
+                List<AdvertisementStats> records = new List<AdvertisementStats> { stats };
 
                 foreach (var record in records)
                 {
@@ -233,8 +236,11 @@ namespace Frontend
         }
 
         public int Views { get; set; }
+
         public int Clicks { get; set; }
+
         public int Buys { get; set; }
+
         public int Time { get; set; }
     }
 
@@ -244,6 +250,7 @@ namespace Frontend
         {
             Name = name;
         }
+
         public string Name { get; set; }
 
     }
@@ -251,7 +258,7 @@ namespace Frontend
 
     public partial class ExportWindow : Window
     {
-        public Window mainWindow;
+        public Window MainWindow;
         ExportManager _exportManager;
 
         AdvertisementStats _stats = new AdvertisementStats(1000, 100, 5, 30);
@@ -263,7 +270,7 @@ namespace Frontend
 
             Closed += (sender, eventData) =>
             {
-                mainWindow.Show();
+                MainWindow.Show();
             };
         }
 
@@ -317,13 +324,14 @@ namespace Frontend
                     outputPath,
                     emailRecipient);
             }
-            ConfirmExport();
+            this.ConfirmExport();
         }
+
         public void ConfirmExport()
         {
             ExportSucces exportSucces = new()
             {
-                MainWindow = this.mainWindow
+                MainWindow = this.MainWindow
             };
             exportSucces.Show();
             Hide();
@@ -331,7 +339,7 @@ namespace Frontend
 
         private void ReturnButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.Show();
+            MainWindow.Show();
             Close();
         }
     }
