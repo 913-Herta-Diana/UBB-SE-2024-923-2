@@ -41,8 +41,8 @@ namespace UBB_Business_Ads.Tests.RepoTests
         [Test]
         public void Test_AddTODOS()
         {
-            int initialTODOsCount= this.tODOrepository.GetTODOS().Count;
-            var newTODOtoAdd=new TODOClass("New task");
+            int initialTODOsCount = this.tODOrepository.GetTODOS().Count;
+            var newTODOtoAdd = new TODOClass("New task");
             this.tODOrepository.AddingTODO(newTODOtoAdd);
             var todosList = this.tODOrepository.GetTODOS();
             var updatedTodosCount = todosList.Count;
