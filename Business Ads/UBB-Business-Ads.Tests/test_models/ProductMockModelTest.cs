@@ -18,7 +18,7 @@ namespace UBB_Business_Ads.Tests.Test_models
     internal class ProductMockModelTest
     {
         [Test]
-        public void ProductMock_SetAndGetProperties_Success()
+        public void ProductMock_SetAndGetProperties_SuccessGettingAndSettingProperties()
         {
             var product = new ProductMock();
 

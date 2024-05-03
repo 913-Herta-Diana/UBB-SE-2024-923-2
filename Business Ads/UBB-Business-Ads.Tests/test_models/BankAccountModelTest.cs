@@ -18,7 +18,8 @@ namespace UBB_Business_Ads.Tests.Test_models
     internal class BankAccountModelTest
     {
         [Test]
-        public void TestValidBankAccount()
+        //ReviewModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForReview
+        public void TestValidBankAccount_FieldsMustBeValid_SuccessValidBankAccount()
         {
             var validBankAccount = new BankAccount
             {
@@ -40,7 +41,7 @@ namespace UBB_Business_Ads.Tests.Test_models
         }
 
         [Test]
-        public void TestInvalidBankAccount()
+        public void TestInvalidBankAccount_FieldsShouldBeInvalid_NotValidBankAccount()
         {
             var invalidBankAccount = new BankAccount
             {

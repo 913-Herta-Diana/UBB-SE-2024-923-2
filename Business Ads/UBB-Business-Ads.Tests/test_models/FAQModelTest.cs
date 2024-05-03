@@ -18,7 +18,7 @@ namespace UBB_Business_Ads.Tests.Test_models
     internal class FAQModelTest
     {
         [Test]
-        public void FAQ_Constructors_ShouldSetPropertiesCorrectly()
+        public void FAQConstructors_SettingPropertiesCorrectly_SuccessSettingPropertiesForFAQ()
         {
             string question = "What is that?";
             string answer = "this";
@@ -32,7 +32,7 @@ namespace UBB_Business_Ads.Tests.Test_models
         }
 
         [Test]
-        public void EmptyConstructor_InitializesProperties()
+        public void EmptyConstructor_InitializesProperties_SuccessInitialisingEmptyProperties()
         {
             FAQ faq;
 
@@ -45,7 +45,7 @@ namespace UBB_Business_Ads.Tests.Test_models
         }
 
         [Test]
-        public void FAQ_ToString_ShouldReturnQuestion()
+        public void FAQToString_GettingTheStringRepresentationOfFAQ_ShouldReturnQuestion()
         {
             string question = "What is that?";
             string answer = "this";

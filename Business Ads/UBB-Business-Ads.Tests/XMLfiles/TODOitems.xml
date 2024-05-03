@@ -2,18 +2,26 @@
 <TODOs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TODOClass>
     <Task>New task</Task>
-    <ID>6</ID>
+    <ID>10</ID>
   </TODOClass>
   <TODOClass>
     <Task>Keep this task</Task>
-    <ID>7</ID>
+    <ID>11</ID>
   </TODOClass>
   <TODOClass>
     <Task>New task</Task>
-    <ID>8</ID>
+    <ID>12</ID>
   </TODOClass>
   <TODOClass>
     <Task>Keep this task</Task>
-    <ID>10</ID>
+    <ID>13</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>14</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>16</ID>
   </TODOClass>
 </TODOs>
