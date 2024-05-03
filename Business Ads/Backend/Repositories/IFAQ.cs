@@ -8,6 +8,14 @@ namespace Backend.Repositories
     using System.Xml.Serialization;
     using Backend.Models;
 
+    internal interface IFAQ
+    {
+        List<Backend.Models.FAQ> GetFAQList();
+
+        void AddFAQ(Backend.Models.FAQ newQ);
+
+        void DeleteFAQ(Backend.Models.FAQ q);
+    }
     public class FAQRepository : IFAQRepository
     {
         private readonly string xmlFilePath;
@@ -15,7 +23,7 @@ namespace Backend.Repositories
 
         public FAQRepository()
         {
-            this.faqList = [];
+            this.faqList = new List<FAQ>();
             string binDirectory = "\\bin";
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string pathUntilBin;
@@ -52,7 +60,7 @@ namespace Backend.Repositories
                 {
                     XmlSerializer serializer = new (typeof(FAQ), new XmlRootAttribute("FAQ"));
 
-                    this.faqList = [];
+                    this.faqList = new List<FAQ>();
 
                     using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
@@ -81,12 +89,4 @@ namespace Backend.Repositories
         }
     }
 
-    internal interface IFAQ
-    {
-        List<Backend.Models.FAQ> GetFAQList();
-
-        void AddFAQ(Backend.Models.FAQ newQ);
-
-        void DeleteFAQ(Backend.Models.FAQ q);
-    }
 }

@@ -9,7 +9,7 @@ namespace Backend.Repositories
 
     public class AccountRepository
     {
-        private readonly DataEncryptionService encryptionService = new();
+        private readonly DataEncryptionService encryptionService = new ();
         private BankAccount bankAccount;
         private string emailKey;
         private string nameKey;

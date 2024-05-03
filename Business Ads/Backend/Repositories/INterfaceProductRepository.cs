@@ -7,6 +7,10 @@ namespace Backend.Repositories
     using Backend.Models;
     using Backend.Services;
 
+    public interface INterfaceProductRepository
+    {
+        ProductMock Product { get; set; }
+    }
     public class ProductRepository : INterfaceProductRepository
     {
         private readonly DataEncryptionService encryptionService = new ();
@@ -63,8 +67,5 @@ namespace Backend.Repositories
         }
     }
 
-    public interface INterfaceProductRepository
-    {
-        ProductMock Product { get; set; }
-    }
+    
 }

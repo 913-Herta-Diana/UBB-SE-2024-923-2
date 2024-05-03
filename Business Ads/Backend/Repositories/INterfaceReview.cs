@@ -9,6 +9,12 @@ namespace Backend.Repositories
     using Backend.Controllers;
     using Backend.Models;
 
+    internal interface INterfaceReview
+    {
+        public List<ReviewClass> GetReviewList();
+
+        public void AddReview(ReviewClass newR);
+    }
     public class ReviewRepository : INterfaceReview
     {
         private readonly string xmlFilePath;
@@ -75,10 +81,4 @@ namespace Backend.Repositories
         }
     }
 
-    internal interface INterfaceReview
-    {
-        public List<ReviewClass> GetReviewList();
-
-        public void AddReview(ReviewClass newR);
-    }
 }
