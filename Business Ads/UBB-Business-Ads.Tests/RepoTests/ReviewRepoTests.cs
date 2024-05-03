@@ -1,4 +1,4 @@
-﻿// <copyright file="ReviewRepoTest.cs" company="PlaceholderCompany">
+﻿// <copyright file="ReviewRepoTests.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -25,8 +25,9 @@ namespace UBB_Business_Ads.Tests.RepoTests
         [SetUp]
         public void Setup()
         {
-            reviewRepository = new ReviewRepository();
+            this.reviewRepository = new ReviewRepository();
         }
+
         [Test]
         public void Test_GetReviewS()
         {
@@ -36,6 +37,7 @@ namespace UBB_Business_Ads.Tests.RepoTests
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Has.Count.EqualTo(expectedReviewListCount));
         }
+
         [Test]
         public void Test_AddReviewS()
         {
@@ -50,8 +52,6 @@ namespace UBB_Business_Ads.Tests.RepoTests
                 Assert.That(updatedTodosCount, Is.EqualTo(initialReviewsCount + 1));
                 Assert.That(todosList, Does.Contain(newReviewToAdd));
             });
-
         }
-
     }
 }
