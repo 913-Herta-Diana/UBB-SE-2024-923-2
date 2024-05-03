@@ -54,5 +54,21 @@ namespace Backend.Services
         {
             return this.submittedQuestions;
         }
+
+        public List<FAQ> FilterFAQs(List<FAQ> faqs, string searchText)
+        {
+            searchText = searchText.ToLower();
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                return faqs
+                    .Where(faq =>
+                        faq.Question.ToLower().Contains(searchText) ||
+                        faq.Topic.ToLower() == searchText)
+                    .ToList();
+            }
+
+            return faqs;
+        }
     }
 }

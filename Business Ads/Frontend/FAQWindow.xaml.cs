@@ -86,20 +86,7 @@ namespace Frontend
             TextBox search = (TextBox)sender;
             string searchText = search.Text.ToLower();
 
-            List<Backend.Models.FAQ> filteredFAQ;
-
-            if (!string.IsNullOrWhiteSpace(searchText))
-            {
-                filteredFAQ = this.fAQs
-                    .Where(faq =>
-                        faq.Question.ToLower().Contains(searchText) ||
-                        faq.Topic.ToLower() == searchText)
-                    .ToList();
-            }
-            else
-            {
-                filteredFAQ = this.fAQs;
-            }
+            List<Backend.Models.FAQ> filteredFAQ = service.FilterFAQs(this.fAQs, search.Text);
 
             if (filteredFAQ == null || filteredFAQ.Count == 0)
             {
