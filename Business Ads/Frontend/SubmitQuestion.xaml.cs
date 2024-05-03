@@ -49,8 +49,10 @@ namespace Frontend.FAQ
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string question = this.questionBox.Text;
-            string selectedTopic = this.dropTopic.SelectedItem as string;
-            Backend.Models.FAQ newQ = new (question, "to be added", topic: selectedTopic);
+            string? selectedTopic = this.dropTopic.SelectedItem as string;
+            Backend.Models.FAQ newQ = new (question,
+                                           "to be added",
+                                           topic: selectedTopic);
             this.service.AddSubmittedQuestion(newQ);
             MessageBox.Show("The question has been submitted. Check the FAQ page later to see if it has been approved.");
         }
