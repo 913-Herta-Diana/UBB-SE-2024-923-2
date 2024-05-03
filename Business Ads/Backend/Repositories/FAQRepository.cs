@@ -54,7 +54,7 @@ namespace Backend.Repositories
 
                     this.faqList = [];
 
-                    using FileStream fileStream = new(this.xmlFilePath, FileMode.Open);
+                    using FileStream fileStream = new (this.xmlFilePath, FileMode.Open);
                     using XmlReader reader = XmlReader.Create(fileStream);
                     while (reader.ReadToFollowing("FAQ"))
                     {
@@ -76,7 +76,7 @@ namespace Backend.Repositories
         {
             XmlSerializer serializer = new (typeof(List<FAQ>), new XmlRootAttribute("FAQs"));
 
-            using FileStream fileStream = new(this.xmlFilePath, FileMode.Create);
+            using FileStream fileStream = new (this.xmlFilePath, FileMode.Create);
             serializer.Serialize(fileStream, this.faqList);
         }
     }
