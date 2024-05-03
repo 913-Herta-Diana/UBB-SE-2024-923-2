@@ -4,15 +4,8 @@
 
 namespace UBB_Business_Ads.Tests.Test_models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Backend.Models;
-    using NUnit;
     using NUnit.Framework;
-    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class ReviewModelTest
@@ -21,20 +14,21 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void ReviewModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForReview()
         {
             // Arrange
-            ReviewClass reviewTest = new ();
-            ReviewClass parameterizedReviewTest = new ("testUser", "testReview");
+            var reviewTest = new ReviewClass();
+            var parameterizedReviewTest = new ReviewClass("testUser", "testReview");
 
             // Act
             reviewTest.User = "testUser";
             reviewTest.Review = "testReview";
 
+            // Assert
             Assert.Multiple(() =>
             {
-                // Assert
-                Assert.That(reviewTest.User, Is.EqualTo("testUser"));
-                Assert.That(reviewTest.Review, Is.EqualTo("testReview"));
-                Assert.That(parameterizedReviewTest.User, Is.EqualTo("testUser"));
-                Assert.That(parameterizedReviewTest.Review, Is.EqualTo("testReview"));
+                Assert.That(reviewTest, Has.Property(nameof(ReviewClass.User)).EqualTo("testUser")
+                                          .And.Property(nameof(ReviewClass.Review)).EqualTo("testReview"));
+
+                Assert.That(parameterizedReviewTest, Has.Property(nameof(ReviewClass.User)).EqualTo("testUser")
+                                                     .And.Property(nameof(ReviewClass.Review)).EqualTo("testReview"));
             });
         }
 
@@ -42,9 +36,8 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void ReviewModel_ReviewToString_ReturnsExpectedString()
         {
             // Arrange
-            ReviewClass reviewTest = new ()
+            var reviewTest = new ReviewClass
             {
-                // Act
                 User = "testUser",
                 Review = "testReview",
             };

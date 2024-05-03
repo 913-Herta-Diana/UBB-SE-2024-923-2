@@ -1,18 +1,10 @@
 ﻿// <copyright file="TODOModelTest.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
 namespace UBB_Business_Ads.Tests.Test_models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Backend.Models;
-    using NUnit;
     using NUnit.Framework;
-    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class TODOModelTest
@@ -21,21 +13,22 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void TODOModel_GettingAndSettingProperties_SuccessGettingAndSettingPropertiesForTODO()
         {
             // Arrange
-            TODOClass todoElement = new ();
-            TODOClass parameterdTODO = new ("testParameteredTask");
+            var todoElement = new TODOClass();
+            var parameterdTODO = new TODOClass("testParameteredTask");
 
             // Act
             todoElement.ID = 1;
             todoElement.Task = "testTask";
             parameterdTODO.ID = 2;
 
+            // Assert
             Assert.Multiple(() =>
             {
-                // Assert
-                Assert.That(todoElement.ID, Is.EqualTo(1));
-                Assert.That(todoElement.Task, Is.EqualTo("testTask"));
-                Assert.That(parameterdTODO.ID, Is.EqualTo(2));
-                Assert.That(parameterdTODO.Task, Is.EqualTo("testParameteredTask"));
+                Assert.That(todoElement, Has.Property(nameof(TODOClass.ID)).EqualTo(1)
+                                          .And.Property(nameof(TODOClass.Task)).EqualTo("testTask"));
+
+                Assert.That(parameterdTODO, Has.Property(nameof(TODOClass.ID)).EqualTo(2)
+                                             .And.Property(nameof(TODOClass.Task)).EqualTo("testParameteredTask"));
             });
         }
 
@@ -43,9 +36,8 @@ namespace UBB_Business_Ads.Tests.Test_models
         public void TODOModel_TODOToString_ReturnsExpectedStringFormat()
         {
             // Arrange
-            TODOClass todoElement = new ("testTask")
+            var todoElement = new TODOClass("testTask")
             {
-                // Act
                 ID = 999,
             };
 

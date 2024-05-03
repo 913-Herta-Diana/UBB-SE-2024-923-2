@@ -88,12 +88,18 @@
     <User>user1</User>
     <Review>review1</Review>
   </ReviewClass>
+<<<<<<< HEAD
+=======
   <ReviewClass>
     <User>user1</User>
     <Review>review1</Review>
   </ReviewClass>
+<<<<<<< HEAD
   <ReviewClass>
     <User>user1</User>
     <Review>review1</Review>
   </ReviewClass>
+=======
+>>>>>>> fe704afd7ea52cc1f091e0f24cf79d6d9554dc21
+>>>>>>> 36bef571cea60db609c08fdc883b8612dbd1f4dc
 </Reviews>

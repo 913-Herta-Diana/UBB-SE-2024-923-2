@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TODOs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TODOClass>
+<<<<<<< HEAD
+    <Task>Review ad targeting strategies</Task>
+    <ID>62</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Optimize ad campaign for higher conversion rates</Task>
+    <ID>63</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Answer users</Task>
+    <ID>64</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Check users' answers</Task>
+    <ID>65</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>66</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>67</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>68</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>69</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>70</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>71</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>72</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>73</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>74</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>75</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>76</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>77</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>78</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>79</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>80</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>81</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>82</ID>
+=======
     <Task>New task</Task>
     <ID>10</ID>
   </TODOClass>
@@ -14,6 +98,7 @@
   </TODOClass>
   <TODOClass>
     <Task>Keep this task</Task>
+<<<<<<< HEAD
     <ID>13</ID>
   </TODOClass>
   <TODOClass>
@@ -23,5 +108,53 @@
   <TODOClass>
     <Task>Keep this task</Task>
     <ID>16</ID>
+=======
+    <ID>10</ID>
+>>>>>>> fe704afd7ea52cc1f091e0f24cf79d6d9554dc21
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>83</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>84</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>85</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>86</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>87</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>88</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>89</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>90</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>91</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>New task</Task>
+    <ID>92</ID>
+  </TODOClass>
+  <TODOClass>
+    <Task>Keep this task</Task>
+    <ID>94</ID>
+>>>>>>> 36bef571cea60db609c08fdc883b8612dbd1f4dc
   </TODOClass>
 </TODOs>
