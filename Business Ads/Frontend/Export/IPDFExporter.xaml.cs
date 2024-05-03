@@ -293,7 +293,7 @@ namespace Frontend
         public Window MainWindow;
         ExportManager exportManager;
 
-        AdvertisementStats _stats = new AdvertisementStats(1000, 100, 5, 30);
+        AdvertisementStats stats = new AdvertisementStats(1000, 100, 5, 30);
         User user = new User("Andrew Stone");
 
         public ExportWindow()
@@ -310,7 +310,7 @@ namespace Frontend
         {
             int fontIndex = this.FontBox.SelectedIndex;
             int colorIndex = this.ColorBox.SelectedIndex;
-            int fontSize = int.Parse(SizeInput.Text);
+            int fontSize = int.Parse(this.SizeInput.Text);
             bool impressionsChecked = this.ImpressionsCheck.IsChecked == true;
             bool clicksChecked = this.ClicksCheck.IsChecked == true;
             bool buysChecked = this.BuysCheck.IsChecked == true;
@@ -327,7 +327,7 @@ namespace Frontend
 
             if (this.Radio7.IsChecked == true)
             {
-                this.exportManager.ExportPDF(this._stats,
+                this.exportManager.ExportPDF(this.stats,
                     this.user,
                     fontSize,
                     fontIndex,
@@ -348,7 +348,7 @@ namespace Frontend
             if (this.Radio5.IsChecked == true)
             {
                 this.exportManager.ExportCSV(
-                    this._stats,
+                    this.stats,
                     impressionsChecked,
                     clicksChecked,
                     buysChecked,
@@ -363,7 +363,7 @@ namespace Frontend
 
         public void ConfirmExport()
         {
-            ExportSucces exportSucces = new()
+            ExportSucces exportSucces = new ()
             {
                 MainWindow = this.MainWindow,
             };
