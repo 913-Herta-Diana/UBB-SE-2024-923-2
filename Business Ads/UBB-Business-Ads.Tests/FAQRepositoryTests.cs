@@ -1,14 +1,17 @@
-﻿
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Serialization;
-using Backend.Models;
-using System.Xml;
+﻿// <copyright file="FAQRepositoryTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Repositories.Tests
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Xml;
+    using System.Xml.Serialization;
+    using Backend.Models;
+    using NUnit.Framework;
+
     [TestFixture]
     public class FAQRepositoryTests
     {
@@ -21,7 +24,7 @@ namespace Backend.Repositories.Tests
         public void SetUp()
         {
             // Create a test XML file with sample data
-            CreateTestXmlFile();
+            this.CreateTestXmlFile();
         }
 
         [TearDown]
@@ -45,10 +48,10 @@ namespace Backend.Repositories.Tests
 
             // Assert
             Assert.That(faqList, Is.Not.Null);
+
             // Add more assertions as needed
         }
 
-        
         /*public void LoadFAQsFromXml_FileExists_LoadsFAQs()
         {
             // Arrange
@@ -93,6 +96,7 @@ namespace Backend.Repositories.Tests
             // Assert
             List<FAQ> faqList = faqRepository.GetFAQList();
             Assert.That(faqList.Any(f => f.Question == TestQuestion && f.Answer == TestAnswer && f.Topic == TestTopic), Is.True);
+
             // Add more assertions as needed
         }
 
@@ -110,6 +114,7 @@ namespace Backend.Repositories.Tests
             // Assert
             List<FAQ> faqList = faqRepository.GetFAQList();
             Assert.That(faqList.Any(f => f.Question == TestQuestion && f.Answer == TestAnswer && f.Topic == TestTopic), Is.True);
+
             // Add more assertions as needed
         }
 
@@ -128,7 +133,6 @@ namespace Backend.Repositories.Tests
                 writer.WriteEndElement();
 
                 // Add more sample FAQs if needed
-
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }

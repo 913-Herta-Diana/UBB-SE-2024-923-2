@@ -1,11 +1,15 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
-using Moq;
-using NUnit.Framework;
+﻿// <copyright file="AccountRepositoryTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Tests.RepositoryTests
 {
+    using Backend.Models;
+    using Backend.Repositories;
+    using Backend.Services;
+    using Moq;
+    using NUnit.Framework;
+
     [TestFixture]
     public class AccountRepositoryTests
     {
