@@ -17,6 +17,19 @@ namespace UBB_Business_Ads.Tests.RepoTests
     using NUnit.Framework;
     using NUnit.Framework.Legacy;
 
+    /*public TODORepository()
+    {
+        this.todosList = [];
+        string binDirectory = "\\bin";
+        string basePath = AppDomain.CurrentDomain.BaseDirectory;
+        string pathUntilBin;
+
+        int index = basePath.IndexOf(binDirectory);
+        pathUntilBin = basePath[..index];
+        string pathToToDoXML = $"\\XMLFiles\\TODOitems.xml";
+        this.xmlFilePath = pathUntilBin + pathToToDoXML;
+        this.LoadFromXml();
+    }*/
     [TestFixture]
     public class TODORepoTest
     {
@@ -26,6 +39,12 @@ namespace UBB_Business_Ads.Tests.RepoTests
         public void Setup()
         {
             this.tODOrepository = new TODORepository();
+        }
+
+        [Test]
+        public void Test_TODOConstructor()
+        {
+            Assert.That(this.tODOrepository.GetTODOS(), Is.Not.Null);
         }
 
         [Test]

@@ -21,29 +21,59 @@ namespace UBB_Business_Ads.Tests.RepoTests
     [TestFixture]
     public class ProductRepoTest
     {
-        // private readonly ProductRepository _productRepository;
+        private ProductRepository productRepository;
+        private ProductMock product;
+
         [SetUp]
         public void Setup()
         {
-            //var _productMock = new ProductMock();
-            //var _productRepo = new ProductRepository(_productMock);
+            this.productRepository = new ProductRepository(new ProductMock
+            {
+                Name = "Test Product",
+                Description = "This is a test product",
+                Price = "19.99",
+                Image = "test.jpg",
+            });
+            this.product = new ProductMock
+            {
+                Name = "New Product",
+                Description = "This is a new product",
+                Price = "29.99",
+                Image = "new.jpg",
+            };
         }
 
-/*
         [Test]
-        public void Test_GetProduct()
-
+        public void Test_Setter()
         {
-            var encryptionService = new DataEncryptionService();
-            var repository = new ProductRepository(null); // We'll pass null initially, as we'll set it later
+            this.productRepository.Product = this.product;
 
-           *//* var updatedProduct = new ProductMock
+            Assert.Multiple(() =>
             {
-                Name = "NewName",
-                Description = "NewDescription",
-                Price = "NewPrice",
-                Image = "NewImage"
-            };*//*
-        }*//**/
+                Assert.That(this.productRepository.Product, Is.Not.Null);
+                Assert.That(this.product, Is.Not.EqualTo(this.productRepository.Product));
+                Assert.That(this.product.Name, Is.EqualTo(this.productRepository.Product.Name));
+                Assert.That(this.product.Description, Is.EqualTo(this.productRepository.Product.Description));
+                Assert.That(this.product.Price, Is.EqualTo(this.productRepository.Product.Price));
+                Assert.That(this.product.Image, Is.EqualTo(this.productRepository.Product.Image));
+            });
+        }
+
+        [Test]
+        public void Test_Getter()
+        {
+            this.productRepository.Product = this.product;
+
+            var decryptProduct = this.productRepository.Product;
+
+            Assert.That(decryptProduct, Is.Not.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(decryptProduct.Name, Is.EqualTo("New Product"));
+                Assert.That(decryptProduct.Description, Is.EqualTo("This is a new product"));
+                Assert.That(decryptProduct.Price, Is.EqualTo("29.99"));
+                Assert.That(decryptProduct.Image, Is.EqualTo("new.jpg"));
+            });
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace Backend.Repositories
             this.xmlFilePath = pathUntilBin + pathToReviewsXML;
             this.LoadFromXml();
         }
+
         public List<ReviewClass> GetReviewList()
         {
             return this.reviewList;
@@ -37,6 +38,7 @@ namespace Backend.Repositories
             this.reviewList.Add(newR);
             this.SaveToXml();
         }
+
         private void LoadFromXml()
         {
             try

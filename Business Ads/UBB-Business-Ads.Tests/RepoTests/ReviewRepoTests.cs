@@ -29,6 +29,12 @@ namespace UBB_Business_Ads.Tests.RepoTests
         }
 
         [Test]
+        public void Test_ConstructorReview()
+        {
+            Assert.That(this.reviewRepository.GetReviewList(), Is.Not.Null);
+        }
+
+        [Test]
         public void Test_GetReviewS()
         {
             var result = this.reviewRepository.GetReviewList();
