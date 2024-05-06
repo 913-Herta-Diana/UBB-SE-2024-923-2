@@ -17,12 +17,12 @@ namespace UBB_Business_Ads.Tests.RepoTests
 
     public class TestProductRepository
     {
-        private Product product;
+        private ProductMock product;
         private ProductRepository productRepository;
 
         public TestProductRepository()
         {
-            this.productRepository = new ProductRepository(new Product
+            this.productRepository = new ProductRepository(new ProductMock
             {
                 Name = "Test Product",
                 Description = "This is a test product",
@@ -30,7 +30,7 @@ namespace UBB_Business_Ads.Tests.RepoTests
                 Image = "test.jpg",
             });
 
-            this.product = new Product
+            this.product = new ProductMock
             {
                 Name = "New Product",
                 Description = "This is a new product",

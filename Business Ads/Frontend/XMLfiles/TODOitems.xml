@@ -16,4 +16,8 @@
     <Task>Check new questions</Task>
     <ID>3</ID>
   </TODOClass>
+  <TODOClass>
+    <Task>Test app</Task>
+    <ID>4</ID>
+  </TODOClass>
 </TODOs>
