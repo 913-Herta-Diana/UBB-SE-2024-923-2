@@ -7,7 +7,7 @@ using Backend.Models;
 
 namespace Backend.Repositories
 {
-    internal interface INterfaceReview
+    internal interface INterfaceReview<T>
     {
         public List<ReviewClass> GetReviewList();
 

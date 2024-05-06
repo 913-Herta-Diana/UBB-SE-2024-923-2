@@ -24,7 +24,7 @@
         {
             File.WriteAllText("C:\\Users\\herta\\Desktop\\Sem4\\Biznis\\Business Ads\\UBB-Business-Ads.Tests\\XMLfiles\\TODOitems.xml", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<TODOs xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n\t<TODOClass>\r\n\t\t<Task>Review ad targeting strategies</Task>\r\n\t\t<ID>0</ID>\r\n\t</TODOClass>\r\n\t<TODOClass>\r\n\t\t<Task>Optimize ad campaign for higher conversion rates</Task>\r\n\t\t<ID>1</ID>\r\n\t</TODOClass>\r\n\t<TODOClass>\r\n\t\t<Task>Answer users</Task>\r\n\t\t<ID>2</ID>\r\n\t</TODOClass>\r\n\t<TODOClass>\r\n\t\t<Task>Check new questions</Task>\r\n\t\t<ID>3</ID>\r\n\t</TODOClass>\r\n</TODOs>");
 
-            //repository.GetTODOS();
+           
             
         }
 

@@ -8,7 +8,7 @@ namespace Backend.Repositories
     using System.Xml.Serialization;
     using Backend.Controllers;
     using Backend.Models;
-    public class ReviewRepository : INterfaceReview
+    public class ReviewRepository : INterfaceReview<ReviewClass>
     {
         private readonly string xmlFilePath;
         private List<ReviewClass> reviewList;

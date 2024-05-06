@@ -8,7 +8,7 @@ namespace Backend.Repositories
     using System.Xml.Serialization;
     using Backend.Models;
 
-    public class TODORepository : INterfaceToDoRepository
+    public class TODORepository : INterfaceToDoRepository<TODOClass>
     {
         private static int lastId = 0;
         private readonly string xmlFilePath;

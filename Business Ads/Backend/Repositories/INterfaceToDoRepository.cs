@@ -6,7 +6,7 @@ namespace Backend.Repositories
 {
     using Backend.Models;
 
-    internal interface INterfaceToDoRepository
+    internal interface INterfaceToDoRepository<T>
     {
         public void AddingTODO(TODOClass newTODO);
 
