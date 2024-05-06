@@ -12,7 +12,7 @@ namespace Backend.Tests
     public class FAQRepositoryTests
     {
         [Fact]
-        public void GetFAQList_ReturnsNotNullList()
+        public void GetFAQList_WhenFetchingFAQs_ReturnsNotNullList()
         {
             // Arrange
             var repository = new FakeFAQRepository();
@@ -25,7 +25,7 @@ namespace Backend.Tests
         }
 
         [Fact]
-        public void AddFAQ_AddsFAQToRepository()
+        public void AddFAQ_WhenAddingFAQs_AddsFAQToRepositoryList()
         {
             // Arrange
             var repository = new FakeFAQRepository();
@@ -39,7 +39,7 @@ namespace Backend.Tests
         }
 
         [Fact]
-        public void DeleteFAQ_RemovesFAQFromRepository()
+        public void DeleteFAQ_DeletingFAQ_RemovesFAQFromRepositoryList()
         {
             // Arrange
             var repository = new FakeFAQRepository();

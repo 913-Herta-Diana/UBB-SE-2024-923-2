@@ -64,7 +64,6 @@ namespace Backend.Repositories
                         todo.ID = lastId++;
                         this.todosList.Add(todo);
                     }
-                    fileStream.Close();
                 }
                 else
                 {
@@ -82,7 +81,6 @@ namespace Backend.Repositories
 
             using FileStream fileStream = new (this.xmlFilePath, FileMode.Create);
             serializer.Serialize(fileStream, this.todosList);
-            fileStream.Close();
         }
     }
 }

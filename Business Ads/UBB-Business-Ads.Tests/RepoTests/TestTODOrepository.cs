@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.IO.Pipes;
     using System.Linq;
+    using System.Reflection.Metadata;
     using System.Text;
     using System.Threading.Tasks;
     using Backend.Models;
@@ -22,9 +24,27 @@
 
         public void Dispose()
         {
+            string constant = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<TODOs xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <TODOClass>\r\n    <Task>Review ad targeting strategies</Task>\r\n    <ID>0</ID>\r\n  </TODOClass>\r\n  <TODOClass>\r\n    <Task>Optimize ad campaign for higher conversion rates</Task>\r\n    <ID>1</ID>\r\n  </TODOClass>\r\n  <TODOClass>\r\n    <Task>Answer users</Task>\r\n    <ID>2</ID>\r\n  </TODOClass>\r\n  <TODOClass>\r\n    <Task>Check new questions</Task>\r\n    <ID>3</ID>\r\n  </TODOClass>\r\n  <TODOClass>\r\n    <Task>Test app</Task>\r\n    <ID>4</ID>\r\n  </TODOClass>\r\n</TODOs>";
 
+            try
+            {
+                // Construct the full path to the XML file
+                string binDirectory = "\\bin";
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                int index = basePath.IndexOf(binDirectory);
+                string pathUntilBin = basePath.Substring(0, index);
+                string pathToToDoXML = "\\XMLFiles\\TODOitems.xml";
+                string xmlFilePath = pathUntilBin + pathToToDoXML;
 
+                // Write the constant XML content to the XML file (overwrite existing content)
+                File.WriteAllText(xmlFilePath, constant);
 
+                Console.WriteLine("XML file overwritten successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }          
         }
 
         [Fact]
@@ -39,7 +59,7 @@
         [Fact]
         public void AddingTODO_WhenTODOelementIsAdded_ShouldAddElement()
         {
-            var TODOelement = new TODOClass("Added task");
+            var TODOelement = new TODOClass { Task = "Added task" };
 
             repository.AddingTODO(TODOelement);
 
