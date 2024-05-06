@@ -7,9 +7,14 @@ namespace Backend.Controllers
     using Backend.Models;
     using Backend.Repositories;
 
-    public class BankAccountController(AccountRepository repository)
+    public class BankAccountController : InterfaceBankAccountController
     {
-        private readonly AccountRepository accountRepository = repository;
+        private readonly AccountRepository accountRepository;
+
+        public BankAccountController(AccountRepository repository)
+        {
+            this.accountRepository = repository;
+        }
 
         public void UpdateBankAccount(string name, string surname, string email, string phoneNumber, string county, string city, string address, string number, string holderName, string expiryDate)
         {

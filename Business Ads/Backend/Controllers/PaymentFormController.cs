@@ -9,10 +9,16 @@ namespace Backend.Controllers
     using Backend.Models;
     using Backend.Repositories;
 
-    public class PaymentFormController(AccountRepository repositoryAccount, INterfaceProductRepository repositoryProduct)
+    public class PaymentFormController : InterfacePaymentFormController
     {
-        private readonly AccountRepository accountRepository = repositoryAccount;
-        private readonly INterfaceProductRepository productRepository = repositoryProduct;
+        private readonly AccountRepository accountRepository;
+        private readonly INterfaceProductRepository productRepository;
+
+        public PaymentFormController(AccountRepository repositoryAccount, INterfaceProductRepository repositoryProduct)
+        {
+            this.accountRepository = repositoryAccount;
+            this.productRepository = repositoryProduct;
+        }
 
         public Task SendPaymentConfirmationMailAsync()
         {
