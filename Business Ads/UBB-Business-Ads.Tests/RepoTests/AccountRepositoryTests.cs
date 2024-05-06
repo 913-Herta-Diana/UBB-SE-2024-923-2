@@ -90,17 +90,23 @@ namespace Backend.Tests
         {
             // Arrange
             var dataEncryptionService = new DataEncryptionService();
-            var accountRepository = new FakeAccountRepository(new BankAccount(), dataEncryptionService);
-
-            var originalData = "example@example.com";
+            var account = new BankAccount
+            {
+                Email = "example@example.com",
+                Name = "John Doe",
+                Surname = "Doe",
+            };
+            var accountRepository = new FakeAccountRepository(account, dataEncryptionService);
 
             // Act
-            var encryptedData = accountRepository.BankAccount.Email; // Simulated encryption
-            var decryptedData = dataEncryptionService.Decrypt(encryptedData!, "Key");
+            var encryptionResult = dataEncryptionService.Encrypt(account.Email);
+            var encryptedData = encryptionResult["data"];
+            var key = encryptionResult["key"];
+            var decryptedData = dataEncryptionService.Decrypt(encryptedData, key);
 
             // Assert
-            Assert.NotEqual(originalData, encryptedData);
-            Assert.Equal(originalData, decryptedData);
+            Assert.NotEqual(account.Email, encryptedData);
+            Assert.Equal(account.Email, decryptedData);
         }
     }
 }

@@ -1,21 +1,19 @@
-﻿// <copyright file="FAQRepositoryTests.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+﻿using Backend.Models;
+using Backend.Repositories;
+using Backend.Services;
+using Moq;
+using Xunit;
 
 namespace Backend.Tests
 {
-    using Backend.Models;
-    using Backend.Repositories;
-    using Moq;
-    using Xunit;
-
     public class FAQRepositoryTests
     {
         [Fact]
         public void GetFAQList_ReturnsFAQList()
         {
             // Arrange
-            var repository = new FAQRepository();
+            var fileIOServiceMock = new Mock<IFileIOService>();
+            var repository = new FAQRepository(fileIOServiceMock.Object);
 
             // Act
             var faqList = repository.GetFAQList();
@@ -28,7 +26,8 @@ namespace Backend.Tests
         public void AddFAQ_AddsFAQToList()
         {
             // Arrange
-            var repository = new FAQRepository();
+            var fileIOServiceMock = new Mock<IFileIOService>();
+            var repository = new FAQRepository(fileIOServiceMock.Object);
             var faq = new FAQ();
 
             // Act
@@ -42,7 +41,8 @@ namespace Backend.Tests
         public void DeleteFAQ_RemovesFAQFromList()
         {
             // Arrange
-            var repository = new FAQRepository();
+            var fileIOServiceMock = new Mock<IFileIOService>();
+            var repository = new FAQRepository(fileIOServiceMock.Object);
             var faq = new FAQ();
             repository.AddFAQ(faq);
 

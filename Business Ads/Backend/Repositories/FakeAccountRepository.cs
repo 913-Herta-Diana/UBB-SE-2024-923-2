@@ -19,12 +19,14 @@ namespace Backend.Tests.Fakes
         {
             get
             {
-                // Simulate decryption by returning the original account details
                 return bankAccount;
             }
             set
             {
-                // Simulate encryption by setting the account details directly
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
                 bankAccount = value;
             }
         }
