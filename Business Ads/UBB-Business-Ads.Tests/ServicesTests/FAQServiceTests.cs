@@ -39,7 +39,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
             var service = new FAQService();
 
             // Assert
-            Xunit.Assert.NotNull(service.GetAllFAQs()); // Verify that repository is initialized
+            Xunit.Assert.NotNull(service.GetAllFAQs()); // Verify that productRepository is initialized
             Xunit.Assert.NotNull(service.GetSubmittedQuestions()); // Verify that submittedQuestions list is initialized
             Xunit.Assert.Empty(service.GetSubmittedQuestions()); // Verify that submittedQuestions list is empty initially
         }

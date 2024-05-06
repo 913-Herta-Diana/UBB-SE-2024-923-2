@@ -52,7 +52,7 @@ namespace Backend.Controllers
             return client.SendMailAsync(mail);
         }
 
-        public ProductMock GetProduct()
+        public Product GetProduct()
         {
             return this.productRepository.Product;
         }

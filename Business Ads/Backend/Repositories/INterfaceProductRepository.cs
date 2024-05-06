@@ -9,6 +9,6 @@ namespace Backend.Repositories
 {
     public interface INterfaceProductRepository
     {
-        ProductMock Product { get; set; }
+        Product Product { get; set; }
     }
 }
