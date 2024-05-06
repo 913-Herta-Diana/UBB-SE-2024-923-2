@@ -21,7 +21,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
     public class FaqServiceTests
     {
         [Test]
-        public void Instance_ReturnsSameInstance()
+        public void Instance_Returns_SameInstance()
         {
             // Arrange
             var service1 = FAQService.Instance;
@@ -46,7 +46,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
 
         [Test]
 
-        public void AddSubmittedQuestion_AddsNewQuestionToSubmittedQuestionsList()
+        public void AddSubmittedQuestion_SubmittedQuestion_AddsNewQuestionToSubmittedQuestionsList()
         {
             // Arrange
             var service = new FAQService();
@@ -62,7 +62,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
 
         [Test]
 
-        public void GetSubmittedQuestions_ReturnsSubmittedQuestionsList()
+        public void GetSubmittedQuestions_AddSubmittedQuestionToList_ReturnsSubmittedQuestionsList()
         {
             // Arrange
             var service = new FAQService();
