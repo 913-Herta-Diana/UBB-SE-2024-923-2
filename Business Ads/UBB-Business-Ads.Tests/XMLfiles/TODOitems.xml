@@ -1,115 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TODOs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>54</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>55</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>56</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>57</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>58</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>59</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>60</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>61</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>62</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>63</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>64</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>65</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>66</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>67</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>68</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>69</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>70</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>71</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>72</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>73</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>74</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>75</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>76</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>77</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>78</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>79</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>New task</Task>
-    <ID>80</ID>
-  </TODOClass>
-  <TODOClass>
-    <Task>Keep this task</Task>
-    <ID>82</ID>
-  </TODOClass>
+	<TODOClass>
+		<Task>Review ad targeting strategies</Task>
+		<ID>0</ID>
+	</TODOClass>
+	<TODOClass>
+		<Task>Optimize ad campaign for higher conversion rates</Task>
+		<ID>1</ID>
+	</TODOClass>
+	<TODOClass>
+		<Task>Answer users</Task>
+		<ID>2</ID>
+	</TODOClass>
+	<TODOClass>
+		<Task>Check new questions</Task>
+		<ID>3</ID>
+	</TODOClass>
 </TODOs>
