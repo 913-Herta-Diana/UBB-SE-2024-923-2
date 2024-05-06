@@ -2,7 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace Backend.Repositories.Tests
+using Backend.Repositories;
+
+namespace UBB_Business_Ads.Tests.RepoTests
 {
     using System.Collections.Generic;
     using System.IO;
@@ -24,7 +26,7 @@ namespace Backend.Repositories.Tests
         public void SetUp()
         {
             // Create a test XML file with sample data
-            this.CreateTestXmlFile();
+            CreateTestXmlFile();
         }
 
         [TearDown]

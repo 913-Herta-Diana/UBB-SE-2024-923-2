@@ -12,7 +12,7 @@
 //   [author's name]
 // </author>
 //-----------------------------------------------------------------------
-namespace UBB_Business_Ads.Tests
+namespace UBB_Business_Ads.Tests.ServicesTests
 {
     using Backend.Services;
 

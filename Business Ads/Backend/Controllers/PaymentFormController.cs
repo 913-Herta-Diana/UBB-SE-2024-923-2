@@ -9,10 +9,10 @@ namespace Backend.Controllers
     using Backend.Models;
     using Backend.Repositories;
 
-    public class PaymentFormController(AccountRepository repositoryAccount, ProductRepository repositoryProduct)
+    public class PaymentFormController(AccountRepository repositoryAccount, INterfaceProductRepository repositoryProduct)
     {
         private readonly AccountRepository accountRepository = repositoryAccount;
-        private readonly ProductRepository productRepository = repositoryProduct;
+        private readonly INterfaceProductRepository productRepository = repositoryProduct;
 
         public Task SendPaymentConfirmationMailAsync()
         {
@@ -32,6 +32,11 @@ namespace Backend.Controllers
                 Credentials = new NetworkCredential(sender, password),
                 EnableSsl = true,
             };
+
+            if (string.IsNullOrWhiteSpace(receiver))
+            {
+                throw new InvalidOperationException("Receiver email cannot be null or empty.");
+            }
 
             var mail = new MailMessage(
                 from: sender,

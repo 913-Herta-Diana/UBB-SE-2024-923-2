@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace UBB_Business_Ads.Tests
+namespace UBB_Business_Ads.Tests.ControllerTests
 {
     using Backend.Controllers;
     using Xunit;

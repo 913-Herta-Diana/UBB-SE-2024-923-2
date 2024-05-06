@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace UBB_Business_Ads.Tests
+namespace UBB_Business_Ads.Tests.ControllerTests
 {
     using Backend.Controllers;
     using Backend.Models;
@@ -36,11 +36,43 @@ namespace UBB_Business_Ads.Tests
                 Price = "100",
                 Image = "doggo.png",
             };
-            var productRepository = new ProductRepository(mockProduct);
+            INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
             PaymentFormController paymentFormController = new (accountRepository, productRepository);
 
             // var result=paymentFormController.SendPaymentConfirmationMailAsync();
             Assert.DoesNotThrow(() => paymentFormController.SendPaymentConfirmationMailAsync());
+        }
+
+        [Test]
+        public void SendPaymentConfirmationmailAsync_InvalidReceiverData_ThrowsException()
+        {
+            var bankAccount = new BankAccount
+            {
+                Email = " ",
+                Name = "Name",
+                Surname = "Surname",
+                PhoneNumber = "0740123456",
+                County = "Cluj",
+                City = "Cluj-Napoca",
+                Address = "Str. SomeStreet, Nr. 1",
+                Number = "123456789",
+                HolderName = "Name Surname",
+                ExpiryDate = "12/23",
+            };
+            var accountRepository = new AccountRepository(bankAccount);
+            var mockProduct = new ProductMock
+            {
+                Name = "Product",
+                Description = "Description",
+                Price = "100",
+                Image = "doggo.png",
+            };
+            INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
+            PaymentFormController paymentFormController = new (accountRepository, productRepository);
+
+            var ex = Assert.Catch<Exception>(() => paymentFormController.SendPaymentConfirmationMailAsync());
+
+            Assert.That(ex.Message, Does.Contain("Receiver email cannot be null or empty."));
         }
 
         [Test]
@@ -67,7 +99,7 @@ namespace UBB_Business_Ads.Tests
                 Price = "100",
                 Image = "doggo.png",
             };
-            var productRepository = new ProductRepository(mockProduct);
+            INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
             PaymentFormController paymentFormController = new (accountRepository, productRepository);
 
             var result = paymentFormController.GetProduct();

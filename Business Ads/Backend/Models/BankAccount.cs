@@ -50,7 +50,12 @@ namespace Backend.Models
             }
 
             // validate phone number
-            if (bankAccount.PhoneNumber == null || bankAccount.PhoneNumber.Length < 9)
+            if (bankAccount.PhoneNumber == null)
+            {
+                return false;
+            }
+
+            if (bankAccount.PhoneNumber.Length < 9)
             {
                 foreach (char currentCharacter in bankAccount.PhoneNumber)
                 {
@@ -80,7 +85,12 @@ namespace Backend.Models
             }
 
             // validate number
-            if (bankAccount.Number == null || bankAccount.Number.Length < 16)
+            if (bankAccount.Number == null)
+            {
+                return false;
+            }
+
+            if (bankAccount.Number.Length < 16)
             {
                 foreach (char currentCharacter in bankAccount.Number)
                 {
@@ -104,6 +114,37 @@ namespace Backend.Models
             }
 
             return true;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = (hash * 23) + (Email?.GetHashCode() ?? 0);
+                hash = (hash * 23) + (Name?.GetHashCode() ?? 0);
+                hash = (hash * 23) + (Surname?.GetHashCode() ?? 0);
+                return hash;
+            }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is BankAccount other)
+            {
+                return this.Email == other.Email &&
+                       this.Name == other.Name &&
+                       this.Surname == other.Surname &&
+                       this.PhoneNumber == other.PhoneNumber &&
+                       this.County == other.County &&
+                       this.City == other.City &&
+                       this.Address == other.Address &&
+                       this.Number == other.Number &&
+                       this.HolderName == other.HolderName &&
+                       this.ExpiryDate == other.ExpiryDate;
+            }
+
+            return false;
         }
     }
 }

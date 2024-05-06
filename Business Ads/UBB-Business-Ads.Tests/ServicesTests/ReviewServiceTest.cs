@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace UBB_Business_Ads.Tests
+namespace UBB_Business_Ads.Tests.ServicesTests
 {
     using Backend.Services;
     using Moq;
@@ -18,7 +18,7 @@ namespace UBB_Business_Ads.Tests
             ReviewService instance2 = ReviewService.Instance;
 
             // Assert
-            Xunit.Assert.Equal(instance1, instance2);
+            Assert.Equal(instance1, instance2);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace UBB_Business_Ads.Tests
             var result = reviewService.GetAllReviews();
 
             // Assert
-            Xunit.Assert.NotNull(result);
+            Assert.NotNull(result);
         }
 
         [Fact]

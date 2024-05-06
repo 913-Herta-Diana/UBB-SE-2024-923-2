@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace UBB_Business_Ads.Tests
+namespace UBB_Business_Ads.Tests.ServicesTests
 {
     using Backend.Models;
     using Backend.Services;
@@ -19,7 +19,7 @@ namespace UBB_Business_Ads.Tests
             TODOServices instance2 = TODOServices.Instance;
 
             // Assert
-            Xunit.Assert.Equal(instance1, instance2);
+            Assert.Equal(instance1, instance2);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace UBB_Business_Ads.Tests
             var result = todoServices.GetTODOS();
 
             // Assert
-            Xunit.Assert.NotNull(result);
+            Assert.NotNull(result);
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace UBB_Business_Ads.Tests
             // Assert
             // Verify that no actions are performed
             // The list of TODOs remains same
-            Xunit.Assert.Equal(size, todoServices.GetTODOS().Count);
+            Assert.Equal(size, todoServices.GetTODOS().Count);
         }
     }
 }
