@@ -29,7 +29,7 @@ namespace UBB_Business_Ads.Tests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            var mockProduct = new ProductMock
+            var mockProduct = new Product
             {
                 Name = "Product",
                 Description = "Description",
@@ -60,7 +60,7 @@ namespace UBB_Business_Ads.Tests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            var mockProduct = new ProductMock
+            var mockProduct = new Product
             {
                 Name = "Product",
                 Description = "Description",

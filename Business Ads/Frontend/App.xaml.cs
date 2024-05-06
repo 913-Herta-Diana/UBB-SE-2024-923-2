@@ -38,7 +38,7 @@ namespace Frontend
             };
             services.AddSingleton(bankAccount);
 
-            var mockProduct = new ProductMock
+            var mockProduct = new Product
             {
                 Name = "Product",
                 Description = "Description",
