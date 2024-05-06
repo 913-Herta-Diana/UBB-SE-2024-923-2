@@ -15,7 +15,7 @@ namespace Backend.Tests
     public class AccountRepositoryTests
     {
         [Fact]
-        public void Constructor_NullAccount_ThrowsArgumentNullException()
+        public void Constructor_WhenAccountIsNull_ThrowsArgumentNullException()
         {
             // Arrange & Act & Assert
             Assert.Throws<ArgumentNullException>(() => new FakeAccountRepository(null!, Mock.Of<IDataEncryptionService>()));
@@ -49,7 +49,7 @@ namespace Backend.Tests
         }
 
         [Fact]
-        public void Setter_NullAccount_ThrowsArgumentNullException()
+        public void Setter_WhenAccountIsNull_ThrowsArgumentNullException()
         {
             // Arrange
             var mockDataEncryptionService = new Mock<IDataEncryptionService>();

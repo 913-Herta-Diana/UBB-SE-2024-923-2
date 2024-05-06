@@ -1,48 +1,48 @@
-﻿using Backend.Models;
-using Backend.Repositories;
-using Backend.Services;
-using Moq;
-using Xunit;
+﻿// <copyright file="FAQRepositoryTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Backend.Tests
 {
+    using Backend.Models;
+    using Backend.Repositories;
+    using Backend.Services;
+    using Xunit;
+
     public class FAQRepositoryTests
     {
         [Fact]
-        public void GetFAQList_ReturnsFAQList()
+        public void GetFAQList_ReturnsNotNullList()
         {
             // Arrange
-            var fileIOServiceMock = new Mock<IFileIOService>();
-            var repository = new FAQRepository(fileIOServiceMock.Object);
+            var repository = new FakeFAQRepository();
 
             // Act
             var faqList = repository.GetFAQList();
 
             // Assert
-            Assert.NotNull(faqList);
+            Xunit.Assert.NotNull(faqList);
         }
 
         [Fact]
-        public void AddFAQ_AddsFAQToList()
+        public void AddFAQ_AddsFAQToRepository()
         {
             // Arrange
-            var fileIOServiceMock = new Mock<IFileIOService>();
-            var repository = new FAQRepository(fileIOServiceMock.Object);
+            var repository = new FakeFAQRepository();
             var faq = new FAQ();
 
             // Act
             repository.AddFAQ(faq);
 
             // Assert
-            Assert.Contains(faq, repository.GetFAQList());
+            Xunit.Assert.Contains(faq, repository.GetFAQList());
         }
 
         [Fact]
-        public void DeleteFAQ_RemovesFAQFromList()
+        public void DeleteFAQ_RemovesFAQFromRepository()
         {
             // Arrange
-            var fileIOServiceMock = new Mock<IFileIOService>();
-            var repository = new FAQRepository(fileIOServiceMock.Object);
+            var repository = new FakeFAQRepository();
             var faq = new FAQ();
             repository.AddFAQ(faq);
 
@@ -50,7 +50,7 @@ namespace Backend.Tests
             repository.DeleteFAQ(faq);
 
             // Assert
-            Assert.DoesNotContain(faq, repository.GetFAQList());
+            Xunit.Assert.DoesNotContain(faq, repository.GetFAQList());
         }
     }
 }
