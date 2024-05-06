@@ -6,7 +6,7 @@ namespace Backend.Services
 {
     public class DataEncryptionService : IDataEncryptionService
     {
-        private static readonly string Alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private static readonly string StandardAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";  // SPELL
 
         public Dictionary<string, string> Encrypt(string data)
         {
@@ -44,7 +44,7 @@ namespace Backend.Services
                 if (char.IsLetter(data[i]))
                 {
                     int index = key.IndexOf(data[i]);
-                    decryptedData += Alphabet[index];
+                    decryptedData += StandardAlphabet[index];
                 }
                 else
                 {
@@ -58,10 +58,10 @@ namespace Backend.Services
         private static string ShuffleAlphabet()
         {
             string shuffled = string.Empty;
-            int lengthOfAlphabet = Alphabet.Length;
+            int lengthOfAlphabet = StandardAlphabet.Length;
             Random random = new ();
             char randomCharacter;
-            string copyOfAlphabet = Alphabet;
+            string copyOfAlphabet = StandardAlphabet;
             while (shuffled.Length < lengthOfAlphabet)
             {
                 if (copyOfAlphabet.Length > 1)

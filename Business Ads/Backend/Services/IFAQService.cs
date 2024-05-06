@@ -19,6 +19,6 @@ namespace Backend.Services
 
         List<FAQ> GetSubmittedQuestions();
 
-        List<FAQ> FilterFAQs(List<FAQ> faqs, string searchText);
+        List<FAQ> FilterFAQs(List<FAQ> faqList, string searchText);
     }
 }

@@ -11,14 +11,14 @@ namespace Backend.Services
     public class FAQService : IFAQService
     {
         private static readonly FAQService InstanceValue = new ();
-        private readonly List<string> topics = new List<string>();
+        private readonly List<string> topics = new ();
         private readonly FAQRepository repository;
         private readonly List<FAQ> submittedQuestions;
 
         public FAQService()
         {
             this.repository = new FAQRepository();
-            this.submittedQuestions = new List<FAQ>();
+            this.submittedQuestions = new ();
         }
 
         public static FAQService Instance
@@ -33,21 +33,21 @@ namespace Backend.Services
 
         public List<string> GetTopics()
         {
-            List<Backend.Models.FAQ> faqs = this.GetAllFAQs();
-            foreach (Backend.Models.FAQ faq in faqs)
+            List<Backend.Models.FAQ> faqList = this.GetAllFAQs();
+            foreach (Backend.Models.FAQ faqItem in faqList)
             {
-                if (!this.topics.Contains(faq.Topic))
+                if (!this.topics.Contains(faqItem.Topic))
                 {
-                    this.topics.Add(faq.Topic);
+                    this.topics.Add(faqItem.Topic);
                 }
             }
 
             return this.topics;
         }
 
-        public void AddSubmittedQuestion(FAQ newQ)
+        public void AddSubmittedQuestion(FAQ newQuestion)
         {
-            this.submittedQuestions.Add(newQ);
+            this.submittedQuestions.Add(newQuestion);
         }
 
         public List<FAQ> GetSubmittedQuestions()
@@ -55,20 +55,20 @@ namespace Backend.Services
             return this.submittedQuestions;
         }
 
-        public List<FAQ> FilterFAQs(List<FAQ> faqs, string searchText)
+        public List<FAQ> FilterFAQs(List<FAQ> faqList, string searchText)
         {
             searchText = searchText.ToLower();
 
             if (!string.IsNullOrWhiteSpace(searchText))
             {
-                return faqs
+                return faqList
                     .Where(faq =>
-                        faq.Question.ToLower().Contains(searchText) ||
-                        faq.Topic.ToLower() == searchText)
+                        faq.Question.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
+                        faq.Topic.Equals(searchText, StringComparison.CurrentCultureIgnoreCase))
                     .ToList();
             }
 
-            return faqs;
+            return faqList;
         }
     }
 }
