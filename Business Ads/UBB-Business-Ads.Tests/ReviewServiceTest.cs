@@ -11,9 +11,9 @@ namespace UBB_Business_Ads.Tests
     public class ReviewServiceTest
     {
         [Fact]
-        public void GetReviewServiceInstanceTest()
+        public void GetReviewServiceInstanceTest_ReturnsTheSameInstance()
         {
-            // Act
+            // Act = Constructor - testing the constructor
             ReviewService instance1 = ReviewService.Instance;
             ReviewService instance2 = ReviewService.Instance;
 
@@ -22,8 +22,9 @@ namespace UBB_Business_Ads.Tests
         }
 
         [Fact]
-        public void GetAllReviews_Test()
+        public void GetAllReviewsTest_ReturnsTheListOfAllReviews()
         {
+            // Constructor
             var reviewService = ReviewService.Instance;
 
             // Act
@@ -34,9 +35,9 @@ namespace UBB_Business_Ads.Tests
         }
 
         [Fact]
-        public void AddReview_Test()
+        public void AddReviewTest_NeedsToCallTheAddFunction()
         {
-            // Arrange
+            // Constructor
             var mockService = new Mock<IServiceReview>();
 
             // Act

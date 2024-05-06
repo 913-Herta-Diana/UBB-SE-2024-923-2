@@ -12,9 +12,9 @@ namespace UBB_Business_Ads.Tests
     public class TODOServicesTest
     {
         [Fact]
-        public void GetTODOServicesInstanceTest()
+        public void GetTODOServicesInstanceTest_ReturnsTheSameInstance()
         {
-            // Act
+            // Act = Constructor - testing the constructor
             TODOServices instance1 = TODOServices.Instance;
             TODOServices instance2 = TODOServices.Instance;
 
@@ -23,8 +23,9 @@ namespace UBB_Business_Ads.Tests
         }
 
         [Fact]
-        public void GetTODOS_Test()
+        public void GetTODOSTest_ReturnsTheListOfAllTODOS()
         {
+            // Constructor
             var todoServices = TODOServices.Instance;
 
             // Act
@@ -35,24 +36,24 @@ namespace UBB_Business_Ads.Tests
         }
 
         [Fact]
-        public void AddTODO_Test()
+        public void AddTODOTest_NeedsToCallTheAddFunction()
         {
-            // Arrange
+            // Constructor
             var mockServices = new Mock<IServicesTODO>();
-            var todoObj = new TODOClass();
+            var todoObject = new TODOClass();
 
             // Act
-            mockServices.Object.AddTODO(todoObj);
+            mockServices.Object.AddTODO(todoObject);
 
             // Assert
             // Verify that the addTODO method is called on the mock services exactly once
-            mockServices.Verify(s => s.AddTODO(todoObj), Times.Once);
+            mockServices.Verify(s => s.AddTODO(todoObject), Times.Once);
         }
 
         [Fact]
-        public void RemoveTODO_Test()
+        public void RemoveTODOTest_WhenNonExistingId_NothingShouldHappen()
         {
-            // Arrange
+            // Constructor
             var todoServices = TODOServices.Instance;
             int nonExistingId = 9999; // Non-existing id
             int size = todoServices.GetTODOS().Count;
