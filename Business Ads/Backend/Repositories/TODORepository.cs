@@ -83,13 +83,4 @@ namespace Backend.Repositories
             serializer.Serialize(fileStream, this.todosList);
         }
     }
-
-    internal interface INterfaceToDoRepository
-    {
-        public void AddingTODO(TODOClass newTODO);
-
-        public void RemovingTODO(TODOClass newTODO);
-
-        public List<TODOClass> GetTODOS();
-    }
 }
