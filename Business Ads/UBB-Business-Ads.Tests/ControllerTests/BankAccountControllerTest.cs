@@ -30,7 +30,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -54,7 +54,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -78,7 +78,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -102,7 +102,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -126,7 +126,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -150,7 +150,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -174,7 +174,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -198,7 +198,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -222,7 +222,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -246,7 +246,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
@@ -270,7 +270,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             Assert.DoesNotThrow(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
         }
@@ -292,7 +292,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            BankAccountController bankAccountController = new (accountRepository);
+            InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
             var result = bankAccountController.GetBankAccount();
 

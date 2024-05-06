@@ -37,7 +37,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 Image = "doggo.png",
             };
             INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
-            PaymentFormController paymentFormController = new (accountRepository, productRepository);
+            InterfacePaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
             // var result=paymentFormController.SendPaymentConfirmationMailAsync();
             Assert.DoesNotThrow(() => paymentFormController.SendPaymentConfirmationMailAsync());
@@ -68,7 +68,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 Image = "doggo.png",
             };
             INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
-            PaymentFormController paymentFormController = new (accountRepository, productRepository);
+            InterfacePaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
             var ex = Assert.Catch<Exception>(() => paymentFormController.SendPaymentConfirmationMailAsync());
 
@@ -100,7 +100,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 Image = "doggo.png",
             };
             INterfaceProductRepository productRepository = new ProductRepository(mockProduct);
-            PaymentFormController paymentFormController = new (accountRepository, productRepository);
+            InterfacePaymentFormController paymentFormController = new PaymentFormController(accountRepository, productRepository);
 
             var result = paymentFormController.GetProduct();
 
