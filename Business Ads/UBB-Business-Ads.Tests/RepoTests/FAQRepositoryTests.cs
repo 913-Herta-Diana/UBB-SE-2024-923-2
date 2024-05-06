@@ -2,142 +2,55 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Backend.Repositories;
-
-namespace UBB_Business_Ads.Tests.RepoTests
+namespace Backend.Tests
 {
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Xml;
-    using System.Xml.Serialization;
     using Backend.Models;
-    using NUnit.Framework;
+    using Backend.Repositories;
+    using Moq;
+    using Xunit;
 
-    [TestFixture]
     public class FAQRepositoryTests
     {
-        private const string TestXmlFilePath = "TestFAQ.xml"; // Path to the test XML file
-        private const string TestQuestion = "Test Question";
-        private const string TestAnswer = "Test Answer";
-        private const string TestTopic = "Test Topic";
-
-        [SetUp]
-        public void SetUp()
-        {
-            // Create a test XML file with sample data
-            CreateTestXmlFile();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            // Clean up: delete the test XML file after testing
-            if (File.Exists(TestXmlFilePath))
-            {
-                File.Delete(TestXmlFilePath);
-            }
-        }
-
-        [Test]
-        public void GetFAQList_ReturnsCorrectList()
+        [Fact]
+        public void GetFAQList_ReturnsFAQList()
         {
             // Arrange
-            FAQRepository faqRepository = new FAQRepository();
+            var repository = new FAQRepository();
 
             // Act
-            List<FAQ> faqList = faqRepository.GetFAQList();
+            var faqList = repository.GetFAQList();
 
             // Assert
-            Assert.That(faqList, Is.Not.Null);
-
-            // Add more assertions as needed
+            Assert.NotNull(faqList);
         }
 
-        /*public void LoadFAQsFromXml_FileExists_LoadsFAQs()
+        [Fact]
+        public void AddFAQ_AddsFAQToList()
         {
             // Arrange
-            FAQRepository faqRepository = new FAQRepository();
+            var repository = new FAQRepository();
+            var faq = new FAQ();
 
             // Act
-            faqRepository.LoadFAQsFromXml();
+            repository.AddFAQ(faq);
 
             // Assert
-            List<FAQ> faqList = faqRepository.GetFAQList();
-            Assert.That(faqList, Is.Not.Null);
-            Assert.That(faqList, Is.Not.Empty);
-            // Add more assertions to validate the loaded FAQs
+            Assert.Contains(faq, repository.GetFAQList());
         }
 
-        [Test]
-        public void SaveFAQsToXml_SaveToFile()
+        [Fact]
+        public void DeleteFAQ_RemovesFAQFromList()
         {
             // Arrange
-            FAQRepository faqRepository = new FAQRepository();
-            var faq = new FAQ { Question = TestQuestion, Answer = TestAnswer, Topic = TestTopic };
-            faqRepository.AddFAQ(faq);
+            var repository = new FAQRepository();
+            var faq = new FAQ();
+            repository.AddFAQ(faq);
 
             // Act
-            faqRepository.SaveFAQsToXml();
+            repository.DeleteFAQ(faq);
 
             // Assert
-            Assert.That(File.Exists(TestXmlFilePath), Is.True);
-            // Add more assertions as needed
-        }*/
-
-        [Test]
-        public void AddFAQ_AddsNewFAQ()
-        {
-            // Arrange
-            FAQRepository faqRepository = new FAQRepository();
-            var faq = new FAQ { Question = TestQuestion, Answer = TestAnswer, Topic = TestTopic };
-
-            // Act
-            faqRepository.AddFAQ(faq);
-
-            // Assert
-            List<FAQ> faqList = faqRepository.GetFAQList();
-            Assert.That(faqList.Any(f => f.Question == TestQuestion && f.Answer == TestAnswer && f.Topic == TestTopic), Is.True);
-
-            // Add more assertions as needed
-        }
-
-        [Test]
-        public void DeleteFAQ_DeletesFAQ()
-        {
-            // Arrange
-            FAQRepository faqRepository = new FAQRepository();
-            var faq = new FAQ { Question = TestQuestion, Answer = TestAnswer, Topic = TestTopic };
-            faqRepository.AddFAQ(faq);
-
-            // Act
-            faqRepository.DeleteFAQ(faq);
-
-            // Assert
-            List<FAQ> faqList = faqRepository.GetFAQList();
-            Assert.That(faqList.Any(f => f.Question == TestQuestion && f.Answer == TestAnswer && f.Topic == TestTopic), Is.True);
-
-            // Add more assertions as needed
-        }
-
-        // Helper method to create a test XML file with sample data
-        private void CreateTestXmlFile()
-        {
-            using (XmlWriter writer = XmlWriter.Create(TestXmlFilePath))
-            {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("FAQs");
-
-                writer.WriteStartElement("FAQ");
-                writer.WriteElementString("Question", "Sample Question");
-                writer.WriteElementString("Answer", "Sample Answer");
-                writer.WriteElementString("Topic", "Sample Topic");
-                writer.WriteEndElement();
-
-                // Add more sample FAQs if needed
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-            }
+            Assert.DoesNotContain(faq, repository.GetFAQList());
         }
     }
 }
