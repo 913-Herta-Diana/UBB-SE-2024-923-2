@@ -32,9 +32,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
@@ -56,9 +56,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
@@ -80,9 +80,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "aaa", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
@@ -104,9 +104,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
@@ -128,9 +128,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
@@ -152,9 +152,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "", "123456789", "Name Surname", "12/23")]
@@ -176,9 +176,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "aaa", "Name Surname", "12/23")]
@@ -200,9 +200,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "", "12/23")]
@@ -224,9 +224,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("Name", "Surname", "testAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "")]
@@ -248,9 +248,9 @@ namespace UBB_Business_Ads.Tests.ControllerTests
             var accountRepository = new AccountRepository(bankAccount);
             InterfaceBankAccountController bankAccountController = new BankAccountController(accountRepository);
 
-            var ex = Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
+            var exception_thrown= Assert.Catch<Exception>(() => bankAccountController.UpdateBankAccount(name, surname, email, phoneNumber, county, city, address, number, holderName, expiryDate));
 
-            Assert.That(ex.Message, Does.Contain("Invalid bank account data!"));
+            Assert.That(exception_thrown.Message, Does.Contain("Invalid bank account data!"));
         }
 
         [TestCase("NewName", "NewSurname", "NewTestAccount@gmail.com", "0740123456", "Cluj", "Cluj-Napoca", "Str. SomeStreet, Nr. 1", "123456789", "Name Surname", "12/23")]
