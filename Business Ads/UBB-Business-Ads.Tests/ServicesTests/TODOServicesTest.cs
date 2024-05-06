@@ -12,7 +12,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
     public class TODOServicesTest
     {
         [Fact]
-        public void GetTODOServicesInstanceTest_ReturnsTheSameInstance()
+        public void GetTODOServicesInstance_AsssignsValueToOject_ReturnsTheSameInstance()
         {
             // Act = Constructor - testing the constructor
             TODOServices instance1 = TODOServices.Instance;
@@ -23,7 +23,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
         }
 
         [Fact]
-        public void GetTODOSTest_ReturnsTheListOfAllTODOS()
+        public void GetTODOS_FetchesToDosFromInstance_ReturnsTheListOfAllTODOS()
         {
             // Constructor
             var todoServices = TODOServices.Instance;
@@ -36,7 +36,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
         }
 
         [Fact]
-        public void AddTODOTest_NeedsToCallTheAddFunction()
+        public void AddTODO_AddingTODOElement_NeedsToCallTheAddFunctionFromRepoAndAddElementToTheList()
         {
             // Constructor
             var mockServices = new Mock<IServicesTODO>();
@@ -51,7 +51,7 @@ namespace UBB_Business_Ads.Tests.ServicesTests
         }
 
         [Fact]
-        public void RemoveTODOTest_WhenNonExistingId_NothingShouldHappen()
+        public void RemoveTODO_DeletingElementWhenNonExistingId_NothingShouldHappen()
         {
             // Constructor
             var todoServices = TODOServices.Instance;

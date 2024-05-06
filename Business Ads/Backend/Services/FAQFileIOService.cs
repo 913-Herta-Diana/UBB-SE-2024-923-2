@@ -46,10 +46,10 @@ namespace Backend.Services
                     serializer.Serialize(fileStream, faqList);
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 // Handle or log the exception
-                Console.WriteLine($"An error occurred while saving FAQs to XML: {ex.Message}");
+                Console.WriteLine($"An error occurred while saving FAQs to XML: {exception.Message}");
             }
         }
     }

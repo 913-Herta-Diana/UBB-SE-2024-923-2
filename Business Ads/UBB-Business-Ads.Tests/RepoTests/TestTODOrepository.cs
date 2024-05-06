@@ -6,6 +6,7 @@
     using System.IO.Pipes;
     using System.Linq;
     using System.Reflection.Metadata;
+    using System.Reflection.Metadata.Ecma335;
     using System.Text;
     using System.Threading.Tasks;
     using Backend.Models;
@@ -28,7 +29,6 @@
 
             try
             {
-                // Construct the full path to the XML file
                 string binDirectory = "\\bin";
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
                 int index = basePath.IndexOf(binDirectory);
@@ -36,7 +36,6 @@
                 string pathToToDoXML = "\\XMLFiles\\TODOitems.xml";
                 string xmlFilePath = pathUntilBin + pathToToDoXML;
 
-                // Write the constant XML content to the XML file (overwrite existing content)
                 File.WriteAllText(xmlFilePath, constant);
 
                 Console.WriteLine("XML file overwritten successfully.");
@@ -44,15 +43,15 @@
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-            }          
+            }
         }
 
         [Fact]
         public void GetTODOS_WhenFetchingListOfTODOS_ShouldReturnTODOListSameNumberOfElements()
         {
-            var result=repository.GetTODOS();
+            var result = this.repository.GetTODOS();
             Assert.NotNull(result);
-            Assert.Equal(repository.GetTODOS().Count, result.Count());
+            Assert.Equal(this.repository.GetTODOS().Count, result.Count());
         }
 
 
@@ -61,22 +60,23 @@
         {
             var TODOelement = new TODOClass { Task = "Added task" };
 
-            repository.AddingTODO(TODOelement);
+            this.repository.AddingTODO(TODOelement);
 
             Assert.Contains(TODOelement, repository.GetTODOS());
-
         }
+
         [Fact]
         public void RemovingTODO_WhenTODOelementIsRemoved_ShouldRemoveElement()
         {
             var TODOelement = new TODOClass("To be removed task");
 
             repository.AddingTODO(TODOelement);
-            
+
 
             repository.RemovingTODO(TODOelement);
 
             Assert.DoesNotContain(TODOelement, repository.GetTODOS());
+            
         }
 
     }

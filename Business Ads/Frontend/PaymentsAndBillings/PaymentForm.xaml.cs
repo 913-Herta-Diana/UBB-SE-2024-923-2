@@ -1,5 +1,5 @@
 ﻿// <copyright file="PaymentForm.xaml.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// Copyright (controllerForPayment) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Frontend.PaymentsAndBillings
@@ -18,9 +18,9 @@ namespace Frontend.PaymentsAndBillings
         public Window MainWindow;
         private readonly PaymentFormController paymentController;
 
-        public PaymentForm(PaymentFormController c)
+        public PaymentForm(PaymentFormController controllerForPayment)
         {
-            this.paymentController = c;
+            this.paymentController = controllerForPayment;
             this.InitializeComponent();
             this.UpdateFields();
 

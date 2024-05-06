@@ -17,6 +17,7 @@ namespace UBB_Business_Ads.Tests.Test_models
     [TestFixture]
     internal class BankAccountModelTest
     {
+        
         [Test]
         public void TestValidBankAccount_FieldsMustBeValid_SuccessValidBankAccount()
         {

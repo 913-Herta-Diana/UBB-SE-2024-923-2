@@ -147,7 +147,7 @@ namespace Backend.Models
             string emailRecipient)
         {
             using (var writer = new StreamWriter(outputPath))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 List<AdvertisementStatistics> records = new List<AdvertisementStatistics> { stats };
 
@@ -155,30 +155,30 @@ namespace Backend.Models
                 {
                     if (impressionsChecked)
                     {
-                        csv.WriteField(record.Views);
+                        csvWriter.WriteField(record.Views);
                     }
 
                     if (clicksChecked)
                     {
-                        csv.WriteField(record.Clicks);
+                        csvWriter.WriteField(record.Clicks);
                     }
 
                     if (buysChecked)
                     {
-                        csv.WriteField(record.Buys);
+                        csvWriter.WriteField(record.Buys);
                     }
 
                     if (ctrChecked)
                     {
-                        csv.WriteField((float)record.Views / record.Clicks);
+                        csvWriter.WriteField((float)record.Views / record.Clicks);
                     }
 
                     if (timeChecked)
                     {
-                        csv.WriteField(record.Time);
+                        csvWriter.WriteField(record.Time);
                     }
 
-                    csv.NextRecord();
+                    csvWriter.NextRecord();
                 }
             }
 

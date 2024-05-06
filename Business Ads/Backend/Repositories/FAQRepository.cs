@@ -32,15 +32,15 @@ namespace Backend.Repositories
             return this.faqList;
         }
 
-        public void AddFAQ(Backend.Models.FAQ newQ)
+        public void AddFAQ(Backend.Models.FAQ newQuestion)
         {
-            this.faqList.Add(newQ);
+            this.faqList.Add(newQuestion);
             this.SaveFAQsToXml();
         }
 
-        public void DeleteFAQ(Backend.Models.FAQ q)
+        public void DeleteFAQ(Backend.Models.FAQ question)
         {
-            this.faqList.Remove(q);
+            this.faqList.Remove(question);
             this.SaveFAQsToXml();
         }
 

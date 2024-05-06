@@ -88,23 +88,23 @@ namespace Frontend
                 this.CurrentPlot.Plot.XLabel("Days ago");
                 this.CurrentPlot.Plot.YLabel("CTR");
 
-                double[] ctr_data_xAxis = new double[24];
-                double[] ctr_data_yAxis = new double[24];
+                double[] current_data_xAxis = new double[24];
+                double[] current_data_yAxis = new double[24];
 
                 for (int index = 0; index < 24; index++)
                 {
-                    ctr_data_xAxis[index] = index;
+                    current_data_xAxis[index] = index;
                 }
 
                 for (int index = 0; index < 24; index++)
                 {
-                    ctr_data_yAxis[index] = clicks_data_yAxis[index] / impressions_data_yAxis[index];
+                    current_data_yAxis[index] = clicks_data_yAxis[index] / impressions_data_yAxis[index];
                 }
 
                 this.CurrentPlot.Plot.Axes.SetLimitsX(left: -0.5, right: 23.5);
                 this.CurrentPlot.Plot.Axes.SetLimitsY(bottom: 0, top: 1);
-                this.CurrentPlot.Plot.Add.FillY(ctr_data_xAxis, ctr_data_yAxis, zeros);
-                this.CurrentPlot.Plot.Add.Scatter(ctr_data_xAxis, ctr_data_yAxis);
+                this.CurrentPlot.Plot.Add.FillY(current_data_xAxis, current_data_yAxis, zeros);
+                this.CurrentPlot.Plot.Add.Scatter(current_data_xAxis, current_data_yAxis);
                 this.CurrentPlot.Plot.ShowGrid();
                 this.CurrentPlot.Plot.HideLegend();
                 this.CurrentPlot.Refresh();

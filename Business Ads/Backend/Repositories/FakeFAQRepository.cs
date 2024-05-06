@@ -21,14 +21,14 @@ namespace Backend.Repositories
             return faqList;
         }
 
-        public void AddFAQ(FAQ newQ)
+        public void AddFAQ(FAQ newQestion)
         {
-            faqList.Add(newQ);
+            faqList.Add(newQestion);
         }
 
-        public void DeleteFAQ(FAQ q)
+        public void DeleteFAQ(FAQ question)
         {
-            faqList.Remove(q);
+            faqList.Remove(question);
         }
     }
 }

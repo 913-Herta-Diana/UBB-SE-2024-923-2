@@ -1,4 +1,8 @@
-﻿namespace UBB_Business_Ads.Tests.RepoTests
+﻿// <copyright file="TestReviewRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace UBB_Business_Ads.Tests.RepoTests
 {
     using System;
     using System.Collections.Generic;
@@ -8,15 +12,12 @@
     using System.Threading.Tasks;
     using Backend.Models;
     using Backend.Repositories;
+    using Moq;
     using Xunit;
 
-    public class TestReviewRepository: IDisposable
+    public class TestReviewRepository
     {
         private ReviewRepository repository;
-
-        public void Dispose()
-        {
-        }
 
         public TestReviewRepository()
         {
@@ -26,6 +27,7 @@
         [Fact]
         public void AddReview_WhenReviewElementIsAdded_ShouldAddElement()
         {
+            var repo = new Mock<ReviewRepository>();
             var reviewElement = new ReviewClass("user1", "review1");
             this.repository.AddReview(reviewElement);
             Xunit.Assert.Contains(reviewElement, this.repository.GetReviewList());
