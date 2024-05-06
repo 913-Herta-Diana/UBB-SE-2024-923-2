@@ -14,9 +14,7 @@ namespace Frontend.PaymentsAndBillings
     /// </summary>
     public partial class BankAccountsRepositoryWindow : Window
     {
-#pragma warning disable SA1401 // Fields should be private
         public Window? MainWindow;
-#pragma warning restore SA1401 // Fields should be private
         private readonly InterfaceBankAccountController bankAccountController;
 
         public BankAccountsRepositoryWindow(InterfaceBankAccountController bankAccountControllerInstance)
