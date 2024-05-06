@@ -10,7 +10,7 @@ namespace Backend.Services
     {
         List<TODOClass> GetTODOS();
 
-        void AddTODO(TODOClass obj);
+        void AddTODO(TODOClass todoObject);
 
         void RemoveTODO(int id);
     }

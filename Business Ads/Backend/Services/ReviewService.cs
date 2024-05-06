@@ -10,11 +10,11 @@ namespace Backend.Services
     public class ReviewService : IServiceReview
     {
         private static readonly ReviewService TheInstance = new ();
-        private readonly ReviewRepository repo;
+        private readonly ReviewRepository reviewRepository;
 
         private ReviewService()
         {
-            this.repo = new ReviewRepository();
+            this.reviewRepository = new ReviewRepository();
         }
 
         public static ReviewService Instance
@@ -24,14 +24,14 @@ namespace Backend.Services
 
         public List<ReviewClass> GetAllReviews()
         {
-            return this.repo.GetReviewList();
+            return this.reviewRepository.GetReviewList();
         }
 
         public void AddReview(string review)
         {
             string user = "Dan Oliver";
-            ReviewClass addingRev = new (user, review);
-            this.repo.AddReview(addingRev);
+            ReviewClass reviewToAdd = new (user, review);
+            this.reviewRepository.AddReview(reviewToAdd);
         }
     }
 }

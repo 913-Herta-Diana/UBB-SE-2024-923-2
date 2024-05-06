@@ -10,11 +10,11 @@ namespace Backend.Services
     public class TODOServices : IServicesTODO
     {
         private static readonly TODOServices TheInstance = new ();
-        private readonly TODORepository repository;
+        private readonly TODORepository todoRepository;
 
         private TODOServices()
         {
-            this.repository = new TODORepository();
+            this.todoRepository = new TODORepository();
         }
 
         public static TODOServices Instance
@@ -24,12 +24,12 @@ namespace Backend.Services
 
         public List<TODOClass> GetTODOS()
         {
-            return this.repository.GetTODOS();
+            return this.todoRepository.GetTODOS();
         }
 
-        public void AddTODO(TODOClass obj)
+        public void AddTODO(TODOClass todoObject)
         {
-            this.repository.AddingTODO(obj);
+            this.todoRepository.AddingTODO(todoObject);
         }
 
         public void RemoveTODO(int id)
@@ -38,7 +38,7 @@ namespace Backend.Services
 
             if (todoToRemove != null)
             {
-                this.repository.RemovingTODO(todoToRemove);
+                this.todoRepository.RemovingTODO(todoToRemove);
             }
         }
     }
