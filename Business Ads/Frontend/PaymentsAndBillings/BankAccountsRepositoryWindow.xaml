@@ -40,22 +40,22 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Email: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtEmail" Margin="0,0,0,5" Width="200" />
+                <TextBox x:Name="textEmail" Margin="0,0,0,5" Width="200" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Name: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtName" Margin="0,0,0,5" Width="200" />
+                <TextBox x:Name="textName" Margin="0,0,0,5" Width="200" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Surname: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtSurname" Margin="0,0,0,5" Width="200" />
+                <TextBox x:Name="textSurname" Margin="0,0,0,5" Width="200" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Phone Number: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtPhoneNumber" Margin="0,0,0,5" Width="200" />
+                <TextBox x:Name="textPhoneNumber" Margin="0,0,0,5" Width="200" />
             </StackPanel>
 
             <StackPanel>
@@ -64,17 +64,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="County: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtCounty" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textCounty" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="City: " Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtCity" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textCity" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Address:" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtAddress" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textAddress" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <StackPanel>
@@ -83,17 +83,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Card Number:" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtNumber" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textNumber" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Card Holder Name:" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtHolderName" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textHolderName" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Card Expiry Date:" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtExpiryDate" Margin="0,0,0,5" Width="200"/>
+                <TextBox x:Name="textExpiryDate" Margin="0,0,0,5" Width="200"/>
             </StackPanel>
 
             <Button Content="Save Changes" Click="SaveChanges_Click" HorizontalAlignment="Right"/>

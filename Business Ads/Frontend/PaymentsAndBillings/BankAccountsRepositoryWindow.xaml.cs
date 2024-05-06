@@ -33,33 +33,33 @@ namespace Frontend.PaymentsAndBillings
 
         private void UpdateFields()
         {
-            this.txtEmail.Text = this.bankAccountController.GetBankAccount().Email;
-            this.txtName.Text = this.bankAccountController.GetBankAccount().Name;
-            this.txtSurname.Text = this.bankAccountController.GetBankAccount().Surname;
-            this.txtPhoneNumber.Text = this.bankAccountController.GetBankAccount().PhoneNumber;
-            this.txtCounty.Text = this.bankAccountController.GetBankAccount().County;
-            this.txtCity.Text = this.bankAccountController.GetBankAccount().City;
-            this.txtAddress.Text = this.bankAccountController.GetBankAccount().Address;
-            this.txtNumber.Text = this.bankAccountController.GetBankAccount().Number;
-            this.txtHolderName.Text = this.bankAccountController.GetBankAccount().HolderName;
-            this.txtExpiryDate.Text = this.bankAccountController.GetBankAccount().ExpiryDate;
+            this.textEmail.Text = this.bankAccountController.GetBankAccount().Email;
+            this.textName.Text = this.bankAccountController.GetBankAccount().Name;
+            this.textSurname.Text = this.bankAccountController.GetBankAccount().Surname;
+            this.textPhoneNumber.Text = this.bankAccountController.GetBankAccount().PhoneNumber;
+            this.textCounty.Text = this.bankAccountController.GetBankAccount().County;
+            this.textCity.Text = this.bankAccountController.GetBankAccount().City;
+            this.textAddress.Text = this.bankAccountController.GetBankAccount().Address;
+            this.textNumber.Text = this.bankAccountController.GetBankAccount().Number;
+            this.textHolderName.Text = this.bankAccountController.GetBankAccount().HolderName;
+            this.textExpiryDate.Text = this.bankAccountController.GetBankAccount().ExpiryDate;
         }
 
-        private void HomePage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void HomePage_MouseLeftButtonDown(object sender, MouseButtonEventArgs mouseEvent)
         {
             this.Close();
         }
 
-        private void Profile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Profile_MouseLeftButtonDown(object sender, MouseButtonEventArgs mouseEvent)
         {
             MessageBox.Show("Profile clicked!");
         }
 
-        private void SaveChanges_Click(object sender, RoutedEventArgs e)
+        private void SaveChanges_Click(object sender, RoutedEventArgs mouseEvent)
         {
             try
             {
-                this.bankAccountController.UpdateBankAccount(this.txtName.Text, this.txtSurname.Text, this.txtEmail.Text, this.txtPhoneNumber.Text, this.txtCounty.Text, this.txtCity.Text, this.txtAddress.Text, this.txtNumber.Text, this.txtHolderName.Text, this.txtExpiryDate.Text);
+                this.bankAccountController.UpdateBankAccount(this.textName.Text, this.textSurname.Text, this.textEmail.Text, this.textPhoneNumber.Text, this.textCounty.Text, this.textCity.Text, this.textAddress.Text, this.textNumber.Text, this.textHolderName.Text, this.textExpiryDate.Text);
                 MessageBox.Show("Bank account updated successfully!");
             }
             catch (Exception ex)
@@ -72,27 +72,27 @@ namespace Frontend.PaymentsAndBillings
             }
         }
 
-        private void HomePage_MouseEnter(object sender, MouseEventArgs e)
+        private void HomePage_MouseEnter(object sender, MouseEventArgs mouseEvent)
         {
             this.homePageBlock.Background = Brushes.LightGray;
         }
 
-        private void HomePage_MouseLeave(object sender, MouseEventArgs e)
+        private void HomePage_MouseLeave(object sender, MouseEventArgs mouseEvent)
         {
             this.homePageBlock.Background = Brushes.DimGray;
         }
 
-        private void Profile_MouseEnter(object sender, MouseEventArgs e)
+        private void Profile_MouseEnter(object sender, MouseEventArgs mouseEvent)
         {
             this.profileBlock.Background = Brushes.LightGray;
         }
 
-        private void Profile_MouseLeave(object sender, MouseEventArgs e)
+        private void Profile_MouseLeave(object sender, MouseEventArgs mouseEvent)
         {
             this.profileBlock.Background = Brushes.DimGray;
         }
 
-        private void Profile_Click(object sender, RoutedEventArgs e)
+        private void Profile_Click(object sender, RoutedEventArgs mouseEvent)
         {
             MessageBox.Show("Profile clicked!");
         }
