@@ -60,7 +60,7 @@ namespace UBB_Business_Ads.Tests.ControllerTests
                 ExpiryDate = "12/23",
             };
             var accountRepository = new AccountRepository(bankAccount);
-            var mockProduct = new Product
+            var mockProduct = new ProductMock
             {
                 Name = "Product",
                 Description = "Description",

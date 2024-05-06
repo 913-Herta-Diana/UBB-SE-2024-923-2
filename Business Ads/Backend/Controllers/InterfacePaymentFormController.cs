@@ -10,6 +10,6 @@ namespace Backend.Controllers
     public interface InterfacePaymentFormController
     {
         Task SendPaymentConfirmationMailAsync();
-        Product GetProduct();
+        ProductMock GetProduct();
     }
 }
