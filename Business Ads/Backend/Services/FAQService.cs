@@ -12,12 +12,12 @@ namespace Backend.Services
     {
         private static readonly FAQService InstanceValue = new ();
         private readonly List<string> topics = new ();
-        private readonly FAQRepository repository;
+        private readonly FakeFAQRepository repository;
         private readonly List<FAQ> submittedQuestions;
 
         public FAQService()
         {
-            this.repository = new FAQRepository();
+            this.repository = new FakeFAQRepository();
             this.submittedQuestions = new ();
         }
 
