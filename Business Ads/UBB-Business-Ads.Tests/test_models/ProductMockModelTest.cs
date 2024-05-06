@@ -20,7 +20,7 @@ namespace UBB_Business_Ads.Tests.Test_models
         [Test]
         public void ProductMock_SetAndGetProperties_SuccessGettingAndSettingProperties()
         {
-            var product = new Product();
+            var product = new ProductMock();
 
             product.Name = "Test Product";
             product.Description = "Test Description";
@@ -28,8 +28,8 @@ namespace UBB_Business_Ads.Tests.Test_models
             product.Image = "test_image.jpg";
             Assert.Multiple(() =>
             {
-                Assert.That(product, Has.Property(nameof(Product.Name)).EqualTo("Test Product")
-                                          .And.Property(nameof(Product.Description)).EqualTo("Test Description").And.Property(nameof(Product.Price)).EqualTo("$10.00").And.Property(nameof(Product.Image)).EqualTo("test_image.jpg"));
+                Assert.That(product, Has.Property(nameof(ProductMock.Name)).EqualTo("Test Product")
+                                          .And.Property(nameof(ProductMock.Description)).EqualTo("Test Description").And.Property(nameof(ProductMock.Price)).EqualTo("$10.00").And.Property(nameof(ProductMock.Image)).EqualTo("test_image.jpg"));
             });
         }
     }

@@ -1,48 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Reviews xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>John Doe</User>
+    <Review>Great site! I found the information very helpful.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Alice Smith</User>
+    <Review>Informative content, but the design could be improved.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Mike Johnson</User>
+    <Review>Helped me understand ad targeting better.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Sarah Brown</User>
+    <Review>Excellent resource for beginners in digital marketing.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>David Wilson</User>
+    <Review>Could use more detailed explanations on certain topics.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Jennifer Lee</User>
+    <Review>Love the interactive examples provided.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Dan Oliver</User>
+    <Review>Liked it.</Review>
   </ReviewClass>
   <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
-  </ReviewClass>
-  <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
-  </ReviewClass>
-  <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
-  </ReviewClass>
-  <ReviewClass>
-    <User>user1</User>
-    <Review>review1</Review>
+    <User>Dan Oliver</User>
+    <Review>feedback bun</Review>
   </ReviewClass>
   <ReviewClass>
     <User>user1</User>

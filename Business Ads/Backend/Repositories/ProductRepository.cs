@@ -10,18 +10,18 @@ namespace Backend.Repositories
     public class ProductRepository : INterfaceProductRepository
     {
         private readonly DataEncryptionService encryptionService = new ();
-        private Product product;
+        private ProductMock product;
         private string nameKey;
         private string descriptionKey;
         private string priceKey;
         private string imageKey;
 
-        public ProductRepository(Product product)
+        public ProductRepository(ProductMock product)
         {
             this.Product = product;
         }
 
-        public Product Product
+        public ProductMock Product
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Backend.Repositories
                 string decryptedDescription = this.encryptionService.Decrypt(this.product.Description, this.descriptionKey);
                 string decryptedPrice = this.encryptionService.Decrypt(this.product.Price, this.priceKey);
                 string decryptedImage = this.encryptionService.Decrypt(this.product.Image, this.imageKey);
-                return new Product
+                return new ProductMock
                 {
                     Name = decryptedName,
                     Description = decryptedDescription,
@@ -52,7 +52,7 @@ namespace Backend.Repositories
                 Dictionary<string, string> encryptedImageKeyValuePair = this.encryptionService.Encrypt(value.Image);
                 string encryptedImage = encryptedImageKeyValuePair["data"];
                 this.imageKey = encryptedImageKeyValuePair["key"];
-                this.product = new Product
+                this.product = new ProductMock
                 {
                     Name = encryptedName,
                     Description = encryptedDescription,

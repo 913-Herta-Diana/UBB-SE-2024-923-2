@@ -4,7 +4,7 @@
 
 namespace Backend.Models
 {
-    public class Product
+    public class ProductMock
     {
         public string? Name { get; set; }
 
