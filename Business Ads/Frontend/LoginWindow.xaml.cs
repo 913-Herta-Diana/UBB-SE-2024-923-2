@@ -8,6 +8,9 @@ namespace Frontend
     using System.Windows.Controls;
     using Backend.Login;
 
+    /// <summary>
+    /// Interaction logic for name.xaml.
+    /// </summary>
     public partial class LoginWindow : Window
     {
         private readonly LoginViewModel loginViewModel;
@@ -15,16 +18,16 @@ namespace Frontend
         public LoginWindow()
         {
             this.InitializeComponent();
-            this.loginViewModel = new LoginViewModel();  // Initialize the ViewModel
+            this.loginViewModel = new LoginViewModel();
         }
 
-        private void Click_Login_Button(object sender, RoutedEventArgs eventArgs)
+        private void Click_Login_Button_Event(object sender, RoutedEventArgs eventArgs)
         {
             this.loginViewModel.Username = this.UsernameTextBox.Text;
             this.loginViewModel.Password = this.PasswordTextBox.Password;
             this.loginViewModel.Email = this.EmailTextBox.Text;
 
-            if (this.loginViewModel.CanLogin())
+            if (this.loginViewModel.AreUserCredentialsValidForLogin())
             {
                 MessageBox.Show("You have been logged in successfully.", "Login success!");
                 MainWindow window = new ();
@@ -37,21 +40,21 @@ namespace Frontend
             }
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs eventArgs)
+        private void TextBox_Username_LostFocus(object sender, RoutedEventArgs eventArgs)
         {
-            TextBox? textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            TextBox? senderTextBox = sender as TextBox;
+            if (senderTextBox != null && string.IsNullOrWhiteSpace(senderTextBox.Text))
             {
-                textBox.Text = " ";
+                senderTextBox.Text = " ";
             }
         }
 
-        private void TextBox_LostFocus_Email(object sender, RoutedEventArgs eventArgs)
+        private void TextBox_Email_LostFocus(object sender, RoutedEventArgs eventArgs)
         {
-            TextBox? textBox = sender as TextBox;
-            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            TextBox? senderTextBox = sender as TextBox;
+            if (senderTextBox != null && string.IsNullOrWhiteSpace(senderTextBox.Text))
             {
-                textBox.Text = " ";
+                senderTextBox.Text = " ";
             }
         }
     }

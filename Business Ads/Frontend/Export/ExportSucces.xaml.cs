@@ -21,14 +21,13 @@ namespace Frontend.Export
     /// <summary>
     /// Interaction logic for name.xaml.
     /// </summary>
-    // [Obsolete]
     public partial class ExportSucces : Window
     {
         public Window MainWindow;
 
         public ExportSucces() => this.InitializeComponent();
 
-        private void Click_Return_To_Main_Page_Button(object sender, RoutedEventArgs e)
+        private void Click_Return_To_Main_Page_Button(object sender, RoutedEventArgs eventArgs)
         {
             this.MainWindow.Show();
             this.Close();

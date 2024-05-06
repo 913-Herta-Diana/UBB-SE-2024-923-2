@@ -8,9 +8,9 @@ namespace Backend.Login
 
     public class LoginViewModel
     {
-        private readonly UserController userService;
+        private readonly UserController userController;
 
-        public LoginViewModel() => this.userService = new UserController();
+        public LoginViewModel() => this.userController = new UserController();
 
         public string Username { get; set; }
 
@@ -18,9 +18,9 @@ namespace Backend.Login
 
         public string Email { get; set; }
 
-        public bool CanLogin()
+        public bool AreUserCredentialsValidForLogin()
         {
-            return this.userService.ValidateUser(this.Username, this.Password, this.Email);
+            return this.userController.IsUserInTheLoginList(this.Username, this.Password, this.Email);
         }
     }
 }

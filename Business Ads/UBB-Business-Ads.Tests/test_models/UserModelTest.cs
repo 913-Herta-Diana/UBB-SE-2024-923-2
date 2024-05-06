@@ -14,26 +14,23 @@ namespace UBB_Business_Ads.Tests.Test_models
         [Test]
         public void User_GettingAndSettingProperties_SuccessGettingAndSettingForUser()
         {
-            // Arrange
-            string username = "testuser";
-            string password = "testpass";
-            string email = "testuser@example.com";
+            string username_to_test = "testuser";
+            string password_to_test = "testpass";
+            string email_to_test = "testuser@example.com";
 
-            var user = new User
+            var user_to_test = new User
             {
-                Username = username,
-                Password = password,
-                Email = email,
+                Username = username_to_test,
+                Password = password_to_test,
+                Email = email_to_test,
             };
 
-            // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(user, Has.Property(nameof(User.Username)).EqualTo(username)
-                                   .And.Property(nameof(User.Email)).EqualTo(email)
-                                   .And.Property(nameof(User.Password)).EqualTo(password));
+                Assert.That(user_to_test, Has.Property(nameof(User.Username)).EqualTo(username_to_test)
+                                   .And.Property(nameof(User.Email)).EqualTo(email_to_test)
+                                   .And.Property(nameof(User.Password)).EqualTo(password_to_test));
             });
         }
     }
 }
-

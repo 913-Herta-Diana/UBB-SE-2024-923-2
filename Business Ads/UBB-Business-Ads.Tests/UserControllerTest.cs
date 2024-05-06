@@ -5,33 +5,32 @@
 namespace UBB_Business_Ads.Tests
 {
     using Backend.Controllers;
+    using Xunit;
 
-    [TestFixture]
-    internal class UserControllerTest
+    public class UserControllerTest
     {
-        [Test]
-        public void Validate_User_ValidCredentials_ReturnsTrue()
+        [Fact]
+        public void IsUserInTheLoginList_CredentialsInTheList_ReturnsTrue()
         {
             var userController = new UserController();
-            string username = "user1";
-            string password = "pass1";
-            string email = "user1@example.com";
+            string username_to_test = "user1";
+            string password_to_test = "pass1";
+            string email_to_test = "user1@example.com";
 
-            bool areCredentialsValid = userController.ValidateUser(username, password, email);
-            Assert.That(areCredentialsValid, Is.EqualTo(true));
+            bool areCredentialsInTheList = userController.IsUserInTheLoginList(username_to_test, password_to_test, email_to_test);
+            Assert.True(areCredentialsInTheList);
         }
 
-        [Test]
-        public void Validate_User_InvalidCredentials_ReturnsFalse()
+        [Fact]
+        public void IsUserInTheLoginList_CredentialsInTheList_ReturnsFalse()
         {
             var userController = new UserController();
-            string username = "user3";
-            string password = "pass3";
-            string email = "user3@example.com";
+            string username_to_test = "user3";
+            string password_to_test = "pass3";
+            string email_to_test = "user3@example.com";
 
-            bool areCredentialsInvalid = userController.ValidateUser(username, password, email);
-
-            Assert.That(areCredentialsInvalid, Is.EqualTo(false));
+            bool areCredentialsInTheList = userController.IsUserInTheLoginList(username_to_test, password_to_test, email_to_test);
+            Assert.False(areCredentialsInTheList);
         }
     }
 }
