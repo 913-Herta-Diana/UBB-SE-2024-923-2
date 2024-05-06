@@ -21,7 +21,7 @@ namespace Backend.Controllers
 
         public bool IsUserInTheLoginList(string username, string password, string email)
         {
-            return this.listOfUsersWhoCanLogin.Any(u => u.Username == username && u.Email == email && u.Password == password);
+            return this.listOfUsersWhoCanLogin.Any(user => user.Username == username && user.Email == email && user.Password == password);
         }
     }
 }
