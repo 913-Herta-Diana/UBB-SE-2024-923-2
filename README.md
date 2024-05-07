@@ -1,6 +1,6 @@
-# Refactoring UBB-SE-MysticDragons app
+#ISS Project of subgroup 923-2
 
-**Remarks from the other team**
+**Remarks from the MysticDragons team**
 
 _Valid Login credentials:_
 
